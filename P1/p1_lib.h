@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 
-#define N 1000
 
 struct point{
     float x;
@@ -16,7 +15,7 @@ struct line{
 };
 
 
-void read_dat(std::vector<float>& v){
+void read_dat(char* filename, unsigned int N, std::vector<float>& v){
     std::ifstream file;
     file.open("strecken/s_1000_1.dat");
     float data;
