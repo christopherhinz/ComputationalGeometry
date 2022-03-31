@@ -4,5 +4,6 @@
         "__mutex_base": "cpp",
         "filesystem": "cpp",
         "mutex": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
