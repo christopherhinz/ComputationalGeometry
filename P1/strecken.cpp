@@ -10,7 +10,7 @@ int main(){
 
     std::vector<float> vec;
     std::vector<line> lines_vec;
-    read_dat("strecken/s_1000_1.dat", 1000, vec);
+    read_dat((char*)"strecken/s_1000_1.dat", 1000, vec);
     pack_koords(vec, lines_vec);
 
 
