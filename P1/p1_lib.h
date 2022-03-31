@@ -17,7 +17,7 @@ struct line{
 
 void read_dat(char* filename, unsigned int N, std::vector<float>& v){
     std::ifstream file;
-    file.open("strecken/s_1000_1.dat");
+    file.open(filename);
     float data;
     for(int i = 0; i < N; ++i){
         file >> data;
@@ -46,8 +46,5 @@ float ccw(point p, point q, point r){
 bool line_intersect_check(line l1, line l2){
     float ccw_res1 = ccw(l1.p1, l1.p2, l2.p1) * ccw(l1.p1, l1.p2, l2.p2);
     float ccw_res2 = ccw(l2.p1, l2.p2, l1.p1) * ccw(l2.p1, l2.p2, l1.p2);
-    //std::cout << "\nline1: (" << l1.p1.x << "," << l1.p1.y << ")"  << " (" << l1.p2.x << "," << l1.p2.y << ")\n" ;
-    //std::cout << "line2: (" << l2.p1.x << "," << l2.p1.y << ")"  << " (" << l2.p2.x << "," << l2.p2.y << ")\n" ;
-    //std::cout << "ccw: " << ccw_res1 << ", ccw: " << ccw_res2 << "\n";
-    return (ccw_res1 <= 0 && ccw_res2 <= 0);
+    return (ccw_res1 <= 0.0f && ccw_res2 <= 0.0f);
 }

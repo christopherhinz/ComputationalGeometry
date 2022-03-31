@@ -3,7 +3,8 @@
         "chrono": "cpp",
         "__mutex_base": "cpp",
         "filesystem": "cpp",
-        "mutex": "cpp"
+        "mutex": "cpp",
+        "iostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
