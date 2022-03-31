@@ -47,9 +47,7 @@ int main(){
     // Strecken ohne Schnitt auf Gerade
     // p1 = (-2,0) nach p2 = (0,0)
     // p1 = (1,0) nach p2 = (3,0)
-    line l11 = {.p1.x = -2, .p1.y = 0, .p2.x = 0, .p2.y = 0};
-    line l12 = {.p1.x = 1, .p1.y = 0, .p2.x = 3, .p2.y = 0};
-    std::cout << std::boolalpha << "Soll: false, Ist: " << line_intersect_check(l11, l12) << "\n";
+    print_result(line{.p1.x = -2, .p1.y = 0, .p2.x = 0, .p2.y = 0}, line{.p1.x = 1, .p1.y = 0, .p2.x = 3, .p2.y = 0});
 
     // Strecken ohne Schnitt parallel
     // p1 = (-2,0) nach p2 = (0,0)
