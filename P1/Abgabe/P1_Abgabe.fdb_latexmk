@@ -1,10 +1,10 @@
 # Fdb version 3
-["biber P1_Abgabe"] 1648887652 "P1_Abgabe.bcf" "P1_Abgabe.bbl" "P1_Abgabe" 1648889379
+["biber P1_Abgabe"] 1648887652 "P1_Abgabe.bcf" "P1_Abgabe.bbl" "P1_Abgabe" 1648889425
   "P1_Abgabe.bcf" 1648889379 106414 c1d34cc43706086644cbbbc92f74a082 "pdflatex"
   (generated)
-  "P1_Abgabe.bbl"
   "P1_Abgabe.blg"
-["pdflatex"] 1648889378 "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.tex" "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.pdf" "P1_Abgabe" 1648889379
+  "P1_Abgabe.bbl"
+["pdflatex"] 1648889378 "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.tex" "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.pdf" "P1_Abgabe" 1648889425
   "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.aux" 1648889379 2248 8f78afbc9cd1dec12015c92e29d9fb00 ""
   "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.tex" 1648889377 10612 5a4afd86a5ac69b103d63aff39c44a01 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -108,10 +108,10 @@
   "P1_Abgabe.tex" 1648889377 10612 5a4afd86a5ac69b103d63aff39c44a01 ""
   "Test_Vorlage.jpeg" 1648742609 373986 4fe39372c617b760bf4fee544f7b4344 ""
   (generated)
-  "P1_Abgabe.run.xml"
-  "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.log"
-  "P1_Abgabe.pdf"
+  "P1_Abgabe.log"
   "P1_Abgabe.bcf"
   "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.pdf"
-  "P1_Abgabe.log"
+  "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.log"
+  "P1_Abgabe.pdf"
   "P1_Abgabe.aux"
+  "P1_Abgabe.run.xml"
