@@ -1,34 +1,37 @@
 
 
+#include "p1_lib.h"
+#include <chrono>
 
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
 
-#define MAX 20
+int main(){
+    auto start = std::chrono::steady_clock::now();
 
-void read_dat(std::vector<float>& v){
-    std::ifstream file;
-    file.open("strecken/s_1000_1.dat");
-    float data;
-    for(int i = 0; i < MAX; ++i){
-        file >> data;
-        v.push_back(data);
-        //std::cout << data << std::endl;
-    }
-    file.close();
-}
 
-int main()
-{
     std::vector<float> vec;
-    read_dat(vec);
-    std::cout << "size: " << vec.size() << "\n";
-    for(int i = 0; i < MAX-1; ++i)
-        std::cout << vec[i] << " "; 
-    std::cout << "\n";
+    std::vector<line> lines_vec;
+    read_dat((char*)"strecken/s_100000_1.dat", 100000, vec);
+    pack_koords(vec, lines_vec);
 
-        
+
+    int intersect_counter = 0;
+    for(unsigned int i = 0; i < lines_vec.size(); ++i){
+        for(unsigned int j = 0; j < lines_vec.size(); ++j){
+            if(i!=j){
+                if(line_intersect_check(lines_vec[i], lines_vec[j])){
+                    ++intersect_counter;
+                }
+            }
+        }
+    }
+
+    std::cout << "Strecken insgesamt: " << vec.size() << "\n" << "Schnitte zweier Strecken: " << intersect_counter << "\n";
+
+    auto end = std::chrono::steady_clock::now();     
+    std::cout << "Runtime: " 
+    << (float)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()/1000 
+        + std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms\n";
+
     return 0;
 }
+
