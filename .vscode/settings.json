@@ -4,7 +4,8 @@
         "__mutex_base": "cpp",
         "filesystem": "cpp",
         "mutex": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "vector": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
