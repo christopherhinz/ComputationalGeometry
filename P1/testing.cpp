@@ -59,6 +59,9 @@ int main(){
     // p1 = (0,1) nach p2 = (2,0)
     print_result(line{.p1.x = -2, .p1.y = 0, .p2.x = 0, .p2.y = 0}, line{.p1.x = 0, .p1.y = 1, .p2.x = 2, .p2.y = 0}, false);
 
+
+    print_result(line{.p1.x = 0, .p1.y = 0, .p2.x = 0.1, .p2.y = 0.1}, line{.p1.x = 10, .p1.y = 10, .p2.x = 10.1, .p2.y = 10.1}, false);
+
     return 0;
 }
 

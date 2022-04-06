@@ -10,7 +10,7 @@ int main(){
 
     std::vector<float> vec;
     std::vector<line> lines_vec;
-    read_dat((char*)"strecken/s_100000_1.dat", 100000, vec);
+    read_dat((char*)"strecken/s_1000_1.dat", 1000, vec);
     pack_koords(vec, lines_vec);
 
 
@@ -19,6 +19,13 @@ int main(){
         for(unsigned int j = 0; j < lines_vec.size(); ++j){
             if(i!=j){
                 if(line_intersect_check(lines_vec[i], lines_vec[j])){
+                    if(intersect_counter <= 100 && intersect_counter%5==0){
+                        std::cout << "intersect found:\n" 
+                            << "(" << lines_vec[i].p1.x << " " << lines_vec[i].p1.y << "), "
+                            << "(" << lines_vec[i].p2.x << " " << lines_vec[i].p2.y << ") -> "
+                            << "(" << lines_vec[j].p1.x << " " << lines_vec[j].p1.y << "), "
+                            << "(" << lines_vec[j].p2.x << " " << lines_vec[j].p2.y << ")\n\n";
+                    }
                     ++intersect_counter;
                 }
             }
