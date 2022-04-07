@@ -14,30 +14,19 @@ struct line{
     point p2;
 };
 
-
-void read_dat(char* filename, unsigned int N, std::vector<double>& v){
+void read_dat(char* filename, unsigned int N, std::vector<line>& target){
+    line temp;
     std::ifstream file;
     file.open(filename);
     double k1, k2, k3, k4;
     while(file >> k1 >> k2 >> k3 >> k4){
-        v.push_back(k1); 
-        v.push_back(k2);
-        v.push_back(k3);
-        v.push_back(k4);
-    }
-    file.close();
-}
-
-
-void pack_koords(std::vector<double>& source, std::vector<line>& target){
-    line temp;
-    for(unsigned int i = 0; i < source.size(); i += 4){
-        temp.p1.x = source[0+i];
-        temp.p1.y = source[1+i];
-        temp.p2.x = source[2+i];
-        temp.p2.y = source[3+i];
+        temp.p1.x = k1;
+        temp.p1.y = k2;
+        temp.p2.x = k3;
+        temp.p2.y = k4;
         target.push_back(temp);
     }
+    file.close();
 }
 
 double ccw(point p, point q, point r){
