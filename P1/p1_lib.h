@@ -14,7 +14,7 @@ struct line{
     point p2;
 };
 
-void read_dat(char* filename, unsigned int N, std::vector<line>& target){
+void read_dat(char* filename, std::vector<line>& target){
     line temp;
     std::ifstream file;
     file.open(filename);

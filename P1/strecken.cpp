@@ -23,7 +23,7 @@ int main(){
 
 
     std::vector<line> lines_vec;
-    read_dat((char*)"../strecken/s_1000_1.dat", 1000, lines_vec);
+    read_dat((char*)"../strecken/s_1000_1.dat", lines_vec);
 
 
     //print_content(lines_vec, 30);
@@ -35,10 +35,10 @@ int main(){
             if(i!=j){
                 if(line_intersect_check(lines_vec[i], lines_vec[j])){
                     ++intersect_counter;
-                    print_line(lines_vec[i]);
+                    /*print_line(lines_vec[i]);
                     std::cout << " <-> ";
                     print_line(lines_vec[j]);
-                    std::cout << "\n";
+                    std::cout << "\n";*/
                 }
             }
         }
