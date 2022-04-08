@@ -3,8 +3,6 @@
 import matplotlib.pyplot as plt
 
 
-print("hallo")
-
 with open("intersections.csv", "r") as csv_file:
     lines = csv_file.readlines()
     result_list = []

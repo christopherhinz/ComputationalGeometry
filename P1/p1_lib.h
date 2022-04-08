@@ -19,6 +19,9 @@ void read_dat(char* filename, std::vector<line>& target){
     std::ifstream file;
     file.open(filename);
     double k1, k2, k3, k4;
+    if(!file.is_open()){
+        std::cout << "Could not open file\n";
+    }
     while(file >> k1 >> k2 >> k3 >> k4){
         temp.p1.x = k1;
         temp.p1.y = k2;

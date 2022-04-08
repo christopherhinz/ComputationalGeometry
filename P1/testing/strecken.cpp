@@ -9,6 +9,9 @@ struct line_pair{
 void write_csv(char* filename, std::vector<line_pair>& intersects){
     std::ofstream file;
     file.open ("intersections.csv");
+    if(!file.is_open()){
+        std::cout << "Could not open file\n";
+    }
     for(auto i = 0; i < intersects.size(); ++i){
         file << intersects[i].l1.p1.x << ";" << intersects[i].l1.p1.y << ";" << intersects[i].l1.p2.x << ";" << intersects[i].l1.p2.y << "\n";
         file << intersects[i].l2.p1.x << ";" << intersects[i].l2.p1.y << ";" << intersects[i].l2.p2.x << ";" << intersects[i].l2.p2.y << "\n\n";
