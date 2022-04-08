@@ -1,6 +1,7 @@
 
 
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 with open("intersections.csv", "r") as csv_file:
@@ -12,28 +13,24 @@ with open("intersections.csv", "r") as csv_file:
         if line != "\n":
             if counter == 0:
                 counter = counter + 1
-                tmp_dict["line1"] = [i.replace("\n", "") for i in line.split(";")]
+                tmp_dict["line1"] = [float(i.replace("\n", "")) for i in line.split(";")]
             elif counter == 1:
                 counter = counter + 1
-                tmp_dict["line2"] = [i.replace("\n", "") for i in line.split(";")]
+                tmp_dict["line2"] = [float(i.replace("\n", "")) for i in line.split(";")]
                 result_list.append(tmp_dict)
         else: 
             tmp_dict = {}
             counter = 0
 
 
-for i in range(len(result_list)):
-    print(result_list[i])
-
-
 print(f"{len(result_list)} Schnittpunkte gefunden!\nWie viele sollen geplottet werden?\n")
-count = int(input("Anzahl plots: "))
+lower = int(input("Startindex: "))
+upper = int(input("Stoppindex: "))
 
 
-for i in range(1, min(count, len(result_list))):
+for i in range(min(lower, upper), min(upper, len(result_list))):
     x1, y1 = [result_list[i]["line1"][0], result_list[i]["line1"][2]] , [result_list[i]["line1"][1], result_list[i]["line1"][3]]
     x2, y2 = [result_list[i]["line2"][0], result_list[i]["line2"][2]] , [result_list[i]["line2"][1], result_list[i]["line2"][3]]
-    print(x1, y1, x2, y2)
     plt.plot(x1, y1, marker = 'o', linestyle="-.")
     plt.plot(x2, y2, marker = 'x', linestyle="--")
     plt.show()

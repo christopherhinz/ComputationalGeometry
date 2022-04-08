@@ -34,6 +34,7 @@ void print_content(std::vector<line>& vec, int limit){
     }
 }
 
+
 int main(){
     std::vector<line> lines_vec;
     std::vector<line_pair> result_vec;
@@ -50,10 +51,10 @@ int main(){
                     lp.l1 = lines_vec[i];
                     lp.l2 = lines_vec[j];
                     result_vec.push_back(lp);
-                    print_line(lines_vec[i]);
-                    std::cout << " <-> ";
-                    print_line(lines_vec[j]);
-                    std::cout << "\n";
+                    //print_line(lines_vec[i]);
+                    //std::cout << " <-> ";
+                    //print_line(lines_vec[j]);
+                    //std::cout << "\n";
                 }
             }
         }
