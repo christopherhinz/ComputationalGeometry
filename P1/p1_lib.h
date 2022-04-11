@@ -3,8 +3,6 @@
 #include <string>
 #include <vector>
 
-#define NOF_DATAFILES 3
-
 struct point{
     double x;
     double y;
@@ -18,12 +16,6 @@ struct line{
             << "(" << p1.x << " " << p1.y << ") / "
             << "(" << p2.x << " " << p2.y << ")";
     }
-};
-
-struct output_values{
-    int lines_count;
-    int intersect_count;
-    double runtime;
 };
 
 void read_dat(std::string filename, std::vector<line>& target){
