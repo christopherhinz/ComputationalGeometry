@@ -1,1 +1,6 @@
-./build
+build/
+
+P1/Abgabe/*
+!P1/Abgabe/*.jpeg
+!P1/Abgabe/*.png
+!P1/Abgabe/*.tex

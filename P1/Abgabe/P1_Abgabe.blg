@@ -1,5 +1,0 @@
-[0] Config.pm:311> INFO - This is Biber 2.16
-[0] Config.pm:314> INFO - Logfile is 'P1_Abgabe.blg'
-[84] biber-darwin:340> INFO - === Sat Apr  2, 2022, 10:20:54
-[103] Biber.pm:415> INFO - Reading 'P1_Abgabe.bcf'
-[210] Utils.pm:395> WARN - No data sources defined!
