@@ -121,7 +121,7 @@ Es ist zu begründen, warum die Anzahl der vom Programm jeweils gefundenen Schni
 
 \section{Vorüberlegung}
 
-Um einschätzen zu können inwiefern die Ergebnisse sinnvoll sind sollen an dieser Stelle einige Vorüberlegungen getroffen werden.\\~\\
+Um einschätzen zu können, inwiefern die Ergebnisse sinnvoll sind sollen an dieser Stelle einige Vorüberlegungen getroffen werden.\\~\\
 Welche Anzahl an Schnitten sind zu erwarten bzw. in welchem Wertebereich sollten sich die Ergebnisse bewegen?\\
 Die minimal zu erwartende Anzahl an Schnitten wäre für 1.000, 10.0000 und 100.000 Strecken jeweils null.
 Dies ist somit die untere Grenze des zu erwartenden Wertebereichs.
@@ -143,21 +143,21 @@ Dies ist somit die obere Grenze des zu erwartenden Wertebereichs.
 
 Das Programm verwendet die Funktion \code{read\_dat()} um die Daten aus den Dateien einzulesen und über \code{pack\_koords()} die Datensätze zu Strecken zusammenzufassen.
 Jede Strecke wird anschließend gegen alle anderen Strecken geprüft, ob sie diese schneidet, oder nicht.
-Zur Feststellung, ob sich die zwei Strecken schneiden wird ausgewertet, ob die Punkte $p_1, p_2$ der ersten Strecke zu den Punkten $p_1, p_2$ der zweiten Strecke im oder gegen den Uhrzeigersinn angeornet sind.
+Zur Feststellung, ob sich die zwei Strecken schneiden wird ausgewertet, ob die Punkte $p_1, p_2$ der ersten Strecke zu den Punkten $p_1, p_2$ der zweiten Strecke im oder gegen den Uhrzeigersinn angeordnet sind.
 Dafür wird folgende Formel verwendet, die im Ergebnis den Betrag des Kreuzproduktes aus den Richtungsvektoren der drei Punkte enthält:
 \begin{equation}
     ccw(p, q, r) := \begin{vmatrix} p_1 & p_2 & 1 \\ q_1 & q_2 & 1 \\ r_1 & r_2 & 1 \end{vmatrix} = (p_1q_2 - p_2q_1) + (q_1r_2 - q_2r_1) + (p_2r_1 - p_1r_2)
 \end{equation}
 
-Ist das Prdukt der ccw-Funktion der ersten Strecke mit den Endpunkten der zweiten Strecke, sowie das Produkt der ccw-Funktion der zweiten Strecke mit den Endpunkten der ersten Strecke kleiner oder gleich 0, so kann unter der Annahme, dass die Strecken nicht kollinear zueinander sind davon ausgegangen werden, dass sich die Strecken schneiden.
+Ist das Produkt der ccw-Funktion der ersten Strecke mit den Endpunkten der zweiten Strecke, sowie das Produkt der ccw-Funktion der zweiten Strecke mit den Endpunkten der ersten Strecke kleiner oder gleich 0, so kann unter der Annahme, dass die Strecken nicht kollinear zueinander sind davon ausgegangen werden, dass sich die Strecken schneiden.
 
 Sind die Strecken Kollinear angeordnet, so ergeben beide Kreuzprodukte 0. In diesem Fall muss noch überprüft werden, ob sich die Strecken überlappen.
 Bei Überlappung der Strecken lässt sich mindestens einer der Endpunkte der zweiten Strecke über ein Vielfaches zwischen 0 und 1 des ersten Streckenvektors addiert mit einem Endpunkt der ersten Strecke darstellen.
-Da zuvor bereits festgestellt wurde, dass die Strecken kollinear sind, kann das Skalar zum Richtungsvektor der zweiten Strecke über das Auflösen der parametrischen Darstellung durch die x-Komponenten der Orstvektoren aufgelöst werden.
+Da zuvor bereits festgestellt wurde, dass die Strecken kollinear sind, kann der Skalar zum Richtungsvektor der zweiten Strecke über das Auflösen der parametrischen Darstellung durch die x-Komponenten der Ortsvektoren aufgelöst werden.
 \begin{equation}
     \lambda = \frac{x_r - x_p}{x_q - x_p}
 \end{equation}
-Liegt der Wert von $\lambda$ zwischen 0 und 1, so überlappen sich die Funktionen. Nimmt $\lambda$ den Wert 0 oder 1 an, schneiden sich die Strecken in in jeweils einem der Enpunkte.
+Liegt der Wert von $\lambda$ zwischen 0 und 1, so überlappen sich die Funktionen. Nimmt $\lambda$ den Wert 0 oder 1 an, schneiden sich die Strecken in jeweils einem der Endpunkte.
 
 \begin{lstlisting}[style=CStyle, caption={p1\_lib.h: Bibliotheksfunktionen},captionpos=b]
 #include <fstream>
