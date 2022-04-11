@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 
+#define NOF_DATAFILES 3
 
 struct point{
     double x;
@@ -19,10 +20,16 @@ struct line{
     }
 };
 
-void read_dat(char* filename, std::vector<line>& target){
+struct output_values{
+    int lines_count;
+    int intersect_count;
+    double runtime;
+};
+
+void read_dat(std::string filename, std::vector<line>& target){
     line temp;
     std::ifstream file;
-    file.open(filename);
+    file.open(filename.c_str());
     double k1, k2, k3, k4;
     if(!file.is_open()){
         std::cout << "Could not open file\n";
@@ -51,7 +58,7 @@ bool line_intersect_check(line l1, line l2){
         if(ccw_res1 == 0.0 && ccw_res2 == 0.0){
             double lambda1 = (l2.p1.x-l1.p1.x)/(l1.p2.x-l1.p1.x);
             double lambda2 = (l2.p2.x-l1.p1.x)/(l1.p2.x-l1.p1.x);
-            if ((lambda1 < 0.0 || lambda1 > 1.0) && (lambda2 < 0.0 || lambda2 > 1.0)) 
+            if ((lambda1 < 0.0 || lambda1 > 1.0) && (lambda2 < 0.0 || lambda2 > 1.0))
                 retval = false;
         }
     }
