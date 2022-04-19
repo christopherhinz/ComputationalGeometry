@@ -1,21 +1,6 @@
 #include "p1_lib.h"
 #include <chrono>
 
-void print_line(line l1){
-    std::cout << "strecke: (" << l1.p1.x << " " << l1.p1.y << "), " <<  "(" << l1.p2.x << " " << l1.p2.y << ")";
-} 
-
-void print_content(std::vector<line>& vec, int limit){
-    int counter = 0;
-    for(auto x : vec){
-        if(counter < limit){
-            print_line(x);
-            std::cout << "\n";
-            ++counter;
-        }
-    }
-}
-
 int main(){
     auto start = std::chrono::steady_clock::now();
 
@@ -24,19 +9,12 @@ int main(){
     read_dat((char*)"../strecken/s_1000_1.dat", lines_vec);
 
 
-    //print_content(lines_vec, 30);
-
-
     int intersect_counter = 0;
     for(unsigned int i = 0; i < lines_vec.size(); ++i){
         for(unsigned int j = i; j < lines_vec.size(); ++j){
             if(i!=j){
                 if(line_intersect_check(lines_vec[i], lines_vec[j])){
                     ++intersect_counter;
-                    /*print_line(lines_vec[i]);
-                    std::cout << " <-> ";
-                    print_line(lines_vec[j]);
-                    std::cout << "\n";*/
                 }
             }
         }
