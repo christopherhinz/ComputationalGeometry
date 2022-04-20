@@ -19,21 +19,6 @@ void write_csv(char* filename, std::vector<line_pair>& intersects){
     file.close();
 }
 
-void print_line(line l1){
-    std::cout << "strecke: (" << l1.p1.x << " " << l1.p1.y << "), " <<  "(" << l1.p2.x << " " << l1.p2.y << ")";
-} 
-
-void print_content(std::vector<line>& vec, int limit){
-    int counter = 0;
-    for(auto x : vec){
-        if(counter < limit){
-            print_line(x);
-            std::cout << "\n";
-            ++counter;
-        }
-    }
-}
-
 
 int main(){
     std::vector<line> lines_vec;
@@ -51,10 +36,6 @@ int main(){
                     lp.l1 = lines_vec[i];
                     lp.l2 = lines_vec[j];
                     result_vec.push_back(lp);
-                    //print_line(lines_vec[i]);
-                    //std::cout << " <-> ";
-                    //print_line(lines_vec[j]);
-                    //std::cout << "\n";
                 }
             }
         }
