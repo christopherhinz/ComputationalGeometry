@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.26)  19 APR 2022 19:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.26)  20 APR 2022 06:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -833,17 +833,12 @@ l.336
 <python_plot1.png, id=227, 462.528pt x 346.896pt>
 File: python_plot1.png Graphic file (type png)
 <use python_plot1.png>
-Package pdftex.def Info: python_plot1.png  used on input line 391.
-(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
-
-Overfull \hbox (14.3959pt too wide) in paragraph at lines 391--393
- [][] 
- []
-
-[8pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+Package pdftex.def Info: python_plot1.png  used on input line 392.
+(pdftex.def)             Requested size: 370.02289pt x 277.51717pt.
+ [8pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.397 \end{document}
+l.398 \end{document}
                      </Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/python_plot1.png>] (/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.aux)
 Package rerunfilecheck Info: File `P1_Abgabe.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -860,7 +855,7 @@ Here is how much of TeX's memory you used:
  1145 hyphenation exceptions out of 8191
  111i,20n,116p,10713b,2329s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.pdf (8 pages, 602455 bytes).
+Output written on /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P1/Abgabe/P1_Abgabe.pdf (8 pages, 602508 bytes).
 PDF statistics:
  347 PDF objects out of 1000 (max. 8388607)
  314 compressed objects within 4 object streams

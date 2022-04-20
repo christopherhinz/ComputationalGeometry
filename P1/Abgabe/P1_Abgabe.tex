@@ -270,11 +270,11 @@ Schnittpunkte:
 \begin{itemize}
     \item 1.000 Strecken: $0<= 11 <= 499.500$
     \item 10.000 Strecken: $0<= 732 <= 49.995.000$
-    \item 100.000 Strecken: $0<= 624.975.000 <= 4.999.950.000$
+    \item 100.000 Strecken: $0<= 77.126 <= 4.999.950.000$
 \end{itemize}
 
 % Ausgabe: strecken.cpp
-\begin{lstlisting}[style=Terminal, caption={testing.cpp: Ausgabe Konsole},captionpos=b, label={lst:ausgabe_strecken}]
+\begin{lstlisting}[style=Terminal, caption={strecken.cpp: Ausgabe Konsole},captionpos=b, label={lst:ausgabe_strecken}]
 # s_1000_1.dat
 Strecken insgesamt: 1001
 Schnitte zweier Strecken: 11
@@ -290,7 +290,7 @@ Runtime: 394721 ms
 \end{lstlisting}
 
 
-\subsection{Programm zum Testen der Funktion}
+\subsection{Programme zum Testen der Funktion}
 Um die korrekte Funktionsweise des Programmes zu verifizieren werden verschiedene Testfälle definiert.
 Die Testfälle decken unterschiedliche Streckenanordnungen ab und sollen dadurch die in der Vorlesung besprochenen Grenzfälle für Streckenschnitte überprüfen.
 \autoref{fig:test_cases} zeigt die implementierten Testfälle.
@@ -306,7 +306,7 @@ Die Testfälle decken unterschiedliche Streckenanordnungen ab und sollen dadurch
     \label{fig:test_cases}
 \end{figure}
 
-\autoref{lst:test_code} zeigt die Implementierung der Testfälle in C++.\\
+\autoref{lst:test_code} zeigt die Implementierung der Testfälle bzw. den Aufruf der entsprechenden Bibliotheksfunktionen in C++.\\
 
 \begin{lstlisting}[style=CStyle, caption={testing.cpp: Testen der Bibliotheksfunktionen},captionpos=b, label={lst:test_code}]
 #include "p1_lib.h"
@@ -382,15 +382,16 @@ Soll: false, Ist: false
 Soll: false, Ist: false
 \end{lstlisting}
 
+\ \\
 Des weiteren wurde ein Python-Programm geschrieben. Dieses plottet die Strecken mit Schnittpunkten und stellt damit eine weitere Möglichkeit dar die Ergebnisse zu überprüfen. 
 Dies Graphen werden mittels matplotlib erstellt und sehen wie nachfolgend dargestellt aus. Auf Implementierungsdetails soll an dieser Stelle verzichtet werden, da dieses Programm ausschließlich zur Überprüfung dient.
 
 \begin{figure}[ht]
     \graphicspath{ {./pictures/} }
     \centering
-    \includegraphics[scale=1]{python_plot1.png}
+    \includegraphics[scale=0.8]{python_plot1.png}
     \smallskip
-    \caption{Python-Plots mit matplotlib}
+    \caption{Python-Plot mit matplotlib}
     \label{fig:python_plots}
 \end{figure}
 
