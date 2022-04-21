@@ -133,6 +133,15 @@
 
 \raggedright
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problemstellung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Problemstellung}
+In dem Tar-File 'strecken.tgz' (s.u.) befinden sich Dateien mit jeweils 4 Koordinaten pro Zeile.
+Diese stellen jeweils die x- und y-Koordinaten eines Start- bzw. Endpunkts einer Strecke dar.
+Die Datei soll eingelesen und die Anzahl der sich schneidenden Strecken durch paarweises Testen herausgefunden werden.
+Zusätzlich wird die pro Datei aufgewendete Zeit gemessen.
+Es ist zu begründen, warum die Anzahl der vom Programm jeweils gefundenen Schnittpunkte korrekt ist.
 
 \section{Einführung}
 Im Rahmen der Vorlesung Computational Geometry lautet die Aufgabe für das erste Praktikum, die Anzahl der Schnittpunkte aus einem Satz von Strecken zu ermitteln.
@@ -194,6 +203,8 @@ Da zuvor bereits festgestellt wurde, dass die Strecken kollinear sind, kann der 
 \end{equation}
 Liegt der Wert von $\lambda$ zwischen 0 und 1, so überlappen sich die Funktionen. Nimmt $\lambda$ den Wert 0 oder 1 an, schneiden sich die Strecken in jeweils einem der Endpunkte.
 
+
+%% p1_lib.h
 \begin{lstlisting}[style=CStyle, caption={p1\_lib.h: Bibliotheksfunktionen},captionpos=b]
 #include <fstream>
 #include <iostream>
@@ -202,8 +213,8 @@ Liegt der Wert von $\lambda$ zwischen 0 und 1, so überlappen sich die Funktione
 
 
 struct point{
-    float x;
-    float y;
+    double x;
+    double y;
 };
 
 struct line{
@@ -211,45 +222,40 @@ struct line{
     point p2;
 };
 
-
-void read_dat(char* filename, unsigned int N, std::vector<float>& v){
+void read_dat(char* filename, std::vector<line>& target){
+    line temp;
     std::ifstream file;
     file.open(filename);
-    float data;
-    for(int i = 0; i < N; ++i){
-        file >> data;
-        v.push_back(data);
+    double k1, k2, k3, k4;
+    if(!file.is_open()){
+        std::cout << "Could not open file\n";
+    }
+    while(file >> k1 >> k2 >> k3 >> k4){
+        temp.p1.x = k1;
+        temp.p1.y = k2;
+        temp.p2.x = k3;
+        temp.p2.y = k4;
+        target.push_back(temp);
     }
     file.close();
 }
 
-
-void pack_koords(std::vector<float>& source, std::vector<line>& target){
-    line temp;
-    for(unsigned int i = 0; i < source.size()/4; ++i){
-        temp.p1.x = source[0+i];
-        temp.p1.y = source[1+i];
-        temp.p2.x = source[2+i];
-        temp.p2.y = source[3+i];
-        target.push_back(temp);
-    }
-}
-
-float ccw(point p, point q, point r){
-    float res = (p.x*q.y - p.y*q.x)+ (q.x*r.y - q.y*r.x) + (p.y*r.x  - p.x*r.y);
+double ccw(point p, point q, point r){
+    double res = (p.x*q.y - p.y*q.x)+ (q.x*r.y - q.y*r.x) + (p.y*r.x  - p.x*r.y);
     return res;
 }
 
 bool line_intersect_check(line l1, line l2){
     bool retval = false;
-    float ccw_res1 = ccw(l1.p1, l1.p2, l2.p1) * ccw(l1.p1, l1.p2, l2.p2);
-    float ccw_res2 = ccw(l2.p1, l2.p2, l1.p1) * ccw(l2.p1, l2.p2, l1.p2);
-    if(ccw_res1 <= 0.0f && ccw_res2 <= 0.0f){
+    double ccw_res1 = ccw(l1.p1, l1.p2, l2.p1) * ccw(l1.p1, l1.p2, l2.p2);
+    double ccw_res2 = ccw(l2.p1, l2.p2, l1.p1) * ccw(l2.p1, l2.p2, l1.p2);
+    if(ccw_res1 <= 0.0 && ccw_res2 <= 0.0){
         retval = true;
-        if(ccw_res1 == 0.0f && ccw_res2 == 0.0f){
-            float lambda1 = (l1.p1.x-l2.p1.x)/(l2.p2.x-l2.p1.x);
-            float lambda2 = (l1.p2.x-l2.p1.x)/(l2.p2.x-l2.p1.x);
-            if ((lambda1 < 0 || lambda1 > 1) && (lambda2 < 0 || lambda2 > 1)) retval = false;
+        if(ccw_res1 == 0.0 && ccw_res2 == 0.0){
+            double lambda1 = (l2.p1.x-l1.p1.x)/(l1.p2.x-l1.p1.x);
+            double lambda2 = (l2.p2.x-l1.p1.x)/(l1.p2.x-l1.p1.x);
+            if ((lambda1 < 0.0 || lambda1 > 1.0) && (lambda2 < 0.0 || lambda2 > 1.0))
+                retval = false;
         }
     }
     return retval;
@@ -258,24 +264,22 @@ bool line_intersect_check(line l1, line l2){
 
 
 
+%% strecken.cpp
 \begin{lstlisting}[style=CStyle, caption={strecken.cpp: Aufgruf der Bibliotheksfunktionen},captionpos=b]
 #include "p1_lib.h"
 #include <chrono>
-
 
 int main(){
     auto start = std::chrono::steady_clock::now();
 
 
-    std::vector<float> vec;
     std::vector<line> lines_vec;
-    read_dat((char*)"strecken/s_1000_1.dat", 1000, vec);
-    pack_koords(vec, lines_vec);
+    read_dat((char*)"../strecken/s_1000_1.dat", lines_vec);
 
 
     int intersect_counter = 0;
     for(unsigned int i = 0; i < lines_vec.size(); ++i){
-        for(unsigned int j = 0; j < lines_vec.size(); ++j){
+        for(unsigned int j = i; j < lines_vec.size(); ++j){
             if(i!=j){
                 if(line_intersect_check(lines_vec[i], lines_vec[j])){
                     ++intersect_counter;
@@ -283,12 +287,11 @@ int main(){
             }
         }
     }
-
-    std::cout << "Strecken insgesamt: " << vec.size() << "\n" << "Schnitte zweier Strecken: " << intersect_counter << "\n";
+    std::cout << "Strecken insgesamt: " << lines_vec.size() << "\n" << "Schnitte zweier Strecken: " << intersect_counter << "\n";
 
     auto end = std::chrono::steady_clock::now();
     std::cout << "Runtime: "
-    << (float)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()/1000
+    << (double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()/1000
         + std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms\n";
 
     return 0;
@@ -299,33 +302,35 @@ In \autoref{lst:ausgabe_strecken} wird die Ausgabe des Programmes zur Schnittpun
 In der Ausgabe ist zu erkennen, dass die Anzahl der Schnitte für alle Fälle (1.000, 10.000, 100.000) im zu erwartenden Wertebereich liegt.
 Schnittpunkte:
 \begin{itemize}
-    \item 1.000 Strecken: $0<= 62.250 <= 499.500$
-    \item 10.000 Strecken: $0<= 6.247.500 <= 49.995.000$
-    \item 100.000 Strecken: $0<= 624.975.000 <= 4.999.950.000$
+    \item 1.000 Strecken: $0<= 11 <= 499.500$
+    \item 10.000 Strecken: $0<= 732 <= 49.995.000$
+    \item 100.000 Strecken: $0<= 77.126 <= 4.999.950.000$
 \end{itemize}
 
-
-\begin{lstlisting}[style=Terminal, caption={testing.cpp: Ausgabe Konsole},captionpos=b, label={lst:ausgabe_strecken}]
+% Ausgabe: strecken.cpp
+\begin{lstlisting}[style=Terminal, caption={strecken.cpp: Ausgabe Konsole},captionpos=b, label={lst:ausgabe_strecken}]
 # s_1000_1.dat
-Strecken insgesamt: 1000
-Schnitte zweier Strecken: 62250
-Runtime: 14.408 ms
+Strecken insgesamt: 1001
+Schnitte zweier Strecken: 11
+Runtime: 40.965 ms
 #s_10000_1.dat
-Strecken insgesamt: 10000
-Schnitte zweier Strecken: 6247500
-Runtime: 580.073 ms
+Strecken insgesamt: 10001
+Schnitte zweier Strecken: 732
+Runtime: 3984.3 ms
 #s_100000_1.dat
-Strecken insgesamt: 100000
-Schnitte zweier Strecken: 624975000
-Runtime: 55100.2 ms
+Strecken insgesamt: 100001
+Schnitte zweier Strecken: 77126
+Runtime: 394721 ms
 \end{lstlisting}
 
 
-\subsection{Programm zum Testen der Funktion}
+\subsection{Programme zum Testen der Funktion}
 Um die korrekte Funktionsweise des Programmes zu verifizieren werden verschiedene Testfälle definiert.
 Die Testfälle decken unterschiedliche Streckenanordnungen ab und sollen dadurch die in der Vorlesung besprochenen Grenzfälle für Streckenschnitte überprüfen.
 \autoref{fig:test_cases} zeigt die implementierten Testfälle.
 
+
+% Testfälle
 \begin{figure}[ht]
     \graphicspath{ {./pictures/} }
     \centering
@@ -335,7 +340,7 @@ Die Testfälle decken unterschiedliche Streckenanordnungen ab und sollen dadurch
     \label{fig:test_cases}
 \end{figure}
 
-\autoref{lst:test_code} zeigt die Implementierung der Testfälle in C++.\\
+\autoref{lst:test_code} zeigt die Implementierung der Testfälle bzw. den Aufruf der entsprechenden Bibliotheksfunktionen in C++.\\
 
 \begin{lstlisting}[style=CStyle, caption={testing.cpp: Testen der Bibliotheksfunktionen},captionpos=b, label={lst:test_code}]
 #include "p1_lib.h"
@@ -411,9 +416,17 @@ Soll: false, Ist: false
 Soll: false, Ist: false
 \end{lstlisting}
 
-\section{Diskussion}
+\ \\
+Des weiteren wurde ein Python-Programm geschrieben. Dieses plottet die Strecken mit Schnittpunkten und stellt damit eine weitere Möglichkeit dar die Ergebnisse zu überprüfen.
+Dies Graphen werden mittels matplotlib erstellt und sehen wie nachfolgend dargestellt aus. Auf Implementierungsdetails soll an dieser Stelle verzichtet werden, da dieses Programm ausschließlich zur Überprüfung dient.
 
-\section{Literatur}
-
+\begin{figure}[ht]
+    \graphicspath{ {./pictures/} }
+    \centering
+    \includegraphics[scale=0.8]{python_plot1.png}
+    \smallskip
+    \caption{Python-Plot mit matplotlib}
+    \label{fig:python_plots}
+\end{figure}
 
 \end{document}

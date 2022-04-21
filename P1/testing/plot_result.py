@@ -26,9 +26,10 @@ with open("intersections.csv", "r") as csv_file:
 print(f"{len(result_list)} Schnittpunkte gefunden!\nWie viele sollen geplottet werden?\n")
 lower = int(input("Startindex: "))
 upper = int(input("Stoppindex: "))
+steps = int(input("Schritte:  "))
 
 
-for i in range(min(lower, upper), min(upper, len(result_list))):
+for i in range(min(lower, upper), min(upper, len(result_list)), steps):
     x1, y1 = [result_list[i]["line1"][0], result_list[i]["line1"][2]] , [result_list[i]["line1"][1], result_list[i]["line1"][3]]
     x2, y2 = [result_list[i]["line2"][0], result_list[i]["line2"][2]] , [result_list[i]["line2"][1], result_list[i]["line2"][3]]
     plt.plot(x1, y1, marker = 'o', linestyle="-.")

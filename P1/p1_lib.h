@@ -11,11 +11,6 @@ struct point{
 struct line{
     point p1;
     point p2;
-    void print(){
-        std::cout
-            << "(" << p1.x << " " << p1.y << ") / "
-            << "(" << p2.x << " " << p2.y << ")";
-    }
 };
 
 void read_dat(std::string filename, std::vector<line>& target){
