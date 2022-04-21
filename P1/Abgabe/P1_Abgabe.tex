@@ -82,16 +82,23 @@
 \begin{titlepage}
     \vfill
 	\centering
+    \includegraphics[height=2cm]{./HM_Schriftzug_Logo_rot_RGB.pdf}
+    \vspace{1.5cm}
+
 	{\scshape\LARGE Hochschule München \par}
-    {\scshape\Large Fakultät für Informatik \par}
+    {\scshape\Large Fakultät für Informatik und Mathematik\par}
 	\vspace{1.5cm}
 
 
 
 
     \vfill
-	{\LARGE\bfseries Computational Geometry\\~\\ \par}
-	{\LARGE\bfseries Praktikumsaufgabe 1\par}
+    {\LARGE\bfseries Praktikumsaufgabe 1 \\}
+    \vspace{0.5cm}
+	{in der Vorlesung\\}
+    \vspace{0.5cm}
+    {\LARGE\bfseries Computational Geometry\\~\\ \par}
+	{\LARGE Bestimmung von Schnittpunkten aus einem gegebenen Satz von Strecken\\~\\ \par}
 	\vfill
     \vfill
 
@@ -99,7 +106,17 @@
     \begin{tabular}{ll}
     \normalsize
     Team:  & Christopher Hinz, Tobias Gruber\\
+    Studiengruppe: & Master Informatik\\
+    Studiensemester: & 1. Semester\\
+    Schwerpunkt: & Embedded Computing\\
     \end{tabular}
+    \vspace{1.5cm}
+
+    11.04.2022
+
+    \vspace{0.5cm}
+
+    Sommersemester 2022
 
 	\vfill
 
@@ -107,21 +124,33 @@
 
 \newpage
 
+% table of contents
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+
 
 
 \raggedright
 
 
-\section{Problemstellung}
-In dem Tar-File 'strecken.tgz' (s.u.) befinden sich Dateien mit jeweils 4 Koordinaten pro Zeile.
-Diese stellen jeweils die x- und y-Koordinaten eines Start- bzw. Endpunkts einer Strecke dar.
-Die Datei soll eingelesen und die Anzahl der sich schneidenden Strecken durch paarweises Testen herausgefunden werden.
-Zusätzlich wird die pro Datei aufgewendete Zeit gemessen.
+\section{Einführung}
+Im Rahmen der Vorlesung Computational Geometry lautet die Aufgabe für das erste Praktikum, die Anzahl der Schnittpunkte aus einem Satz von Strecken zu ermitteln.
+Dafür werden 3 Dateien zur Verfügung gestellt, die jeweils Datensätze zu 1001, 10.001 und 100.001 Strecken enthalten.
+
+Die Dateien enthalten jeweils 4 Koordinaten pro Zeile, welche jeweils die x- und y-Koordinaten eines Start- bzw. Endpunkts einer Strecke darstellen.
+Die Dateien sollen jeweils eingelesen und die Anzahl der sich schneidenden Strecken durch paarweises Testen ermittelt werden.
+Zusätzlich wird die aufgewendete Zeit zur Ermittlung der Anzahl der Schnittpunkte für jede Datei gemessen.
+
+Im folgenden Abschnitt wird darauf eingegangen, wie die Grundstruktur der Problemlösung aufgebaut ist und wie die mathematische Strategie zur Lösung des Problems in C++ formuliert werden kann.
+Anschließend werden die Ergebnisse der Datenauswertung vorgestellt
 Es ist zu begründen, warum die Anzahl der vom Programm jeweils gefundenen Schnittpunkte korrekt ist.
 
-\section{Vorüberlegung}
+\section{Methoden}
 
-Um einschätzen zu können, inwiefern die Ergebnisse sinnvoll sind sollen an dieser Stelle einige Vorüberlegungen getroffen werden.\\~\\
+\subsection{Abschätzung der zu erwartenden Größenordnung des Ergebnisses}
+
+Um einschätzen zu können, inwiefern die Ergebnisse sinnvoll sind, sollen an dieser Stelle einige Vorüberlegungen getroffen werden.\\~\\
 Welche Anzahl an Schnitten sind zu erwarten bzw. in welchem Wertebereich sollten sich die Ergebnisse bewegen?\\
 Die minimal zu erwartende Anzahl an Schnitten wäre für 1.000, 10.0000 und 100.000 Strecken jeweils null.
 Dies ist somit die untere Grenze des zu erwartenden Wertebereichs.
@@ -137,9 +166,15 @@ Damit wären für 1.000 Strecken maximal $499.500$ (für 10.000 maximal $49.995.
 für 100.000 maximal $4.999.950.000$) zu erwarten.
 Dies ist somit die obere Grenze des zu erwartenden Wertebereichs.
 
-\section{Umsetzung}
+\subsection{Strategie zur Problemlösung}
 
-\subsection{Umsetzung der Aufgabenstellung}
+\subsection{Verifizierung des Codes}
+
+\section{Ergebnisse}
+
+\subsection{Ergebniss der Verifizierung}
+
+\subsection{Ergebnisse der Schnittstellenberechnung und der Zeitmessung}
 
 Das Programm verwendet die Funktion \code{read\_dat()} um die Daten aus den Dateien einzulesen und über \code{pack\_koords()} die Datensätze zu Strecken zusammenzufassen.
 Jede Strecke wird anschließend gegen alle anderen Strecken geprüft, ob sie diese schneidet, oder nicht.
@@ -375,6 +410,10 @@ Soll: false, Ist: false
 Soll: false, Ist: false
 Soll: false, Ist: false
 \end{lstlisting}
+
+\section{Diskussion}
+
+\section{Literatur}
 
 
 \end{document}
