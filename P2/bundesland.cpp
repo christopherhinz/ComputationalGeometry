@@ -89,8 +89,8 @@ int main() {
         bundeslaender.push_back(bundesland(path_node->first_attribute()->value(), path_node->last_attribute()->value()));
         path_node = path_node->next_sibling();
     }
-    for(int i = 0; i < bundeslaender.size(); i++)
-        std::cout << bundeslaender[i] << "\n";
+    //for(int i = 0; i < bundeslaender.size(); i++)
+    //    std::cout << bundeslaender[i] << "\n";
 
 
     // Städte die zu testen sind auslesen und stadt Instanz erstellen
@@ -104,15 +104,15 @@ int main() {
         staedte.push_back(st);
         path_node2 = path_node2->next_sibling();
     }
-    //for(auto st: staedte){
-    //    std::cout << st.name << ": " << st.x << " " << st.y << "\n";
-    //}
+    for(auto st: staedte){
+        std::cout << st.name << ": " << st.x << " " << st.y << "\n";
+    }
 
     return 0;
 }
 
 
-// Compilieren und Ausgabe in Datei schreiben
+// Compilieren und Ausgabe in Datei umleiten
 // clang++ -std=c++14 bundesland.cpp && ./a.out > koords_to_test.txt
 
 // Normal Compilieren

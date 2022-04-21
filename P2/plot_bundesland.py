@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-with open("koords_to_test.txt", "r") as file:
+with open("bundeslaender.txt", "r") as file:
     lines = [line.replace("\n", "") for line in file.readlines() if line]
     bundesland_dict = {}
     koords_list = []
@@ -24,19 +24,28 @@ with open("koords_to_test.txt", "r") as file:
             line = line.replace("\t", "")
             koords_list.append([float(line.replace("\n", "").split(" ")[0]), float(line.replace("\n", "").split(" ")[1])])
 
-for poly in bundesland_dict['Brandenburg']:
-    print(poly)
+with open("staedte.txt", "r") as file:
+    lines = file.readlines()
+    koords_staedte = []
+    for line in lines: 
+        koords_staedte.append([float(line.split(": ")[1].split(" ")[0]), float(line.split(": ")[1].split(" ")[1])])
 
-koords = []
+print(koords_staedte)
+
+koords_bund = []
 for bund in bundesland_dict.keys():
     for poly in bundesland_dict[bund]:
-        koords += poly
+        koords_bund += poly
 
-xs, ys = zip(*koords)
-ys = [-y for y in ys]
+xs_bund, ys_bund = zip(*koords_bund)
+ys_bund = [-y for y in ys_bund]
+
+xs_stadt, ys_stadt = zip(*koords_staedte)
+ys_stadt = [-y for y in ys_stadt]
+
 plt.figure()
-plt.plot(xs, ys, ".") 
-plt.plot([366.968], [-700], 'x', 'r')
+plt.plot(xs_bund, ys_bund, ".") 
+plt.plot(xs_stadt, ys_stadt, 'x', color='r')
 plt.show() 
 
 

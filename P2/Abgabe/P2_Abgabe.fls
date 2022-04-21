@@ -761,7 +761,6 @@ INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.out
 INPUT /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.out
@@ -878,6 +877,11 @@ INPUT /usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
+INPUT /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/Übersicht.png
+INPUT /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/Übersicht.png
+INPUT /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/Übersicht.png
+INPUT /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/Übersicht.png
+INPUT /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/Übersicht.png
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsl12.tfm
 INPUT /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.aux
 INPUT /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.out
