@@ -4,8 +4,6 @@
 #include <string>
 #include <vector>
 
-#include "../P1/p1_lib.h"
-
 // --------------------------------------------------------------------
 // Klassen zum Speichern der relevanten Informationen aus der XML-Datei 
 // --------------------------------------------------------------------
