@@ -1,3 +1,13 @@
+/*
+Struktur von std::vector<bundesland>:
+bundesland{
+    name  = "Berlin"
+    parts = 1
+    std::vector<std::vector<koord>> polygon_vec = [ [ [0,0] , [1,1]   ,... ],      ...            ]
+                                                    |koord1|, |koord2|,...
+                                                    |  ein Polygon   |   weitere Polygone ...
+}
+*/
 
 #include "rapidXML/rapidxml_utils.hpp"
 #include <iostream>
