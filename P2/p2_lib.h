@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "../P1/p1_lib.h"
+
 // --------------------------------------------------------------------
 // Klassen zum Speichern der relevanten Informationen aus der XML-Datei 
 // --------------------------------------------------------------------
@@ -72,7 +74,13 @@ std::ostream& operator<<(std::ostream& os, bundesland b){
 // Funktionen zum Testen ob Stadt (Punkt) in Bundesland (mind. 1 Polygon)
 // -----------------------------------------------------------------------
 
-bool punkt_in_polygon(koord punkt, std::vector<koord>){
+// ccw: wird glaube ich gebraucht, ist klein also hab ichs reinkopiert -> dann vermischen sich die Praktika nicht
+double ccw(koord p, koord q, koord r){
+    double res = (p.x*q.y - p.y*q.x)+ (q.x*r.y - q.y*r.x) + (p.y*r.x  - p.x*r.y);
+    return res;
+}
+
+bool punkt_in_polygon(koord ko, std::vector<koord> vec_koords){
     //
     // HIER MUSS NUN DER PUNKT IN POLYGON TEST IMPLEMENTIERT WERDEN
     //
@@ -80,10 +88,10 @@ bool punkt_in_polygon(koord punkt, std::vector<koord>){
 }
 
 
-bool stadt_in_bundesland(stadt st, bundesland){
+bool stadt_in_bundesland(stadt st, bundesland bund){
     // alle Polygone des gegebenen Bundeslandes durchlaufen 
     bool res = false;
-    for(auto polygon: polygon_vec){
+    for(auto polygon: bund.polygon_vec){
         if(punkt_in_polygon(st.ko, polygon)){
             res = true;
         }
