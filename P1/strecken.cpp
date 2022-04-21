@@ -6,7 +6,7 @@ int main(){
 
 
     std::vector<line> lines_vec;
-    read_dat((char*)"../strecken/s_1000_1.dat", lines_vec);
+    read_dat((char*)"strecken/s_1000_1.dat", lines_vec);
 
 
     int intersect_counter = 0;

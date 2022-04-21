@@ -24,7 +24,7 @@ int main(){
     std::vector<line> lines_vec;
     std::vector<line_pair> result_vec;
     line_pair lp;
-    read_dat((char*)"../../strecken/s_10000_1.dat", lines_vec);
+    read_dat((char*)"../strecken/s_10000_1.dat", lines_vec);
 
 
     int intersect_counter = 0;
