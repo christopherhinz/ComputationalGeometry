@@ -1,4 +1,4 @@
-#include "p1_lib.h"
+#include "p3_lib.h"
 #include <chrono>
 #include <iostream>
 #include <iomanip>
@@ -18,10 +18,15 @@ void print_content(std::vector<line>& vec, int limit){
     }
 }
 
+
 int main(){
-    std::vector<std::string> filenames {"s_1000_1.dat",
-                                        "s_10000_1.dat",
-                                        "s_100000_1.dat"};
+
+    std::vector<point> event_queue;
+
+
+    std::vector<std::string> filenames {"strecken/s_1000_1.dat",
+                                        "strecken/s_10000_1.dat",
+                                        "strecken/s_100000_1.dat"};
 
     std::cout << std::left << std::setw(16) << "Datei" << std::setw(1) << "|"
               << std::setw(10) << " Strecken" << std::setw(1) << "|"
@@ -31,9 +36,15 @@ int main(){
     for(auto filename : filenames){
         auto start = std::chrono::steady_clock::now();
 
-        std::vector<line> lines_vec;
-        read_dat(filename, lines_vec);
-        int lines_count = lines_vec.size();
+        read_dat(filename, event_queue);
+
+        // sortieren nach x Werten, falls x Werte gleich sortieren nach y Werten
+        std::sort(event_queue.begin(), event_queue.end(), [](point& p1, point& p2){return p1.x == p2.x ? p1.y < p2.y : p1.x < p2.x;});
+
+        
+
+        /*
+        int lines_count = 0;//lines_vec.size();
         int intersect_count = 0;
 
         for(unsigned int i = 0; i < lines_vec.size(); ++i){
@@ -55,7 +66,10 @@ int main(){
                   << " " << std::setw(9) << intersect_count << std::setw(1) << "|"
                   << " " << std::setw(10) << std::setprecision(2) << std::right << std::fixed
                   << runtime << " ms" << std::endl;
+                  */
     }
+
+
 
     return 0;
 }

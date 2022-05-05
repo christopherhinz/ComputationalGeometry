@@ -2,10 +2,15 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
+
+enum point_type { BEG = 0, END, SEC};
 
 struct point{
     double x;
     double y;
+    point_type pt;
+    std::size_t lineID;
 };
 
 struct line{
@@ -13,8 +18,9 @@ struct line{
     point p2;
 };
 
-void read_dat(std::string filename, std::vector<line>& target){
-    line temp;
+void read_dat(std::string filename, std::vector<point>& target){
+    point pb, pe;
+    std::size_t countID = 0;
     std::ifstream file;
     file.open(filename.c_str());
     double k1, k2, k3, k4;
@@ -22,11 +28,17 @@ void read_dat(std::string filename, std::vector<line>& target){
         std::cout << "Could not open file\n";
     }
     while(file >> k1 >> k2 >> k3 >> k4){
-        temp.p1.x = k1;
-        temp.p1.y = k2;
-        temp.p2.x = k3;
-        temp.p2.y = k4;
-        target.push_back(temp);
+        if(k1 < k3){
+            pb = { k1, k2, BEG, countID};
+            pe = { k3, k4, END, countID};
+        }
+        else{
+            pb = { k1, k2, END, countID};
+            pe = { k3, k4, BEG, countID};
+        }
+        ++countID;      
+        target.push_back(pb);
+        target.push_back(pe);
     }
     file.close();
 }
@@ -50,4 +62,9 @@ bool line_intersect_check(line l1, line l2){
         }
     }
     return retval;
+}
+
+
+void sort_xvals(){
+    return;
 }
