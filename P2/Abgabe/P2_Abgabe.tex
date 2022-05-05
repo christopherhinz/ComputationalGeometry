@@ -8,13 +8,7 @@
 \usepackage{hyperref}
 \usepackage{nameref}
 \usepackage{varioref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor={black!50!black},
-    % linkcolor={red!50!black},
-    citecolor={black!50!black},
-    urlcolor={black!50!black}
-}
+
 \usepackage[headsepline,footsepline]{scrlayer-scrpage}
 \usepackage{biblatex}
 \usepackage{amsmath}
@@ -130,6 +124,25 @@ Auch für diese Aufgabe sollten Sie versuchen, mich in der Ausarbeitung zu über
 % Umsetzung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Umsetzung}
+
+Zum Einlesen der svg-Datei wurde auf die Parser-Funktionen der RapidXML Library zurückgeriffen.
+
+\ \\~\\
+
+Zur Überprüfung ob alle Koordinaten für die entsprechenden Bundesländer und Städte korrekt eingelesen wurden dient ein Python-Skript.
+Hierfür schreibt das C++-Programm für alle Bundesländer die gefundenen Polygone (teilweise mehr als eins da Bundesland-Gebiet aus mehreren unabhängigen Flächen besteht) in eine txt-Datei.
+Dasselbe gilt für die Koordinaten der Städte, die im Zuge des Praktikums im jeweiligen Bundesland verortet werden soll.\\
+
+Das Pyton-Skript liest alle notwendigen Informationen aus dieser txt-Datei und erstellt ein Plot. Aus diesem kann zum einen bestimmt werden ob alle Bundesländer ihre charakteristischen Umrisse besitzen 
+und zum anderen ob die Städte innerhalb der deutschen Grenzen liegen.\\
+Nachfolgende Abbildung zeigt den, mittels matplotlib, generierten Plot.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.5]{Übersicht.png}
+    \caption{Übersichts-Plot: Bundesländer und Städte}
+\end{figure}
+
 
 
 \end{document}

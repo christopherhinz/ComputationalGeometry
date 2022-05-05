@@ -1,12 +1,12 @@
 # Fdb version 3
-["biber P2_Abgabe"] 1650538668 "P2_Abgabe.bcf" "P2_Abgabe.bbl" "P2_Abgabe" 1650538689
-  "P2_Abgabe.bcf" 1650538689 106414 82c386a74300196044e6a90c15ccdd71 "pdflatex"
+["biber P2_Abgabe"] 1650559872 "P2_Abgabe.bcf" "P2_Abgabe.bbl" "P2_Abgabe" 1650559921
+  "P2_Abgabe.bcf" 1650559876 106414 82c386a74300196044e6a90c15ccdd71 "pdflatex"
   (generated)
   "P2_Abgabe.blg"
   "P2_Abgabe.bbl"
-["pdflatex"] 1650538687 "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.tex" "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.pdf" "P2_Abgabe" 1650538689
-  "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.aux" 1650538689 2414 fde3d9d632eabab0364cfad179658277 ""
-  "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.tex" 1650538687 3115 94bcb3683ed45f5799d9cf8efefd5ff8 ""
+["pdflatex"] 1650559875 "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.tex" "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.pdf" "P2_Abgabe" 1650559921
+  "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.aux" 1650559876 2620 cc53037447710689e78f2af8c95a050a ""
+  "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.tex" 1650559921 4023 d55ea806010e38ec14007f3446db461d ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -128,17 +128,18 @@
   "/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1616695603 5169178 a2ce6e2d73f603b690db6777d06dbccb ""
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1648279630 2724740 5edc43676cd49ae87a9d487123269bb8 ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
-  "P2_Abgabe.aux" 1650538689 2414 fde3d9d632eabab0364cfad179658277 "pdflatex"
-  "P2_Abgabe.bbl" 1650538670 0 d41d8cd98f00b204e9800998ecf8427e "biber P2_Abgabe"
-  "P2_Abgabe.out" 1650538689 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "P2_Abgabe.run.xml" 1650538689 2289 84c697c144715a3b5aad6cb4e08dea96 "pdflatex"
-  "P2_Abgabe.tex" 1650538687 3115 94bcb3683ed45f5799d9cf8efefd5ff8 ""
+  "P2_Abgabe.aux" 1650559876 2620 cc53037447710689e78f2af8c95a050a "pdflatex"
+  "P2_Abgabe.bbl" 1650559873 0 d41d8cd98f00b204e9800998ecf8427e "biber P2_Abgabe"
+  "P2_Abgabe.out" 1650559876 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "P2_Abgabe.run.xml" 1650559876 2289 84c697c144715a3b5aad6cb4e08dea96 "pdflatex"
+  "P2_Abgabe.tex" 1650559921 4023 d55ea806010e38ec14007f3446db461d ""
+  "Übersicht.png" 1650559352 84878 b74d315265217062d24c2b493b35128c ""
   (generated)
-  "P2_Abgabe.pdf"
-  "P2_Abgabe.aux"
-  "P2_Abgabe.bcf"
-  "P2_Abgabe.out"
-  "P2_Abgabe.log"
-  "P2_Abgabe.run.xml"
-  "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.pdf"
   "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.log"
+  "P2_Abgabe.run.xml"
+  "P2_Abgabe.out"
+  "/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.pdf"
+  "P2_Abgabe.pdf"
+  "P2_Abgabe.bcf"
+  "P2_Abgabe.aux"
+  "P2_Abgabe.log"

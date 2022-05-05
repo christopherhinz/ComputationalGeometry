@@ -1,0 +1,16 @@
+München: 366.968 700
+Berlin: 477 256
+Stuttgart: 215 648
+Saarbrücken: 60 589
+Wiesbaden: 148.823 508.371
+Mainz: 148.399 523.635
+Düsseldorf: 56.8154 397.708
+Bremen: 193.766 200.55
+Erfurt: 335.381 418.908
+Dresden: 499.891 405.764
+Magdeburg: 370.996 294.677
+Hannover: 253.549 273.477
+Hamburg: 265.845 156.03
+Kiel: 275.173 78.4392
+Schwerin: 357.852 150.094
+Potsdam: 458.763 260.757

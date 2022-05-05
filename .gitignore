@@ -5,6 +5,8 @@ P1/Abgabe/*
 !P1/Abgabe/*.png
 !P1/Abgabe/*.tex
 
+.DS_Store
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.26)  21 APR 2022 12:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.26)  21 APR 2022 18:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -385,9 +385,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/tools/varioref.sty
 Package: varioref 2020/08/11 v1.6e package for extended references (FMi)
 \c@vrcnt=\count275
-)
-Package hyperref Info: Option `colorlinks' set `true' on input line 17.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/koma-script/scrlayer-scrpage.sty
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/koma-script/scrlayer-scrpage.sty
 Package: scrlayer-scrpage 2021/03/17 v3.33 KOMA-Script package (end user interface for scrlayer)
  (/usr/local/texlive/2021/texmf-dist/tex/latex/koma-script/scrlayer.sty
 Package: scrlayer 2021/03/17 v3.33 KOMA-Script package (defining layers and page styles)
@@ -678,7 +676,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 )
 
 Package scrlayer-scrpage Warning: replacing deprecated \clearscrheadfoot by
-(scrlayer-scrpage)                \clearpairofpagestyles on input line 72.
+(scrlayer-scrpage)                \clearpairofpagestyles on input line 66.
 
 1: subsection
 1: section
@@ -697,24 +695,24 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 ) (/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.aux)
 \openout1 = `P2_Abgabe.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
  (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count418
@@ -735,15 +733,15 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \c@lstlisting=\count424
-Package hyperref Info: Link coloring ON on input line 79.
-LaTeX Info: Redefining \ref on input line 79.
-LaTeX Info: Redefining \pageref on input line 79.
-LaTeX Info: Redefining \nameref on input line 79.
+Package hyperref Info: Link coloring OFF on input line 73.
+LaTeX Info: Redefining \ref on input line 73.
+LaTeX Info: Redefining \pageref on input line 73.
+LaTeX Info: Redefining \nameref on input line 73.
  (/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.out) (/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.out)
 \@outlinefile=\write4
 \openout4 = `P2_Abgabe.out'.
 
-LaTeX Info: Redefining \Ref on input line 79.
+LaTeX Info: Redefining \Ref on input line 73.
 Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           Using `bookmark' together with `hyperref' is recommended,
 (scrartcl)           because of handling of possible bookmark level gaps.
@@ -751,7 +749,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 79.
+(scrartcl)           before \begin{document} on input line 73.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
  (/usr/local/texlive/2021/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
@@ -796,11 +794,21 @@ Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'P2_Abgabe.bbl' found.
  (/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.bbl)
-Package biblatex Info: Reference section=0 on input line 79.
-Package biblatex Info: Reference segment=0 on input line 79.
+Package biblatex Info: Reference section=0 on input line 73.
+Package biblatex Info: Reference segment=0 on input line 73.
  [1
 
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.aux)
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<Übersicht.png, id=12, 612.8496pt x 623.6901pt>
+File: Übersicht.png Graphic file (type png)
+<use Übersicht.png>
+Package pdftex.def Info: Übersicht.png  used on input line 142.
+(pdftex.def)             Requested size: 306.42404pt x 311.84428pt.
+ [2] [3pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.148 \end{document}
+                     </Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/Übersicht.png>] (/Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.aux)
 Package rerunfilecheck Info: File `P2_Abgabe.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package logreq Info: Writing requests to 'P2_Abgabe.run.xml'.
@@ -808,18 +816,18 @@ Package logreq Info: Writing requests to 'P2_Abgabe.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22676 strings out of 478994
- 421925 string characters out of 5858184
- 1339105 words of memory out of 5000000
- 39900 multiletter control sequences out of 15000+600000
+ 22687 strings out of 478994
+ 422072 string characters out of 5858184
+ 1342072 words of memory out of 5000000
+ 39907 multiletter control sequences out of 15000+600000
  409596 words of font info for 48 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  111i,19n,116p,10713b,2241s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.pdf (2 pages, 60990 bytes).
+Output written on /Users/tobiasgruber/Desktop/Master1/CoGeo/ComputationalGeometry/P2/Abgabe/P2_Abgabe.pdf (3 pages, 114212 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
- 6 named destinations out of 1000 (max. 500000)
- 25 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 60 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
+ 8 named destinations out of 1000 (max. 500000)
+ 30 words of extra memory for PDF output out of 10000 (max. 10000000)
 
