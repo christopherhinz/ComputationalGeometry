@@ -879,6 +879,9 @@ INPUT /usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
+INPUT ./P1_Abgabe.toc
+INPUT P1_Abgabe.toc
+INPUT P1_Abgabe.toc
 OUTPUT P1_Abgabe.toc
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsl12.tfm
