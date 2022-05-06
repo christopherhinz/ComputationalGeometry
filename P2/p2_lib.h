@@ -166,7 +166,9 @@ bool stadt_in_bundesland(stadt st, bundesland bund){
     // alle Polygone des gegebenen Bundeslandes durchlaufen
     bool res = false;
     for(auto polygon: bund.polygon_vec){
-        res = punkt_in_polygon(st.ko, polygon);
+        if(punkt_in_polygon(st.ko, polygon)){
+            res = true;
+        }
     }
     return res;
 }

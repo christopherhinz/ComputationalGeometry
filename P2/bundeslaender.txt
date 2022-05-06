@@ -6,7 +6,7 @@ Hauptstadt: Erfurt
 Bundesland: Schleswig-Holstein
 Anzahl der Polygone: 11
 Gesamtflaeche: 15814.7
-Hauptstadt: 
+Hauptstadt: Kiel
 
 Bundesland: Sachsen-Anhalt
 Anzahl der Polygone: 1
@@ -36,12 +36,12 @@ Hauptstadt: Düsseldorf
 Bundesland: Niedersachsen
 Anzahl der Polygone: 10
 Gesamtflaeche: 48385.1
-Hauptstadt: 
+Hauptstadt: Hannover
 
 Bundesland: Mecklenburg-Vorpommern
 Anzahl der Polygone: 7
 Gesamtflaeche: 23104.6
-Hauptstadt: 
+Hauptstadt: Schwerin
 
 Bundesland: Hessen
 Anzahl der Polygone: 1
@@ -61,7 +61,7 @@ Hauptstadt: Bremen
 Bundesland: Brandenburg
 Anzahl der Polygone: 2
 Gesamtflaeche: 31508
-Hauptstadt: Berlin
+Hauptstadt: Potsdam
 
 Bundesland: Berlin
 Anzahl der Polygone: 1
@@ -76,7 +76,7 @@ Hauptstadt: München
 Bundesland: Baden__x26__Württemberg
 Anzahl der Polygone: 2
 Gesamtflaeche: 35873
-Hauptstadt: 
+Hauptstadt: Stuttgart
 
 München: 366.968 700
 Berlin: 477 256
