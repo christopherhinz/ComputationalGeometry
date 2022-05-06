@@ -11,3 +11,7 @@ set(SOURCES_TESTING
 
 add_executable(${MAIN_NAME} ${SOURCES_BUNDESLAND})
 # add_executable(${TESTING_NAME} ${SOURCES_TESTING})
+
+install(TARGETS ${MAIN_NAME}
+        CONFIGURATIONS Debug
+        RUNTIME DESTINATION ./)

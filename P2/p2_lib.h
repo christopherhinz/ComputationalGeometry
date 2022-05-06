@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cmath>
 
 // --------------------------------------------------------------------
 // Klassen zum Speichern der relevanten Informationen aus der XML-Datei
@@ -22,6 +23,7 @@ struct bundesland{
     unsigned int parts;
     std::vector<std::vector<koord>> polygon_vec;
     double area;
+    stadt capital;
 
     bundesland(char* n, char* path_content) : name{n}, parts{0}, area{-1}{
         split_content(path_content);
@@ -108,6 +110,7 @@ std::ostream& operator<<(std::ostream& os, bundesland b){
     os << "Bundesland: " << b.name << "\n";
     os << "Anzahl der Polygone: " << b.parts << "\n";
     os << "Gesamtflaeche: " << b.area << "\n";
+    os << "Hauptstadt: " << b.capital.name << "\n";
 
     // for(int i = 0; i < b.polygon_vec.size(); ++i){
     //     os << i+1 << ". Polygonnetz hat " << b.polygon_vec[i].size() << " Punkte\n";
@@ -128,11 +131,34 @@ double ccw(koord p, koord q, koord r){
     return res;
 }
 
-bool punkt_in_polygon(koord ko, std::vector<koord> vec_koords){
-    //
-    // HIER MUSS NUN DER PUNKT IN POLYGON TEST IMPLEMENTIERT WERDEN
-    //
-    return true;
+bool punkt_in_polygon(koord p_requested, std::vector<koord> cornerpoints){
+    double ccw_res;
+
+    // Keine negativen Koordinaten
+    koord p_outside = {-1, -1};
+
+    // Eckpunkt soll nicht auf der Geraden von p_outside und p_requested liegen
+    int i = 0;
+    while(ccw(p_outside, p_requested, cornerpoints[i]) == 0) ++i;
+
+    ccw_res = ccw(p_outside, p_requested, cornerpoints[i]);
+
+    int intersec_counter = 0;
+    // sgn function for ccw_res
+    int lr = (ccw_res > 0) - (ccw_res < 0);
+
+    for(auto iter = cornerpoints.begin()+i+1; iter != cornerpoints.end(); ++iter){
+        ccw_res = ccw(p_outside, p_requested, *iter);
+        int lr_new = (ccw_res > 0) - (ccw_res < 0);
+        volatile int absolute = std::abs(lr_new - lr);
+        if(std::abs(lr_new - lr) == 2){
+            lr = lr_new;
+            if(ccw(*(iter-1), *iter, p_outside)*ccw(*(iter-1), *iter, p_requested) <= 0){
+                ++intersec_counter;
+            }
+        }
+    }
+    return (intersec_counter % 2 == 0) ? false : true;
 }
 
 
@@ -140,9 +166,7 @@ bool stadt_in_bundesland(stadt st, bundesland bund){
     // alle Polygone des gegebenen Bundeslandes durchlaufen
     bool res = false;
     for(auto polygon: bund.polygon_vec){
-        if(punkt_in_polygon(st.ko, polygon)){
-            res = true;
-        }
+        res = punkt_in_polygon(st.ko, polygon);
     }
     return res;
 }

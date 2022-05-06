@@ -26,7 +26,6 @@ int main() {
         bundeslaender.push_back(bundesland(path_node->first_attribute()->value(), path_node->last_attribute()->value()));
         path_node = path_node->next_sibling();
     }
-    for(int i = 0; i < bundeslaender.size(); i++) std::cout << bundeslaender[i] << "\n";
 
 
     // Städte die zu testen sind auslesen und stadt Instanz erstellen
@@ -40,15 +39,20 @@ int main() {
         staedte.push_back(st);
         path_node2 = path_node2->next_sibling();
     }
-    //for(auto st: staedte) std::cout << st.name << ": " << st.ko.x << " " << st.ko.y << "\n";
 
 
     for(auto st: staedte){
-        for(auto bund: bundeslaender){
-            stadt_in_bundesland(st, bund);
+        for(auto& bund: bundeslaender){
+            if(stadt_in_bundesland(st, bund)){
+                bund.capital = st;
+            }
         }
     }
 
+    // Ausgabe Bundeslaender
+    for(int i = 0; i < bundeslaender.size(); i++) std::cout << bundeslaender[i] << "\n";
+    // Ausgabe Staedte
+    for(auto st: staedte) std::cout << st.name << ": " << st.ko.x << " " << st.ko.y << "\n";
     return 0;
 }
 
