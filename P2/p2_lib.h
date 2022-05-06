@@ -1,4 +1,4 @@
-
+#define NDEBUG
 #include "rapidXML/rapidxml_utils.hpp"
 #include <iostream>
 #include <string>
@@ -28,31 +28,34 @@ struct bundesland{
         calc_area();
     }
 
-    // -----------------------------------------------------------------------
     // Funktion zur Flaechenberechnung einzelner Polygone
-    // -----------------------------------------------------------------------
     double polygon_area(std::vector<koord> polygon){
-        double area = 0;
+        double local_area_part = 0;
 
         for(auto iter = polygon.begin(); iter != polygon.end(); ++iter) {
             if(iter == polygon.begin()){
                 // Previous element is at the end of the vector
-                area += (*iter).y * (polygon.back().x - (*(iter+1)).x);
+                local_area_part += (*iter).y * (polygon.back().x - (*(iter+1)).x);
             } else if(std::next(iter) == polygon.end()){
                 // Next element is at the beginning of the vector
-                area += (*iter).y * ((*(iter-1)).x - polygon.front().x);
+                local_area_part += (*iter).y * ((*(iter-1)).x - polygon.front().x);
             } else {
                 // Dreiecksformel: sum(y * (prev_x - next_x));
-                area += (*iter).y * ((*(iter-1)).x - (*(iter+1)).x);
+                local_area_part += (*iter).y * ((*(iter-1)).x - (*(iter+1)).x);
             }
         }
-        return area/2;
+        // Flaechen Unabhaengig von der Orientierung aufaddieren
+        if(local_area_part < 0) local_area_part *= -1;
+        return local_area_part/2;
     }
 
     void calc_area(){
         for(auto polygon:polygon_vec){
+            // TODO: Check polygon in polygon?
             area += polygon_area(polygon);
         }
+        // Geschaetzter Skalierungsfaktor
+        area *= 1.175341649;
     }
 
     void split_content(char* path_content){
@@ -72,6 +75,13 @@ struct bundesland{
                 tmp_koord.y = start_y;
                 koord_vec.push_back(koord(tmp_koord));
             }
+            if(token[0] == 'L'){
+                start_x = std::stof(token.substr(1, token.find(',')-1));
+                start_y = std::stof(token.substr(token.find(',')+1, token.length()));
+                tmp_koord.x = start_x;
+                tmp_koord.y = start_y;
+                koord_vec.push_back(koord(tmp_koord));
+            }
             else if(token[0] =='l'){
                 start_x += std::stof(token.substr(1, token.find(',')-1));
                 start_y += std::stof(token.substr(token.find(',')+1, token.length()));
@@ -80,11 +90,18 @@ struct bundesland{
                 koord_vec.push_back(koord(tmp_koord));
             }
             else if(token[0] == 'z'){
+                // First and last coordinate are the same in the svg file
+                if((koord_vec.front().x == koord_vec.back().x) &&
+                   (koord_vec.front().y == koord_vec.back().y)){
+                       koord_vec.pop_back();
+                }
                 polygon_vec.push_back(koord_vec);
+                koord_vec.clear();
                 ++parts;
             }
             str.erase(0, pos + delimiter.length());
         }
+
     }
 };
 std::ostream& operator<<(std::ostream& os, bundesland b){
