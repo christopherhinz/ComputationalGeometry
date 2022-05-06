@@ -41,7 +41,7 @@ int main(){
         // sortieren nach x Werten, falls x Werte gleich sortieren nach y Werten
         std::sort(event_queue.begin(), event_queue.end(), [](point& p1, point& p2){return p1.x == p2.x ? p1.y < p2.y : p1.x < p2.x;});
 
-        
+
 
         /*
         int lines_count = 0;//lines_vec.size();
