@@ -1,14 +1,14 @@
-SET(MAIN_NAME strecken)
-SET(TESTING_NAME testing)
+SET(MAIN_NAME lineSweep)
+SET(TESTING_NAME lineSweepTest)
 
 set(SOURCES_STRECKEN
-    p1_lib.h
-    strecken.cpp
+    p3_lib.h
+    line_sweep.cpp
 )
 
 set(SOURCES_TESTING
-    p1_lib.h
-    testing.cpp
+    p3_lib.h
+    line_sweep_test.cpp
 )
 set_property (TARGET ${PROJECT_NAME}
   PROPERTY

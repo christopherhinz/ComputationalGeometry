@@ -2,12 +2,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-with open("bundeslaender.txt", "r") as file:
+with open("/Users/Chrisi/SynologyDrive/Studium/Master/1.Semester/GoGe/Praktikum/P2/bundeslaender.txt", "r") as file:
     lines = [line.replace("\n", "") for line in file.readlines() if line]
     bundesland_dict = {}
     koords_list = []
     bund = ""
-    for line in lines: 
+    for line in lines:
         if not line.startswith("\t"):
             if "Bundesland:" in line:
                 bund = line.replace("Bundesland: ", "")
@@ -20,14 +20,14 @@ with open("bundeslaender.txt", "r") as file:
             bundesland_dict[bund].append(koords_list)
             bund = ""
             break
-        else: 
+        else:
             line = line.replace("\t", "")
             koords_list.append([float(line.replace("\n", "").split(" ")[0]), float(line.replace("\n", "").split(" ")[1])])
 
-with open("staedte.txt", "r") as file:
+with open("/Users/Chrisi/SynologyDrive/Studium/Master/1.Semester/GoGe/Praktikum/P2/staedte.txt", "r") as file:
     lines = file.readlines()
     koords_staedte = []
-    for line in lines: 
+    for line in lines:
         koords_staedte.append([float(line.split(": ")[1].split(" ")[0]), float(line.split(": ")[1].split(" ")[1])])
 
 print(koords_staedte)
@@ -44,8 +44,6 @@ xs_stadt, ys_stadt = zip(*koords_staedte)
 ys_stadt = [-y for y in ys_stadt]
 
 plt.figure()
-plt.plot(xs_bund, ys_bund, ".") 
+plt.plot(xs_bund, ys_bund, ".")
 plt.plot(xs_stadt, ys_stadt, 'x', color='r')
-plt.show() 
-
-
+plt.show()
