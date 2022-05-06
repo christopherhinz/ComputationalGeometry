@@ -1,0 +1,64 @@
+Bundesland: Thüringen
+Anzahl der Polygone: 1
+Gesamtflaeche: 13543.6
+
+Bundesland: Schleswig-Holstein
+Anzahl der Polygone: 11
+Gesamtflaeche: 126129
+
+Bundesland: Sachsen-Anhalt
+Anzahl der Polygone: 1
+Gesamtflaeche: 17406.9
+
+Bundesland: Sachsen
+Anzahl der Polygone: 1
+Gesamtflaeche: 15764.8
+
+Bundesland: Saarland
+Anzahl der Polygone: 1
+Gesamtflaeche: 2178.76
+
+Bundesland: Rheinland-Pfalz
+Anzahl der Polygone: 1
+Gesamtflaeche: 16571.6
+
+Bundesland: Nordrhein-Westfalen
+Anzahl der Polygone: 1
+Gesamtflaeche: 28096
+
+Bundesland: Niedersachsen
+Anzahl der Polygone: 10
+Gesamtflaeche: 409413
+
+Bundesland: Mecklenburg-Vorpommern
+Anzahl der Polygone: 7
+Gesamtflaeche: 135420
+
+Bundesland: Hessen
+Anzahl der Polygone: 1
+Gesamtflaeche: 17976.5
+
+Bundesland: Hamburg
+Anzahl der Polygone: 1
+Gesamtflaeche: 634.746
+
+Bundesland: Bremen
+Anzahl der Polygone: 2
+Gesamtflaeche: -117.034
+
+Bundesland: Brandenburg
+Anzahl der Polygone: 2
+Gesamtflaeche: 51173.1
+
+Bundesland: Berlin
+Anzahl der Polygone: 1
+Gesamtflaeche: 765.233
+
+Bundesland: Bayern
+Anzahl der Polygone: 1
+Gesamtflaeche: 59698.2
+
+Bundesland: Baden__x26__Württemberg
+Anzahl der Polygone: 2
+Gesamtflaeche: 60788.3
+

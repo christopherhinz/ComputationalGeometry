@@ -26,7 +26,7 @@ int main() {
         bundeslaender.push_back(bundesland(path_node->first_attribute()->value(), path_node->last_attribute()->value()));
         path_node = path_node->next_sibling();
     }
-    //for(int i = 0; i < bundeslaender.size(); i++) std::cout << bundeslaender[i] << "\n";
+    for(int i = 0; i < bundeslaender.size(); i++) std::cout << bundeslaender[i] << "\n";
 
 
     // Städte die zu testen sind auslesen und stadt Instanz erstellen

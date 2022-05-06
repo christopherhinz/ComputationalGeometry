@@ -5,11 +5,11 @@
 #include <vector>
 
 // --------------------------------------------------------------------
-// Klassen zum Speichern der relevanten Informationen aus der XML-Datei 
+// Klassen zum Speichern der relevanten Informationen aus der XML-Datei
 // --------------------------------------------------------------------
 
 struct koord{
-    float x, y;
+    double x, y;
 };
 
 struct stadt{
@@ -21,9 +21,40 @@ struct bundesland{
     std::string name;
     unsigned int parts;
     std::vector<std::vector<koord>> polygon_vec;
-    bundesland(char* n, char* path_content) : name{n}, parts{0}{
+    double area;
+
+    bundesland(char* n, char* path_content) : name{n}, parts{0}, area{-1}{
         split_content(path_content);
+        calc_area();
     }
+
+    // -----------------------------------------------------------------------
+    // Funktion zur Flaechenberechnung einzelner Polygone
+    // -----------------------------------------------------------------------
+    double polygon_area(std::vector<koord> polygon){
+        double area = 0;
+
+        for(auto iter = polygon.begin(); iter != polygon.end(); ++iter) {
+            if(iter == polygon.begin()){
+                // Previous element is at the end of the vector
+                area += (*iter).y * (polygon.back().x - (*(iter+1)).x);
+            } else if(std::next(iter) == polygon.end()){
+                // Next element is at the beginning of the vector
+                area += (*iter).y * ((*(iter-1)).x - polygon.front().x);
+            } else {
+                // Dreiecksformel: sum(y * (prev_x - next_x));
+                area += (*iter).y * ((*(iter-1)).x - (*(iter+1)).x);
+            }
+        }
+        return area/2;
+    }
+
+    void calc_area(){
+        for(auto polygon:polygon_vec){
+            area += polygon_area(polygon);
+        }
+    }
+
     void split_content(char* path_content){
         std::string str{path_content};
         std::vector<koord> koord_vec;
@@ -31,7 +62,7 @@ struct bundesland{
         std::string delimiter = "\n";
         std::size_t pos = 0;
         std::string token;
-        float start_x, start_y;
+        double start_x, start_y;
         while ((pos = str.find(delimiter)) != std::string::npos) {
             token = str.substr(0, pos);
             if(token[0] == 'M'){
@@ -58,15 +89,17 @@ struct bundesland{
 };
 std::ostream& operator<<(std::ostream& os, bundesland b){
     os << "Bundesland: " << b.name << "\n";
-    for(int i = 0; i < b.polygon_vec.size(); ++i){
-        os << i+1 << ". Polygonnetz hat " << b.polygon_vec[i].size() << " Punkte\n";
-        for(auto elem: b.polygon_vec[i]){
-            os << "\t" << elem.x << " " << elem.y << "\n";
-        }
-    }
+    os << "Anzahl der Polygone: " << b.parts << "\n";
+    os << "Gesamtflaeche: " << b.area << "\n";
+
+    // for(int i = 0; i < b.polygon_vec.size(); ++i){
+    //     os << i+1 << ". Polygonnetz hat " << b.polygon_vec[i].size() << " Punkte\n";
+    //     for(auto elem: b.polygon_vec[i]){
+    //         os << "\t" << elem.x << " " << elem.y << "\n";
+    //     }
+    // }
     return os;
 }
-
 
 // -----------------------------------------------------------------------
 // Funktionen zum Testen ob Stadt (Punkt) in Bundesland (mind. 1 Polygon)
@@ -87,7 +120,7 @@ bool punkt_in_polygon(koord ko, std::vector<koord> vec_koords){
 
 
 bool stadt_in_bundesland(stadt st, bundesland bund){
-    // alle Polygone des gegebenen Bundeslandes durchlaufen 
+    // alle Polygone des gegebenen Bundeslandes durchlaufen
     bool res = false;
     for(auto polygon: bund.polygon_vec){
         if(punkt_in_polygon(st.ko, polygon)){
