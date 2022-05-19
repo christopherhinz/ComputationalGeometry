@@ -147,9 +147,18 @@ Es ist zu begründen, warum die Anzahl der vom Programm jeweils gefundenen Schni
 Im Rahmen der Vorlesung Computational Geometry lautet die Aufgabe für das erste Praktikum, die Anzahl der Schnittpunkte aus einem Satz von Strecken zu ermitteln.
 Dafür werden 3 Dateien zur Verfügung gestellt, die jeweils Datensätze zu 1001, 10.001 und 100.001 Strecken enthalten.
 
+<<<<<<< HEAD
 Die Dateien enthalten jeweils 4 Koordinaten pro Zeile, welche jeweils die x- und y-Koordinaten eines Start- bzw. Endpunkts einer Strecke darstellen.
 Die Dateien sollen jeweils eingelesen und die Anzahl der sich schneidenden Strecken durch paarweises Testen ermittelt werden.
 Zusätzlich wird die aufgewendete Zeit zur Ermittlung der Anzahl der Schnittpunkte für jede Datei gemessen.
+=======
+\section{Problemstellung}
+In dem Tar-File 'strecken.tgz' (s.u.) befinden sich Dateien mit jeweils 4 Koordinaten pro Zeile.
+Diese stellen jeweils die x- und y-Koordinaten eines Start- bzw. Endpunkts einer Strecke dar.
+Die Datei soll eingelesen und die Anzahl der sich schneidenden Strecken durch paarweises Testen herausgefunden werden.
+Zusätzlich wird die pro Datei aufgewendete Zeit gemessen.
+Es ist zu begründen, warum die Anzahl der vom Programm jeweils gefundenen Schnittpunkte korrekt ist.
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
 
 Im folgenden Abschnitt wird darauf eingegangen, wie die Grundstruktur der Problemlösung aufgebaut ist und wie die mathematische Strategie zur Lösung des Problems in C++ formuliert werden kann.
 Anschließend werden die Ergebnisse der Datenauswertung vorgestellt
@@ -174,6 +183,7 @@ k = \frac{(n-1) \cdot n}{2}
 Damit wären für 1.000 Strecken maximal $499.500$ (für 10.000 maximal $49.995.000$,
 für 100.000 maximal $4.999.950.000$) zu erwarten.
 Dies ist somit die obere Grenze des zu erwartenden Wertebereichs.
+<<<<<<< HEAD
 
 \subsection{Strategie zur Problemlösung}
 
@@ -182,16 +192,39 @@ Dies ist somit die obere Grenze des zu erwartenden Wertebereichs.
 \section{Ergebnisse}
 
 \subsection{Ergebniss der Verifizierung}
+=======
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
 
 \subsection{Ergebnisse der Schnittstellenberechnung und der Zeitmessung}
 
+<<<<<<< HEAD
 Das Programm verwendet die Funktion \code{read\_dat()} um die Daten aus den Dateien einzulesen und über \code{pack\_koords()} die Datensätze zu Strecken zusammenzufassen.
 Jede Strecke wird anschließend gegen alle anderen Strecken geprüft, ob sie diese schneidet, oder nicht.
 Zur Feststellung, ob sich die zwei Strecken schneiden wird ausgewertet, ob die Punkte $p_1, p_2$ der ersten Strecke zu den Punkten $p_1, p_2$ der zweiten Strecke im oder gegen den Uhrzeigersinn angeordnet sind.
+=======
+\subsection{Umsetzung der Aufgabenstellung}
+
+Das Programm verwendet die Funktion \code{read\_dat()} um die Daten aus den Dateien einzulesen und über \code{pack\_koords()} die Datensätze zu Strecken zusammenzufassen.
+Jede Strecke wird anschließend gegen alle anderen Strecken geprüft, ob sie diese schneidet, oder nicht.
+Zur Feststellung, ob sich die zwei Strecken schneiden wird ausgewertet, ob die Punkte $p_1, p_2$ der ersten Strecke zu den Punkten $p_1, p_2$ der zweiten Strecke im oder gegen den Uhrzeigersinn angeornet sind.
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
 Dafür wird folgende Formel verwendet, die im Ergebnis den Betrag des Kreuzproduktes aus den Richtungsvektoren der drei Punkte enthält:
 \begin{equation}
     ccw(p, q, r) := \begin{vmatrix} p_1 & p_2 & 1 \\ q_1 & q_2 & 1 \\ r_1 & r_2 & 1 \end{vmatrix} = (p_1q_2 - p_2q_1) + (q_1r_2 - q_2r_1) + (p_2r_1 - p_1r_2)
 \end{equation}
+<<<<<<< HEAD
+=======
+
+Ist das Prdukt der ccw-Funktion der ersten Strecke mit den Endpunkten der zweiten Strecke, sowie das Produkt der ccw-Funktion der zweiten Strecke mit den Endpunkten der ersten Strecke kleiner oder gleich 0, so kann unter der Annahme, dass die Strecken nicht kollinear zueinander sind davon ausgegangen werden, dass sich die Strecken schneiden.
+
+Sind die Strecken Kollinear angeordnet, so ergeben beide Kreuzprodukte 0. In diesem Fall muss noch überprüft werden, ob sich die Strecken überlappen.
+Bei Überlappung der Strecken lässt sich mindestens einer der Endpunkte der zweiten Strecke über ein Vielfaches zwischen 0 und 1 des ersten Streckenvektors addiert mit einem Endpunkt der ersten Strecke darstellen.
+Da zuvor bereits festgestellt wurde, dass die Strecken kollinear sind, kann das Skalar zum Richtungsvektor der zweiten Strecke über das Auflösen der parametrischen Darstellung durch die x-Komponenten der Orstvektoren aufgelöst werden.
+\begin{equation}
+    \lambda = \frac{x_r - x_p}{x_q - x_p}
+\end{equation}
+Liegt der Wert von $\lambda$ zwischen 0 und 1, so überlappen sich die Funktionen. Nimmt $\lambda$ den Wert 0 oder 1 an, schneiden sich die Strecken in in jeweils einem der Enpunkte.
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
 
 Ist das Produkt der ccw-Funktion der ersten Strecke mit den Endpunkten der zweiten Strecke, sowie das Produkt der ccw-Funktion der zweiten Strecke mit den Endpunkten der ersten Strecke kleiner oder gleich 0, so kann unter der Annahme, dass die Strecken nicht kollinear zueinander sind davon ausgegangen werden, dass sich die Strecken schneiden.
 
@@ -289,9 +322,17 @@ int main(){
     }
     std::cout << "Strecken insgesamt: " << lines_vec.size() << "\n" << "Schnitte zweier Strecken: " << intersect_counter << "\n";
 
+<<<<<<< HEAD
     auto end = std::chrono::steady_clock::now();
     std::cout << "Runtime: "
     << (double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()/1000
+=======
+    std::cout << "Strecken insgesamt: " << vec.size() << "\n" << "Schnitte zweier Strecken: " << intersect_counter << "\n";
+
+    auto end = std::chrono::steady_clock::now();
+    std::cout << "Runtime: "
+    << (float)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()/1000
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
         + std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms\n";
 
     return 0;
@@ -302,6 +343,7 @@ In \autoref{lst:ausgabe_strecken} wird die Ausgabe des Programmes zur Schnittpun
 In der Ausgabe ist zu erkennen, dass die Anzahl der Schnitte für alle Fälle (1.000, 10.000, 100.000) im zu erwartenden Wertebereich liegt.
 Schnittpunkte:
 \begin{itemize}
+<<<<<<< HEAD
     \item 1.000 Strecken: $0<= 11 <= 499.500$
     \item 10.000 Strecken: $0<= 732 <= 49.995.000$
     \item 100.000 Strecken: $0<= 77.126 <= 4.999.950.000$
@@ -309,6 +351,15 @@ Schnittpunkte:
 
 % Ausgabe: strecken.cpp
 \begin{lstlisting}[style=Terminal, caption={strecken.cpp: Ausgabe Konsole},captionpos=b, label={lst:ausgabe_strecken}]
+=======
+    \item 1.000 Strecken: $0<= 62.250 <= 499.500$
+    \item 10.000 Strecken: $0<= 6.247.500 <= 49.995.000$
+    \item 100.000 Strecken: $0<= 624.975.000 <= 4.999.950.000$
+\end{itemize}
+
+
+\begin{lstlisting}[style=Terminal, caption={testing.cpp: Ausgabe Konsole},captionpos=b, label={lst:ausgabe_strecken}]
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
 # s_1000_1.dat
 Strecken insgesamt: 1001
 Schnitte zweier Strecken: 11
@@ -324,11 +375,18 @@ Runtime: 394721 ms
 \end{lstlisting}
 
 
+<<<<<<< HEAD
 \subsection{Programme zum Testen der Funktion}
 Um die korrekte Funktionsweise des Programmes zu verifizieren werden verschiedene Testfälle definiert.
 Die Testfälle decken unterschiedliche Streckenanordnungen ab und sollen dadurch die in der Vorlesung besprochenen Grenzfälle für Streckenschnitte überprüfen.
 \autoref{fig:test_cases} zeigt die implementierten Testfälle.
 
+=======
+\subsection{Programm zum Testen der Funktion}
+Um die korrekte Funktionsweise des Programmes zu verifizieren werden verschiedene Testfälle definiert.
+Die Testfälle decken unterschiedliche Streckenanordnungen ab und sollen dadurch die in der Vorlesung besprochenen Grenzfälle für Streckenschnitte überprüfen.
+\autoref{fig:test_cases} zeigt die implementierten Testfälle.
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
 
 % Testfälle
 \begin{figure}[ht]
@@ -340,7 +398,11 @@ Die Testfälle decken unterschiedliche Streckenanordnungen ab und sollen dadurch
     \label{fig:test_cases}
 \end{figure}
 
+<<<<<<< HEAD
 \autoref{lst:test_code} zeigt die Implementierung der Testfälle bzw. den Aufruf der entsprechenden Bibliotheksfunktionen in C++.\\
+=======
+\autoref{lst:test_code} zeigt die Implementierung der Testfälle in C++.\\
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
 
 \begin{lstlisting}[style=CStyle, caption={testing.cpp: Testen der Bibliotheksfunktionen},captionpos=b, label={lst:test_code}]
 #include "p1_lib.h"
@@ -420,6 +482,7 @@ Soll: false, Ist: false
 Des weiteren wurde ein Python-Programm geschrieben. Dieses plottet die Strecken mit Schnittpunkten und stellt damit eine weitere Möglichkeit dar die Ergebnisse zu überprüfen.
 Dies Graphen werden mittels matplotlib erstellt und sehen wie nachfolgend dargestellt aus. Auf Implementierungsdetails soll an dieser Stelle verzichtet werden, da dieses Programm ausschließlich zur Überprüfung dient.
 
+<<<<<<< HEAD
 \begin{figure}[ht]
     \graphicspath{ {./pictures/} }
     \centering
@@ -429,4 +492,6 @@ Dies Graphen werden mittels matplotlib erstellt und sehen wie nachfolgend darges
     \label{fig:python_plots}
 \end{figure}
 
+=======
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
 \end{document}

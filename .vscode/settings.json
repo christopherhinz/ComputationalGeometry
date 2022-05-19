@@ -5,6 +5,10 @@
         "filesystem": "cpp",
         "mutex": "cpp",
         "iostream": "cpp",
+<<<<<<< HEAD
+=======
+        "vector": "cpp",
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
         "__bit_reference": "cpp",
         "__bits": "cpp",
         "__config": "cpp",
@@ -64,7 +68,10 @@
         "typeinfo": "cpp",
         "unordered_map": "cpp",
         "variant": "cpp",
+<<<<<<< HEAD
         "vector": "cpp",
+=======
+>>>>>>> 6da1d0c981bc1ff2e84f838b23f6d3a6efccb28a
         "__functional_base": "cpp",
         "algorithm": "cpp",
         "functional": "cpp",
