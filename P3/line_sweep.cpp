@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 
+
 void print_line(line l1){
     std::cout << "strecke: (" << l1.p1.x << " " << l1.p1.y << "), " <<  "(" << l1.p2.x << " " << l1.p2.y << ")";
 }

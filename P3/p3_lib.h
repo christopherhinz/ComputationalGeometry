@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 
+
 enum point_type { BEG = 0, END, SEC};
 
 struct point{
