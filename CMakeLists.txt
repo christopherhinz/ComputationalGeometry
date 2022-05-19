@@ -5,3 +5,5 @@ project(PraktikaCoGe)
 set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(P1)
+add_subdirectory(P2)
+add_subdirectory(P3)
