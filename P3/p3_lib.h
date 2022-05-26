@@ -18,6 +18,18 @@ struct line{
     point p2;
 };
 
+struct sweep_line{
+    point current_event;
+    std::vector<std::size_t> segment_queue;
+    std::vector<point> event_queue;
+    void sort_event_queue(){
+        std::sort(event_queue.begin(), event_queue.end(), [](point& p1, point& p2){return p1.x == p2.x ? p1.y > p2.y : p1.x > p2.x;});
+    }
+    void init_segment_queue(){
+        segment_queue.push_back(event_queue.back().lineID);
+    }
+}
+
 void read_dat(std::string filename, std::vector<point>& target){
     point pb, pe;
     std::size_t countID = 0;
@@ -36,7 +48,7 @@ void read_dat(std::string filename, std::vector<point>& target){
             pb = { k1, k2, END, countID};
             pe = { k3, k4, BEG, countID};
         }
-        ++countID;      
+        ++countID;
         target.push_back(pb);
         target.push_back(pe);
     }
@@ -62,6 +74,21 @@ bool line_intersect_check(line l1, line l2){
         }
     }
     return retval;
+
+
+void TreatLeftEndpoint(point& E, sweep_line& sl){
+    std::size_t segE = E.lineID;
+    sl.segment_queue.push_back(segE);
+
+    std::size_t segA =
+}
+
+void TreatRightEndpoint(point& E, sweep_line& sw){
+
+}
+
+void TreatIntersection(point& E, sweep_line& sw){
+
 }
 
 

@@ -21,9 +21,6 @@ void print_content(std::vector<line>& vec, int limit){
 
 int main(){
 
-    std::vector<point> event_queue;
-
-
     std::vector<std::string> filenames {"strecken/s_1000_1.dat",
                                         "strecken/s_10000_1.dat",
                                         "strecken/s_100000_1.dat"};
@@ -36,10 +33,28 @@ int main(){
     for(auto filename : filenames){
         auto start = std::chrono::steady_clock::now();
 
-        read_dat(filename, event_queue);
+        sweep_line sl;
+        sl.event_queue = std::vector<point>();
+
+        read_dat(filename, sl.event_queue);
+        int intersect_count = 0;
+        std::vector<point> intersec_list;
 
         // sortieren nach x Werten, falls x Werte gleich sortieren nach y Werten
-        std::sort(event_queue.begin(), event_queue.end(), [](point& p1, point& p2){return p1.x == p2.x ? p1.y < p2.y : p1.x < p2.x;});
+        sl.sort_event_queue();
+        sl.init_segment_queue();
+
+        while(sl.event_queue.size() != 0){
+            point E = sl.event_queue.pop_back();
+            if(E.pt == point_type::BEG){
+                TreatLeftEndoint(E, sl);
+            } else if (E.pt == point_type::END){
+                TreatRightEndpoint(E, sl);
+            } else {
+                Treatintersection(E, sl);
+            }
+        }
+
 
 
 
