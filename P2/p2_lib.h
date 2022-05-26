@@ -18,6 +18,48 @@ struct stadt{
     koord ko;
 };
 
+
+// -----------------------------------------------------------------------
+// Funktionen zum Testen ob Stadt (Punkt) in Bundesland (mind. 1 Polygon)
+// -----------------------------------------------------------------------
+
+// ccw: wird glaube ich gebraucht, ist klein also hab ichs reinkopiert -> dann vermischen sich die Praktika nicht
+double ccw(koord p, koord q, koord r){
+    double res = (p.x*q.y - p.y*q.x)+ (q.x*r.y - q.y*r.x) + (p.y*r.x  - p.x*r.y);
+    return res;
+}
+
+
+bool punkt_in_polygon(koord p_requested, std::vector<koord> cornerpoints){
+    double ccw_res;
+
+    // Keine negativen Koordinaten
+    koord p_outside = {-1, -1};
+
+    // Eckpunkt soll nicht auf der Geraden von p_outside und p_requested liegen
+    int i = 0;
+    while(ccw(p_outside, p_requested, cornerpoints[i]) == 0) ++i;
+
+    ccw_res = ccw(p_outside, p_requested, cornerpoints[i]);
+
+    int intersec_counter = 0;
+    // sgn function for ccw_res
+    int lr = (ccw_res > 0) - (ccw_res < 0);
+
+    for(auto iter = cornerpoints.begin()+i+1; iter != cornerpoints.end(); ++iter){
+        ccw_res = ccw(p_outside, p_requested, *iter);
+        int lr_new = (ccw_res > 0) - (ccw_res < 0);
+        volatile int absolute = std::abs(lr_new - lr);
+        if(std::abs(lr_new - lr) == 2){
+            lr = lr_new;
+            if(ccw(*(iter-1), *iter, p_outside)*ccw(*(iter-1), *iter, p_requested) <= 0){
+                ++intersec_counter;
+            }
+        }
+    }
+    return (intersec_counter % 2 == 0) ? false : true;
+}
+
 struct bundesland{
     std::string name;
     unsigned int parts;
@@ -52,9 +94,22 @@ struct bundesland{
     }
 
     void calc_area(){
-        for(auto polygon:polygon_vec){
-            // TODO: Check polygon in polygon?
-            area += polygon_area(polygon);
+        for(int i = 0; i < polygon_vec.size(); ++i){
+            bool flag;
+            for(int j = 0; j < polygon_vec.size(); ++j){
+                if(i != j){
+                    // Liegt i in j, dann von der Gesamtflaeche abziehen
+                    if(punkt_in_polygon(polygon_vec[i][0], polygon_vec[j])){
+                        flag = true;
+                    }
+                }
+            }
+            if(flag == true){
+                area -= polygon_area(polygon_vec[i]);
+            } else {
+                area += polygon_area(polygon_vec[i]);
+            }
+
         }
         // Geschaetzter Skalierungsfaktor
         area *= 1.175341649;
@@ -120,47 +175,6 @@ std::ostream& operator<<(std::ostream& os, bundesland b){
     // }
     return os;
 }
-
-// -----------------------------------------------------------------------
-// Funktionen zum Testen ob Stadt (Punkt) in Bundesland (mind. 1 Polygon)
-// -----------------------------------------------------------------------
-
-// ccw: wird glaube ich gebraucht, ist klein also hab ichs reinkopiert -> dann vermischen sich die Praktika nicht
-double ccw(koord p, koord q, koord r){
-    double res = (p.x*q.y - p.y*q.x)+ (q.x*r.y - q.y*r.x) + (p.y*r.x  - p.x*r.y);
-    return res;
-}
-
-bool punkt_in_polygon(koord p_requested, std::vector<koord> cornerpoints){
-    double ccw_res;
-
-    // Keine negativen Koordinaten
-    koord p_outside = {-1, -1};
-
-    // Eckpunkt soll nicht auf der Geraden von p_outside und p_requested liegen
-    int i = 0;
-    while(ccw(p_outside, p_requested, cornerpoints[i]) == 0) ++i;
-
-    ccw_res = ccw(p_outside, p_requested, cornerpoints[i]);
-
-    int intersec_counter = 0;
-    // sgn function for ccw_res
-    int lr = (ccw_res > 0) - (ccw_res < 0);
-
-    for(auto iter = cornerpoints.begin()+i+1; iter != cornerpoints.end(); ++iter){
-        ccw_res = ccw(p_outside, p_requested, *iter);
-        int lr_new = (ccw_res > 0) - (ccw_res < 0);
-        volatile int absolute = std::abs(lr_new - lr);
-        if(std::abs(lr_new - lr) == 2){
-            lr = lr_new;
-            if(ccw(*(iter-1), *iter, p_outside)*ccw(*(iter-1), *iter, p_requested) <= 0){
-                ++intersec_counter;
-            }
-        }
-    }
-    return (intersec_counter % 2 == 0) ? false : true;
-}
-
 
 bool stadt_in_bundesland(stadt st, bundesland bund){
     // alle Polygone des gegebenen Bundeslandes durchlaufen

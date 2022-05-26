@@ -47,6 +47,6 @@ plt.figure()
 plt.plot(xs_bund, ys_bund, ".")
 plt.plot(xs_stadt, ys_stadt, 'x', color='r')
 for i in range(len(xs_bund)):
-    if (i > 5900) and (i < 6100):
+    if (i > 4000) and (i < 8000):
         plt.annotate(i, (xs_bund[i], ys_bund[i]))
 plt.show()

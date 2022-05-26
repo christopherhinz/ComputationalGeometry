@@ -35,7 +35,7 @@ Hauptstadt: Düsseldorf
 
 Bundesland: Niedersachsen
 Anzahl der Polygone: 10
-Gesamtflaeche: 48385.1
+Gesamtflaeche: 47492.8
 Hauptstadt: Hannover
 
 Bundesland: Mecklenburg-Vorpommern
@@ -60,7 +60,7 @@ Hauptstadt: Bremen
 
 Bundesland: Brandenburg
 Anzahl der Polygone: 2
-Gesamtflaeche: 31508
+Gesamtflaeche: 29706.7
 Hauptstadt: Potsdam
 
 Bundesland: Berlin
