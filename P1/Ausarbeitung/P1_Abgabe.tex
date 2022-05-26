@@ -82,7 +82,7 @@
 \begin{titlepage}
     \vfill
 	\centering
-    \includegraphics[height=2cm]{./HM_Schriftzug_Logo_rot_RGB.pdf}
+
     \vspace{1.5cm}
 
 	{\scshape\LARGE Hochschule München \par}
@@ -124,24 +124,11 @@
 
 \newpage
 
-% table of contents
-\thispagestyle{empty}
-\tableofcontents
-\newpage
-
-
-
 \raggedright
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problemstellung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Problemstellung}
-In dem Tar-File 'strecken.tgz' (s.u.) befinden sich Dateien mit jeweils 4 Koordinaten pro Zeile.
-Diese stellen jeweils die x- und y-Koordinaten eines Start- bzw. Endpunkts einer Strecke dar.
-Die Datei soll eingelesen und die Anzahl der sich schneidenden Strecken durch paarweises Testen herausgefunden werden.
-Zusätzlich wird die pro Datei aufgewendete Zeit gemessen.
-Es ist zu begründen, warum die Anzahl der vom Programm jeweils gefundenen Schnittpunkte korrekt ist.
 
 \section{Einführung}
 Im Rahmen der Vorlesung Computational Geometry lautet die Aufgabe für das erste Praktikum, die Anzahl der Schnittpunkte aus einem Satz von Strecken zu ermitteln.
@@ -155,9 +142,7 @@ Im folgenden Abschnitt wird darauf eingegangen, wie die Grundstruktur der Proble
 Anschließend werden die Ergebnisse der Datenauswertung vorgestellt
 Es ist zu begründen, warum die Anzahl der vom Programm jeweils gefundenen Schnittpunkte korrekt ist.
 
-\section{Methoden}
-
-\subsection{Abschätzung der zu erwartenden Größenordnung des Ergebnisses}
+\section{Abschätzung der zu erwartenden Größenordnung des Ergebnisses}
 
 Um einschätzen zu können, inwiefern die Ergebnisse sinnvoll sind, sollen an dieser Stelle einige Vorüberlegungen getroffen werden.\\~\\
 Welche Anzahl an Schnitten sind zu erwarten bzw. in welchem Wertebereich sollten sich die Ergebnisse bewegen?\\
@@ -175,15 +160,7 @@ Damit wären für 1.000 Strecken maximal $499.500$ (für 10.000 maximal $49.995.
 für 100.000 maximal $4.999.950.000$) zu erwarten.
 Dies ist somit die obere Grenze des zu erwartenden Wertebereichs.
 
-\subsection{Strategie zur Problemlösung}
-
-\subsection{Verifizierung des Codes}
-
-\section{Ergebnisse}
-
-\subsection{Ergebniss der Verifizierung}
-
-\subsection{Ergebnisse der Schnittstellenberechnung und der Zeitmessung}
+\section{Ergebnisse der Schnittstellenberechnung und der Zeitmessung}
 
 Das Programm verwendet die Funktion \code{read\_dat()} um die Daten aus den Dateien einzulesen und über \code{pack\_koords()} die Datensätze zu Strecken zusammenzufassen.
 Jede Strecke wird anschließend gegen alle anderen Strecken geprüft, ob sie diese schneidet, oder nicht.
@@ -203,100 +180,6 @@ Da zuvor bereits festgestellt wurde, dass die Strecken kollinear sind, kann der 
 \end{equation}
 Liegt der Wert von $\lambda$ zwischen 0 und 1, so überlappen sich die Funktionen. Nimmt $\lambda$ den Wert 0 oder 1 an, schneiden sich die Strecken in jeweils einem der Endpunkte.
 
-
-%% p1_lib.h
-\begin{lstlisting}[style=CStyle, caption={p1\_lib.h: Bibliotheksfunktionen},captionpos=b]
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
-
-
-struct point{
-    double x;
-    double y;
-};
-
-struct line{
-    point p1;
-    point p2;
-};
-
-void read_dat(char* filename, std::vector<line>& target){
-    line temp;
-    std::ifstream file;
-    file.open(filename);
-    double k1, k2, k3, k4;
-    if(!file.is_open()){
-        std::cout << "Could not open file\n";
-    }
-    while(file >> k1 >> k2 >> k3 >> k4){
-        temp.p1.x = k1;
-        temp.p1.y = k2;
-        temp.p2.x = k3;
-        temp.p2.y = k4;
-        target.push_back(temp);
-    }
-    file.close();
-}
-
-double ccw(point p, point q, point r){
-    double res = (p.x*q.y - p.y*q.x)+ (q.x*r.y - q.y*r.x) + (p.y*r.x  - p.x*r.y);
-    return res;
-}
-
-bool line_intersect_check(line l1, line l2){
-    bool retval = false;
-    double ccw_res1 = ccw(l1.p1, l1.p2, l2.p1) * ccw(l1.p1, l1.p2, l2.p2);
-    double ccw_res2 = ccw(l2.p1, l2.p2, l1.p1) * ccw(l2.p1, l2.p2, l1.p2);
-    if(ccw_res1 <= 0.0 && ccw_res2 <= 0.0){
-        retval = true;
-        if(ccw_res1 == 0.0 && ccw_res2 == 0.0){
-            double lambda1 = (l2.p1.x-l1.p1.x)/(l1.p2.x-l1.p1.x);
-            double lambda2 = (l2.p2.x-l1.p1.x)/(l1.p2.x-l1.p1.x);
-            if ((lambda1 < 0.0 || lambda1 > 1.0) && (lambda2 < 0.0 || lambda2 > 1.0))
-                retval = false;
-        }
-    }
-    return retval;
-}
-\end{lstlisting}
-
-
-
-%% strecken.cpp
-\begin{lstlisting}[style=CStyle, caption={strecken.cpp: Aufgruf der Bibliotheksfunktionen},captionpos=b]
-#include "p1_lib.h"
-#include <chrono>
-
-int main(){
-    auto start = std::chrono::steady_clock::now();
-
-
-    std::vector<line> lines_vec;
-    read_dat((char*)"../strecken/s_1000_1.dat", lines_vec);
-
-
-    int intersect_counter = 0;
-    for(unsigned int i = 0; i < lines_vec.size(); ++i){
-        for(unsigned int j = i; j < lines_vec.size(); ++j){
-            if(i!=j){
-                if(line_intersect_check(lines_vec[i], lines_vec[j])){
-                    ++intersect_counter;
-                }
-            }
-        }
-    }
-    std::cout << "Strecken insgesamt: " << lines_vec.size() << "\n" << "Schnitte zweier Strecken: " << intersect_counter << "\n";
-
-    auto end = std::chrono::steady_clock::now();
-    std::cout << "Runtime: "
-    << (double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()/1000
-        + std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms\n";
-
-    return 0;
-}
-\end{lstlisting}
 
 In \autoref{lst:ausgabe_strecken} wird die Ausgabe des Programmes zur Schnittpunktezählung aufgeführt.
 In der Ausgabe ist zu erkennen, dass die Anzahl der Schnitte für alle Fälle (1.000, 10.000, 100.000) im zu erwartenden Wertebereich liegt.
@@ -324,7 +207,7 @@ Runtime: 394721 ms
 \end{lstlisting}
 
 
-\subsection{Programme zum Testen der Funktion}
+\section{Verifikation und Validierung}
 Um die korrekte Funktionsweise des Programmes zu verifizieren werden verschiedene Testfälle definiert.
 Die Testfälle decken unterschiedliche Streckenanordnungen ab und sollen dadurch die in der Vorlesung besprochenen Grenzfälle für Streckenschnitte überprüfen.
 \autoref{fig:test_cases} zeigt die implementierten Testfälle.
@@ -340,66 +223,6 @@ Die Testfälle decken unterschiedliche Streckenanordnungen ab und sollen dadurch
     \label{fig:test_cases}
 \end{figure}
 
-\autoref{lst:test_code} zeigt die Implementierung der Testfälle bzw. den Aufruf der entsprechenden Bibliotheksfunktionen in C++.\\
-
-\begin{lstlisting}[style=CStyle, caption={testing.cpp: Testen der Bibliotheksfunktionen},captionpos=b, label={lst:test_code}]
-#include "p1_lib.h"
-
-void print_result(line l1, line l2, bool b_soll){
-    std::cout << std::boolalpha << "Soll: " << b_soll << ", Ist: " << line_intersect_check(l1, l2) << "\n";
-}
-
-
-int main(){
-
-    // Verschiedene Schnitte
-
-    // Strecken mit senkrechtem Schnitt (symmetrisch)
-    // p1 = (0,1) nach p2 = (0,-1)
-    // p1 = (1,0) nach p2 = (-1,0
-    print_result(line{.p1.x = 0, .p1.y = 1, .p2.x = 0, .p2.y = -1}, line{.p1.x = 1, .p1.y = 0, .p2.x = -1, .p2.y = 0}, true);
-
-    // Strecken mit senkrechtem Schnitt (unsymmetrisch)
-    // p1 = (0,2) nach p2 = (0,0)
-    // p1 = (1,0) nach p2 = (-1,0)
-    print_result(line{.p1.x = 0, .p1.y = 2, .p2.x = 0, .p2.y = 0}, line{.p1.x = 1, .p1.y = 0, .p2.x = -1, .p2.y = 0}, true);
-
-    // Strecken auf gleicher Gerade mit Schnitt in einem Punkt
-    // p1 = (1,0) nach p2 = (2,0)
-    // p1 = (1,0) nach p2 = (-1,0)
-    print_result(line{.p1.x = 1, .p1.y = 0, .p2.x = 2, .p2.y = 0}, line{.p1.x = 1, .p1.y = 0, .p2.x = -1, .p2.y = 0}, true);
-
-    // Strecken auf gleicher Gerade mit Schnitt in einer Strecke
-    // p1 = (0,0) nach p2 = (2,0)
-    // p1 = (1,0) nach p2 = (-1,0)
-    print_result(line{.p1.x = 0, .p1.y = 0, .p2.x = 2, .p2.y = 0}, line{.p1.x = 1, .p1.y = 0, .p2.x = -1, .p2.y = 0}, true);
-
-    // Strecken auf gleicher Gerade mit Schnitt in einer Strecke
-    // p1 = (0,0) nach p2 = (2,0)
-    // p1 = (1,0) nach p2 = (-1,0)
-    print_result(line{.p1.x = 1, .p1.y = 0, .p2.x = -1, .p2.y = 1}, line{.p1.x = 1, .p1.y = 0, .p2.x = -1, .p2.y = 0}, true);
-
-
-    // Verschiedene ohne Schnitt
-
-    // Strecken ohne Schnitt auf Gerade
-    // p1 = (-2,0) nach p2 = (0,0)
-    // p1 = (1,0) nach p2 = (3,0)
-    print_result(line{.p1.x = -2, .p1.y = 0, .p2.x = 0, .p2.y = 0}, line{.p1.x = 1, .p1.y = 0, .p2.x = 3, .p2.y = 0}, false);
-
-    // Strecken ohne Schnitt parallel
-    // p1 = (-2,0) nach p2 = (0,0)
-    // p1 = (-2,1) nach p2 = (0,2)
-    print_result(line{.p1.x = -2, .p1.y = 0, .p2.x = 0, .p2.y = 0}, line{.p1.x = -2, .p1.y = 1, .p2.x = 0, .p2.y = 2}, false);
-
-    // Strecken ohne Schnitt schraeg
-    // p1 = (-2,0) nach p2 = (0,0)
-    // p1 = (0,1) nach p2 = (2,0)
-    print_result(line{.p1.x = -2, .p1.y = 0, .p2.x = 0, .p2.y = 0}, line{.p1.x = 0, .p1.y = 1, .p2.x = 2, .p2.y = 0}, false);
-
-    return 0;
-}
-\end{lstlisting}
 
 \ \\~\\
 \autoref{lst:ausgabe_test} zeigt, dass für die Testfälle die erwarteten Ergebnisse erzielt werden.
@@ -419,6 +242,7 @@ Soll: false, Ist: false
 \ \\
 Des weiteren wurde ein Python-Programm geschrieben. Dieses plottet die Strecken mit Schnittpunkten und stellt damit eine weitere Möglichkeit dar die Ergebnisse zu überprüfen.
 Dies Graphen werden mittels matplotlib erstellt und sehen wie nachfolgend dargestellt aus. Auf Implementierungsdetails soll an dieser Stelle verzichtet werden, da dieses Programm ausschließlich zur Überprüfung dient.
+Stichprobenartige Überprüfungen der Schnittpunkte mit diesem Programm sind alle positiv ausgefallen.
 
 \begin{figure}[ht]
     \graphicspath{ {./pictures/} }
@@ -428,5 +252,9 @@ Dies Graphen werden mittels matplotlib erstellt und sehen wie nachfolgend darges
     \caption{Python-Plot mit matplotlib}
     \label{fig:python_plots}
 \end{figure}
+
+Zur Validierung der Ergebnisse wurde Rücksprache mit anderen Gruppen gehalten.
+Diese haben die gleichen Ergebnisse für die Anzahl der Schnittpunkte erhalten.
+Zusätzlich zu der durchgeführten Verifikation ist dies ein weiteres Indiz, dass die Ergebnisse mit hoher Wahrscheinlichkeit korrekt ausfallen.
 
 \end{document}
