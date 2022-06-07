@@ -148,6 +148,7 @@ int main(){
                         std::cout << "added2: " << below_intersect.second << "\n";
                         sl.event_queue.push_back(below_intersect.second);
                         sl.sort_event_queue();
+                        sl.print_event_queue();
                     }
                 } 
                 
