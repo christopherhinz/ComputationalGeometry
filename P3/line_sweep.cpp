@@ -6,7 +6,7 @@
 
 int while_count = 0;
 void log_messages(sweep_line& sl, point& E){
-    (++while_count, std::cout << "======  Durchlauf " << while_count << "  ======\n");
+    (++while_count, std::cout << "\n======  Durchlauf " << while_count << "  ======\n");
     //std::cout << "Current Event: " << (E.pt == 0 ? "BEG " : E.pt == 1 ? "END " : "SEC ") << E.lineID << "\n";
     sl.print_event_queue();
     sl.print_segment_queue();
@@ -155,8 +155,10 @@ int main(){
             }
 
             for(int i = 0; i < sl.event_queue.size(); ++i){
-                if(E.pt == sl.event_queue[i].pt && E.lineID == sl.event_queue[i].lineID){
-                    std::cout << "removed from event_queue: " << E << std::endl;
+                if(E == sl.event_queue[i]){
+                    std::cout << "removed from event_queue:\n" 
+                        "\t" << E << std::endl <<
+                        "\t" << sl.event_queue[i] << std::endl;
                     sl.event_queue.erase(sl.event_queue.begin()+i);
                 }
             }
