@@ -40,15 +40,17 @@ int main(){
         while(sl.event_queue.size() != 0){
             sl.print_event_queue();
             point E = sl.event_queue.back();
+            int current_index = 0;
+
+            // BEGIN OF LINE
             if(E.pt == point_type::BEG){
                 // muss mit y-Wert passend einsortiert werden
-                int current_index;
                 if(sl.segment_queue.size() == 0){
                     sl.segment_queue.push_back(E);
                 }
                 else{
                     int size = sl.segment_queue.size();
-                    for(current_index = 0; current_index < size+1; ++current_index){
+                    while(current_index < size+1){
                         if(sl.segment_queue[current_index].y < E.y){
                             sl.segment_queue.insert(sl.segment_queue.begin()+current_index, E);
                             break;
@@ -57,6 +59,7 @@ int main(){
                             sl.segment_queue.push_back(E);
                             break;
                         }
+                        ++current_index;
                     }
                 }
 
@@ -80,8 +83,28 @@ int main(){
                     }
                 }                  
             } 
+
+            // END OF LINE
             else if (E.pt == point_type::END){
+
+                for(int i = 0; i < sl.segment_queue.size(); ++i){
+                    if(sl.segment_queue[i].lineID == E.lineID && sl.segment_queue[i].pt == E.pt)
+                        current_index = i;
+                }
+
+                // check segment above and below current segment
+                if(current_index > 0 && current_index < sl.segment_queue.size()-1){
+                    auto above_intersect = line_intersect_check(lines_by_index[sl.segment_queue[current_index-1].lineID-1], 
+                                                                lines_by_index[sl.segment_queue[current_index+1].lineID-1]);
+                    if(above_intersect.first){
+                        sl.event_queue.push_back(above_intersect.second);
+                        sl.sort_event_queue();
+                    }
+                }
+                sl.event_queue.erase(sl.event_queue.begin()+current_index);                
             } 
+
+            // INTERSECTION
             else if (E.pt == point_type::SEC) {
                 intersec_list.push_back(E);
             }
@@ -90,7 +113,6 @@ int main(){
                 if(E.pt == sl.event_queue[i].pt && E.lineID == sl.event_queue[i].lineID)
                     sl.event_queue.erase(sl.event_queue.begin()+i);
             }
-            //sl.event_queue.pop_back();
 
         } // while()
 

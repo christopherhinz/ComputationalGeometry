@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 
-enum point_type { BEG = 0, END, SEC};
+enum point_type { BEG = 0, END = 1, SEC = 2};
 
 struct point{
     double x;
@@ -81,7 +81,7 @@ point calc_intersect_point(line _l1, line _l2){
     l2.p1 = _l2.p1;
     l2.p2 = {.x = _l2.p2.x - _l2.p1.x, .y = _l2.p2.y - _l2.p1.y};
     double lambda2 = (l1.p1.y + l2.p1.x*l1.p2.y/l1.p2.x - l2.p1.y - l1.p1.x*l1.p2.y/l1.p2.x)/(l2.p2.y - l2.p2.x*l1.p2.y/l1.p2.x);
-    point intersect_point = {.x = l2.p1.x + lambda2 * l2.p2.x, .y = l2.p1.y + lambda2 * l2.p2.y};
+    point intersect_point = {.x = l2.p1.x + lambda2 * l2.p2.x, .y = l2.p1.y + lambda2 * l2.p2.y, .pt = SEC};
     return intersect_point;
 }
 
