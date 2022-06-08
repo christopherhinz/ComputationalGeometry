@@ -72,8 +72,7 @@ struct sweep_line{
     void erase_segment(std::size_t lineID){
         for(std::size_t i = 0; i < segment_queue.size(); ++i){
             if(segment_queue[i].lineID == lineID){
-                segment_queue.erase(segment_queue.begin()+1);
-                std::cout << "successfully erased segment: " << lineID << std::endl;
+                segment_queue.erase(segment_queue.begin()+i);
                 break;
             }
         }
@@ -129,6 +128,7 @@ std::pair<bool, point> line_intersect_check(line l1, line l2){
     double lambda1, lambda2;
     if(ccw_res1 <= 0.0 && ccw_res2 <= 0.0){
         retval = true;
+
         if(ccw_res1 == 0.0 && ccw_res2 == 0.0){
             lambda1 = (l2.p1.x-l1.p1.x)/(l1.p2.x-l1.p1.x);
             lambda2 = (l2.p2.x-l1.p1.x)/(l1.p2.x-l1.p1.x);
@@ -139,13 +139,27 @@ std::pair<bool, point> line_intersect_check(line l1, line l2){
     if(retval){
         p_intersect = calc_intersect_point(l1, l2);
     }
+    
+    std::cout << "\tline intersect log:\n\tintersect :" << std::boolalpha << retval
+              << "\n\tpoint: " << p_intersect 
+              //<< std::setprecision(9)
+              //<< "\n\tccws: " << ccw_res1 << " " 
+              //<< std::setprecision(9)
+              //<< ccw_res2
+              //<< std::setprecision(9)
+              //<< "\n\tlambdas: " << lambda1 << " " 
+              //<< std::setprecision(9)
+              //<< lambda2 << std::endl
+              << "\n\tline1: " << l1
+              << "\n\tline2: " << l2 << std::endl;
+    
     return std::pair<bool, point>(retval, p_intersect);
 }
 
 
-bool point_in_event_queue(point& p, std::vector<point>& event_queue){
+bool point_in_point_list(point& p, std::vector<point>& point_list){
     bool check = false;
-    for(auto& point : event_queue){
+    for(auto& point : point_list){
         if(point == p)
             check = true;
     }
