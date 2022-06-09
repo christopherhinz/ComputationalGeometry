@@ -1,18 +1,26 @@
+ALLE LINES
+pt=0, lineID=0, koords=(4,6) <-> pt=1, lineID=0, koords=(9,1)
+pt=0, lineID=1, koords=(0,2) <-> pt=1, lineID=1, koords=(10,2)
+pt=0, lineID=2, koords=(1,1) <-> pt=1, lineID=2, koords=(6,6)
+pt=0, lineID=3, koords=(6,3) <-> pt=1, lineID=3, koords=(11,3)
+pt=0, lineID=4, koords=(5.1,4) <-> pt=1, lineID=4, koords=(9,8)
+pt=0, lineID=5, koords=(5.2,7) <-> pt=1, lineID=5, koords=(9,7)
+
 
 ======  Durchlauf 1  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	END3: pt=1, lineID=3, koords=(6,6)
-	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.2,7)
-	BEG5: pt=0, lineID=5, koords=(5.1,4)
-	BEG1: pt=0, lineID=1, koords=(4,6)
-	BEG3: pt=0, lineID=3, koords=(1,1)
-	BEG2: pt=0, lineID=2, koords=(0,2)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	END2: pt=1, lineID=2, koords=(6,6)
+	BEG3: pt=0, lineID=3, koords=(6,3)
+	BEG5: pt=0, lineID=5, koords=(5.2,7)
+	BEG4: pt=0, lineID=4, koords=(5.1,4)
+	BEG0: pt=0, lineID=0, koords=(4,6)
+	BEG2: pt=0, lineID=2, koords=(1,1)
+	BEG1: pt=0, lineID=1, koords=(0,2)
 
 Segment queue:
 
@@ -20,150 +28,150 @@ BEG
 
 ======  Durchlauf 2  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	END3: pt=1, lineID=3, koords=(6,6)
-	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.2,7)
-	BEG5: pt=0, lineID=5, koords=(5.1,4)
-	BEG1: pt=0, lineID=1, koords=(4,6)
-	BEG3: pt=0, lineID=3, koords=(1,1)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	END2: pt=1, lineID=2, koords=(6,6)
+	BEG3: pt=0, lineID=3, koords=(6,3)
+	BEG5: pt=0, lineID=5, koords=(5.2,7)
+	BEG4: pt=0, lineID=4, koords=(5.1,4)
+	BEG0: pt=0, lineID=0, koords=(4,6)
+	BEG2: pt=0, lineID=2, koords=(1,1)
 
 Segment queue:
-	lineID2
+	lineID1
 
 BEG
 BEG: above
 
 ======  Durchlauf 3  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	END3: pt=1, lineID=3, koords=(6,6)
-	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.2,7)
-	BEG5: pt=0, lineID=5, koords=(5.1,4)
-	BEG1: pt=0, lineID=1, koords=(4,6)
-	SEC 2,3: pt=2, lineID=0, koords=(2,2)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	END2: pt=1, lineID=2, koords=(6,6)
+	BEG3: pt=0, lineID=3, koords=(6,3)
+	BEG5: pt=0, lineID=5, koords=(5.2,7)
+	BEG4: pt=0, lineID=4, koords=(5.1,4)
+	BEG0: pt=0, lineID=0, koords=(4,6)
+	SEC 1,2: pt=2, lineID=-1, koords=(2,2)
 
 Segment queue:
+	lineID1
 	lineID2
-	lineID3
 
 SEC
-	line1: ID2, line2: ID3
+	line1: ID1, line2: ID2
 	Segments to swap: 0 1
 
 ======  Durchlauf 4  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	END3: pt=1, lineID=3, koords=(6,6)
-	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.2,7)
-	BEG5: pt=0, lineID=5, koords=(5.1,4)
-	BEG1: pt=0, lineID=1, koords=(4,6)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	END2: pt=1, lineID=2, koords=(6,6)
+	BEG3: pt=0, lineID=3, koords=(6,3)
+	BEG5: pt=0, lineID=5, koords=(5.2,7)
+	BEG4: pt=0, lineID=4, koords=(5.1,4)
+	BEG0: pt=0, lineID=0, koords=(4,6)
 
 Segment queue:
-	lineID3
 	lineID2
+	lineID1
 
 BEG
 BEG: below
 
 ======  Durchlauf 5  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	END3: pt=1, lineID=3, koords=(6,6)
-	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.2,7)
-	BEG5: pt=0, lineID=5, koords=(5.1,4)
-	SEC 1,3: pt=2, lineID=0, koords=(5,5)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	END2: pt=1, lineID=2, koords=(6,6)
+	BEG3: pt=0, lineID=3, koords=(6,3)
+	BEG5: pt=0, lineID=5, koords=(5.2,7)
+	BEG4: pt=0, lineID=4, koords=(5.1,4)
+	SEC 0,2: pt=2, lineID=-1, koords=(5,5)
 
 Segment queue:
-	lineID1
-	lineID3
+	lineID0
 	lineID2
+	lineID1
 
 SEC
-	line1: ID1, line2: ID3
+	line1: ID0, line2: ID2
 	Segments to swap: 0 1
 SEC: below
-compare lines: 1 & 2
+compare lines: 0 & 1
 
 ======  Durchlauf 6  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	SEC 1,2: pt=2, lineID=0, koords=(8,2)
-	END3: pt=1, lineID=3, koords=(6,6)
-	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.2,7)
-	BEG5: pt=0, lineID=5, koords=(5.1,4)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	SEC 0,1: pt=2, lineID=-1, koords=(8,2)
+	END2: pt=1, lineID=2, koords=(6,6)
+	BEG3: pt=0, lineID=3, koords=(6,3)
+	BEG5: pt=0, lineID=5, koords=(5.2,7)
+	BEG4: pt=0, lineID=4, koords=(5.1,4)
 
 Segment queue:
-	lineID3
-	lineID1
 	lineID2
+	lineID0
+	lineID1
 
 BEG
 BEG: below
 
 ======  Durchlauf 7  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	SEC 1,2: pt=2, lineID=0, koords=(8,2)
-	END3: pt=1, lineID=3, koords=(6,6)
-	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.2,7)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	SEC 0,1: pt=2, lineID=-1, koords=(8,2)
+	END2: pt=1, lineID=2, koords=(6,6)
+	BEG3: pt=0, lineID=3, koords=(6,3)
+	BEG5: pt=0, lineID=5, koords=(5.2,7)
 
 Segment queue:
-	lineID5
-	lineID3
-	lineID1
+	lineID4
 	lineID2
+	lineID0
+	lineID1
 
 BEG
 BEG: below
 
 ======  Durchlauf 8  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	SEC 6,5: pt=2, lineID=0, koords=(8.025,7)
-	SEC 1,2: pt=2, lineID=0, koords=(8,2)
-	END3: pt=1, lineID=3, koords=(6,6)
-	BEG4: pt=0, lineID=4, koords=(6,3)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	SEC 5,4: pt=2, lineID=-1, koords=(8.025,7)
+	SEC 0,1: pt=2, lineID=-1, koords=(8,2)
+	END2: pt=1, lineID=2, koords=(6,6)
+	BEG3: pt=0, lineID=3, koords=(6,3)
 
 Segment queue:
-	lineID6
 	lineID5
-	lineID3
-	lineID1
+	lineID4
 	lineID2
+	lineID0
+	lineID1
 
 BEG
 BEG: above
@@ -171,160 +179,160 @@ BEG: below
 
 ======  Durchlauf 9  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	SEC 6,5: pt=2, lineID=0, koords=(8.025,7)
-	SEC 1,2: pt=2, lineID=0, koords=(8,2)
-	END3: pt=1, lineID=3, koords=(6,6)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	SEC 5,4: pt=2, lineID=-1, koords=(8.025,7)
+	SEC 0,1: pt=2, lineID=-1, koords=(8,2)
+	END2: pt=1, lineID=2, koords=(6,6)
 
 Segment queue:
-	lineID6
 	lineID5
 	lineID4
 	lineID3
-	lineID1
 	lineID2
+	lineID0
+	lineID1
 
 END
 END: above
 
 ======  Durchlauf 10  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	SEC 6,5: pt=2, lineID=0, koords=(8.025,7)
-	SEC 1,2: pt=2, lineID=0, koords=(8,2)
-	SEC 1,4: pt=2, lineID=0, koords=(7,3)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	SEC 5,4: pt=2, lineID=-1, koords=(8.025,7)
+	SEC 0,1: pt=2, lineID=-1, koords=(8,2)
+	SEC 0,3: pt=2, lineID=-1, koords=(7,3)
 
 Segment queue:
-	lineID6
 	lineID5
 	lineID4
+	lineID3
+	lineID0
 	lineID1
-	lineID2
 
 SEC
-	line1: ID1, line2: ID4
+	line1: ID0, line2: ID3
 	Segments to swap: 3 2
 SEC: above
-compare lines: 4 & 1
+compare lines: 3 & 0
 SEC: below
-compare lines: 1 & 4
+compare lines: 0 & 3
 
 ======  Durchlauf 11  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	SEC 6,5: pt=2, lineID=0, koords=(8.025,7)
-	SEC 1,2: pt=2, lineID=0, koords=(8,2)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	SEC 5,4: pt=2, lineID=-1, koords=(8.025,7)
+	SEC 0,1: pt=2, lineID=-1, koords=(8,2)
 
 Segment queue:
-	lineID6
 	lineID5
-	lineID1
 	lineID4
-	lineID2
+	lineID0
+	lineID3
+	lineID1
 
 SEC
-	line1: ID1, line2: ID2
+	line1: ID0, line2: ID1
 	Segments to swap: 2 4
 SEC: above
-compare lines: 2 & 5
+compare lines: 1 & 4
 
 ======  Durchlauf 12  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
-	SEC 6,5: pt=2, lineID=0, koords=(8.025,7)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
+	SEC 5,4: pt=2, lineID=-1, koords=(8.025,7)
 
 Segment queue:
-	lineID6
 	lineID5
-	lineID2
 	lineID4
 	lineID1
+	lineID3
+	lineID0
 
 SEC
-	line1: ID6, line2: ID5
+	line1: ID5, line2: ID4
 	Segments to swap: 0 1
 SEC: below
-compare lines: 6 & 2
+compare lines: 5 & 1
 
 ======  Durchlauf 13  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
+	END0: pt=1, lineID=0, koords=(9,1)
 
 Segment queue:
-	lineID5
-	lineID6
-	lineID2
 	lineID4
+	lineID5
 	lineID1
+	lineID3
+	lineID0
 
 END
 
 ======  Durchlauf 14  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
+	END5: pt=1, lineID=5, koords=(9,7)
 
 Segment queue:
-	lineID5
-	lineID6
-	lineID2
 	lineID4
+	lineID5
+	lineID1
+	lineID3
 
 END
 END: above
 
 ======  Durchlauf 15  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
+	END4: pt=1, lineID=4, koords=(9,8)
 
 Segment queue:
-	lineID5
-	lineID2
 	lineID4
+	lineID1
+	lineID3
 
 END
 
 ======  Durchlauf 16  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
+	END3: pt=1, lineID=3, koords=(11,3)
+	END1: pt=1, lineID=1, koords=(10,2)
 
 Segment queue:
-	lineID2
-	lineID4
+	lineID1
+	lineID3
 
 END
 
 ======  Durchlauf 17  ======
 Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
+	END3: pt=1, lineID=3, koords=(11,3)
 
 Segment queue:
-	lineID4
+	lineID3
 
 END
 INTERSECTIONS

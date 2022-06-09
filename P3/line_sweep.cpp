@@ -15,8 +15,7 @@ void log_messages(sweep_line& sl, point& E){
     sl.print_segment_queue();
 }
 
-typedef long long LLint;
-inline bool indizes_in_range(LLint lower_lim, LLint upper_lim, LLint i_lower, LLint i_upper){
+inline bool indizes_in_range(long long lower_lim, long long upper_lim, long long i_lower, long long i_upper){
     return (i_upper >= lower_lim && i_upper <= upper_lim) && (i_lower >= lower_lim && i_lower <= upper_lim);
 }
 
@@ -38,14 +37,18 @@ int main(){
 
         sweep_line sl;
         sl.event_queue = std::vector<point>();
-
-        read_dat(filename, sl.event_queue);
-
         std::vector<line> lines_by_index{sl.event_queue.size()/2};
-        for(auto& p: sl.event_queue){
-            if(p.pt == BEG) lines_by_index[p.lineID-1].p1 = p;
-            else            lines_by_index[p.lineID-1].p2 = p;
-        }
+
+        read_dat(filename, sl.event_queue, lines_by_index);
+
+        //for(auto& p: sl.event_queue){
+        //    if(p.pt == BEG) lines_by_index[p.lineID-1].p_beg = p;
+        //    else            lines_by_index[p.lineID-1].p_end = p;
+        //}
+        std::cout << "ALLE LINES\n";
+        for(auto& line: lines_by_index)
+            std::cout << line << std::endl;
+       std::cout << std::endl;
 
 
         std::size_t intersect_count = 0;
@@ -69,17 +72,17 @@ int main(){
                     std::cout << "BEG\n";
                 #endif
                 if(sl.segment_queue.size() == 0){
-                    sl.segment_queue.push_back( segment{.lineID = E.lineID, .y_beg = E.y} );
+                    sl.segment_queue.push_back( lines_by_index[E.lineID] );
                 }
                 else{
                     std::size_t size = sl.segment_queue.size();
                     while(current_index < size+1){
-                        if(sl.segment_queue[current_index].y_beg < E.y){
-                            sl.segment_queue.insert( sl.segment_queue.begin()+current_index, segment{.lineID = E.lineID, .y_beg = E.y} );
+                        if(sl.segment_queue[current_index].p_beg.y < E.y){
+                            sl.segment_queue.insert( sl.segment_queue.begin()+current_index,  lines_by_index[E.lineID] );
                             break;
                         }
                         if(current_index == size){
-                            sl.segment_queue.push_back( segment{.lineID = E.lineID, .y_beg = E.y} );
+                            sl.segment_queue.push_back( lines_by_index[E.lineID] );
                             break;
                         }
                         ++current_index;
@@ -91,8 +94,8 @@ int main(){
                     #if printf_debug                                            
                         std::cout << "BEG: above\n";
                     #endif
-                    auto above_intersect = line_intersect_check(lines_by_index[sl.segment_queue[current_index  ].lineID-1], 
-                                                                lines_by_index[sl.segment_queue[current_index-1].lineID-1]);
+                    auto above_intersect = line_intersect_check(sl.segment_queue[current_index  ], 
+                                                                sl.segment_queue[current_index-1]);
                     if(above_intersect.first && !point_in_point_list(above_intersect.second, sl.event_queue)){
                         sl.event_queue.push_back(above_intersect.second);
                         sl.sort_event_queue();
@@ -104,8 +107,8 @@ int main(){
                     #if printf_debug
                         std::cout << "BEG: below\n";
                     #endif
-                    auto below_intersect = line_intersect_check(lines_by_index[sl.segment_queue[current_index  ].lineID-1], 
-                                                                lines_by_index[sl.segment_queue[current_index+1].lineID-1]);
+                    auto below_intersect = line_intersect_check(sl.segment_queue[current_index  ], 
+                                                                sl.segment_queue[current_index+1]);
                     if(below_intersect.first && !point_in_point_list(below_intersect.second, sl.event_queue)){
                         sl.event_queue.push_back(below_intersect.second);
                         sl.sort_event_queue();
@@ -120,7 +123,7 @@ int main(){
                 #endif    
 
                 for(std::size_t i = 0; i < sl.segment_queue.size(); ++i){
-                    if(sl.segment_queue[i].lineID == E.lineID)
+                    if(sl.segment_queue[i].p_beg.lineID == E.lineID)
                         current_index = i;
                 }
 
@@ -129,8 +132,8 @@ int main(){
                     #if printf_debug                                            
                         std::cout << "END: above\n";
                     #endif
-                    auto above_intersect = line_intersect_check(lines_by_index[sl.segment_queue[current_index-1].lineID-1], 
-                                                                lines_by_index[sl.segment_queue[current_index+1].lineID-1]);
+                    auto above_intersect = line_intersect_check(sl.segment_queue[current_index-1], 
+                                                                sl.segment_queue[current_index+1]);
                     if(above_intersect.first && !point_in_point_list(above_intersect.second, sl.event_queue)){
                         sl.event_queue.push_back(above_intersect.second);
                         sl.sort_event_queue();
@@ -151,9 +154,9 @@ int main(){
                     std::cout << "\tline1: ID" << E.line1 << ", line2: ID" << E.line2 << std::endl; 
                 #endif
                 for(std::size_t i = 0; i < sl.segment_queue.size(); ++i){
-                    if(sl.segment_queue[i].lineID == E.line1) 
+                    if(sl.segment_queue[i].p_beg.lineID == E.line1) 
                         seg_pos1 = i;
-                    else if(sl.segment_queue[i].lineID == E.line2) 
+                    else if(sl.segment_queue[i].p_beg.lineID == E.line2) 
                         seg_pos2 = i;
                 }
                 //if(seg_pos1 > seg_pos2)
@@ -161,7 +164,7 @@ int main(){
                 #if printf_debug
                     std::cout << "\tSegments to swap: " << seg_pos1 << " " << seg_pos2 << std::endl;
                 #endif
-                swap_segments(sl.segment_queue[seg_pos1], sl.segment_queue[seg_pos2]);
+                swap_lines(sl.segment_queue[seg_pos1], sl.segment_queue[seg_pos2]);
                 // std::swap<std::size_t>(seg_pos1, seg_pos2);
 
                                
@@ -170,11 +173,11 @@ int main(){
                 if( indizes_in_range(0, sl.segment_queue.size()-1, seg_pos1, seg_pos1-1) ){
                     #if printf_debug 
                         std::cout << "SEC: above\n";
-                        std::cout << "compare lines: " << sl.segment_queue[seg_pos1  ].lineID << " & " 
-                                  << sl.segment_queue[seg_pos1-1].lineID << std::endl;
+                        std::cout << "compare lines: " << sl.segment_queue[seg_pos1  ].p_beg.lineID << " & " 
+                                  << sl.segment_queue[seg_pos1-1].p_beg.lineID << std::endl;
                     #endif
-                    auto above_intersect = line_intersect_check(lines_by_index[sl.segment_queue[seg_pos1  ].lineID-1], 
-                                                                lines_by_index[sl.segment_queue[seg_pos1-1].lineID-1]);
+                    auto above_intersect = line_intersect_check(sl.segment_queue[seg_pos1  ], 
+                                                                sl.segment_queue[seg_pos1-1]);
                     if(above_intersect.first && !point_in_point_list(above_intersect.second, sl.event_queue)){
                         sl.event_queue.push_back(above_intersect.second);
                         sl.sort_event_queue();
@@ -185,11 +188,11 @@ int main(){
                 if( indizes_in_range(0, sl.segment_queue.size()-1, seg_pos2, seg_pos2+1) ){
                     #if printf_debug                                            
                         std::cout << "SEC: below\n";
-                        std::cout << "compare lines: " << sl.segment_queue[seg_pos2  ].lineID << " & " 
-                                  << sl.segment_queue[seg_pos2+1].lineID << std::endl;
+                        std::cout << "compare lines: " << sl.segment_queue[seg_pos2  ].p_beg.lineID << " & " 
+                                  << sl.segment_queue[seg_pos2+1].p_beg.lineID << std::endl;
                     #endif
-                    auto below_intersect = line_intersect_check(lines_by_index[sl.segment_queue[seg_pos2  ].lineID-1], 
-                                                                lines_by_index[sl.segment_queue[seg_pos2+1].lineID-1]);
+                    auto below_intersect = line_intersect_check(sl.segment_queue[seg_pos2  ], 
+                                                                sl.segment_queue[seg_pos2+1]);
                     if(below_intersect.first && !point_in_point_list(below_intersect.second, sl.event_queue)){
                         sl.event_queue.push_back(below_intersect.second);
                         sl.sort_event_queue();
