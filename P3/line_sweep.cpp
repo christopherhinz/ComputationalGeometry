@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 
+// clang++ -std=c++14 line_sweep.cpp && ./a.out > output.txt && open output.txt
 
 #define printf_debug 1
 
@@ -23,7 +24,10 @@ inline bool indizes_in_range(LLint lower_lim, LLint upper_lim, LLint i_lower, LL
 
 int main(){
 
-    std::vector<std::string> filenames {"strecken/VL_example.dat"};
+    std::vector<std::string> filenames //{"strecken/problemkinder.dat"};
+                                        //{"strecken/s_1000_10_reduced.dat"};
+                                        //{"strecken/s_1000_10.dat"};
+                                        {"strecken/VL_example.dat"};
                                         //{"strecken/s_1000_1.dat"};
                                         /*"strecken/s_10000_1.dat",
                                         "strecken/s_100000_1.dat"};*/
@@ -48,6 +52,7 @@ int main(){
         std::vector<point> intersec_list;
 
         sl.sort_event_queue();
+
 
         while(sl.event_queue.size() != 0){
 
@@ -138,33 +143,38 @@ int main(){
             else if (E.pt == point_type::SEC) {
                 #if printf_debug
                     std::cout << "SEC\n";
-                #endif
+                #endif 
                 if(!point_in_point_list(E, intersec_list))
                     intersec_list.push_back(E);
-                std::size_t i_line1, i_line2;
+                std::size_t seg_pos1, seg_pos2;
                 #if printf_debug
-                    std::cout << "\tline1: " << E.line1 << ", line2: " << E.line2 << std::endl; 
+                    std::cout << "\tline1: ID" << E.line1 << ", line2: ID" << E.line2 << std::endl; 
                 #endif
                 for(std::size_t i = 0; i < sl.segment_queue.size(); ++i){
                     if(sl.segment_queue[i].lineID == E.line1) 
-                        i_line1 = i;
+                        seg_pos1 = i;
                     else if(sl.segment_queue[i].lineID == E.line2) 
-                        i_line2 = i;
+                        seg_pos2 = i;
                 }
+                //if(seg_pos1 > seg_pos2)
+                //    std::swap<std::size_t>(seg_pos1, seg_pos2);
                 #if printf_debug
-                    std::cout << "\tSegments to swap: " << i_line1 << " " << i_line2 << std::endl;
+                    std::cout << "\tSegments to swap: " << seg_pos1 << " " << seg_pos2 << std::endl;
                 #endif
-                swap_segments(sl.segment_queue[i_line1], sl.segment_queue[i_line2]);
+                swap_segments(sl.segment_queue[seg_pos1], sl.segment_queue[seg_pos2]);
+                // std::swap<std::size_t>(seg_pos1, seg_pos2);
 
                                
                 
                 // check segment above recently added segment
-                if( indizes_in_range(0, sl.segment_queue.size()-1, i_line1, i_line1-1) ){
+                if( indizes_in_range(0, sl.segment_queue.size()-1, seg_pos1, seg_pos1-1) ){
                     #if printf_debug 
                         std::cout << "SEC: above\n";
+                        std::cout << "compare lines: " << sl.segment_queue[seg_pos1  ].lineID << " & " 
+                                  << sl.segment_queue[seg_pos1-1].lineID << std::endl;
                     #endif
-                    auto above_intersect = line_intersect_check(lines_by_index[sl.segment_queue[i_line1  ].lineID-1], 
-                                                                lines_by_index[sl.segment_queue[i_line1-1].lineID-1]);
+                    auto above_intersect = line_intersect_check(lines_by_index[sl.segment_queue[seg_pos1  ].lineID-1], 
+                                                                lines_by_index[sl.segment_queue[seg_pos1-1].lineID-1]);
                     if(above_intersect.first && !point_in_point_list(above_intersect.second, sl.event_queue)){
                         sl.event_queue.push_back(above_intersect.second);
                         sl.sort_event_queue();
@@ -172,12 +182,14 @@ int main(){
                 }
 
                 // check segment below recently added segment
-                if( indizes_in_range(0, sl.segment_queue.size()-1, i_line2, i_line2+1) ){
+                if( indizes_in_range(0, sl.segment_queue.size()-1, seg_pos2, seg_pos2+1) ){
                     #if printf_debug                                            
                         std::cout << "SEC: below\n";
+                        std::cout << "compare lines: " << sl.segment_queue[seg_pos2  ].lineID << " & " 
+                                  << sl.segment_queue[seg_pos2+1].lineID << std::endl;
                     #endif
-                    auto below_intersect = line_intersect_check(lines_by_index[sl.segment_queue[i_line2  ].lineID-1], 
-                                                                lines_by_index[sl.segment_queue[i_line2+1].lineID-1]);
+                    auto below_intersect = line_intersect_check(lines_by_index[sl.segment_queue[seg_pos2  ].lineID-1], 
+                                                                lines_by_index[sl.segment_queue[seg_pos2+1].lineID-1]);
                     if(below_intersect.first && !point_in_point_list(below_intersect.second, sl.event_queue)){
                         sl.event_queue.push_back(below_intersect.second);
                         sl.sort_event_queue();
@@ -190,13 +202,14 @@ int main(){
                 if(E == sl.event_queue[i])
                     sl.event_queue.erase(sl.event_queue.begin()+i);
             }
-            //if(while_count == 20)
+            //if(while_count == 10)
             //    break;
         } 
 
-        std::cout << "\nINTERSECTIONS\nNumber of intersects: " << intersec_list.size() << std::endl;    
+        std::cout << "INTERSECTIONS\nNumber of intersects: " << intersec_list.size() << std::endl;    
         for(auto intersect : intersec_list)
-            std::cout << intersect << std::endl;
+            std::cout << intersect.x << " " << intersect.y << std::endl;
+            //std::cout << intersect << std::endl;
     } 
     return 0;
 }

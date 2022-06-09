@@ -8,8 +8,8 @@ Event queue:
 	END1: pt=1, lineID=1, koords=(9,1)
 	END3: pt=1, lineID=3, koords=(6,6)
 	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.1,7)
-	BEG5: pt=0, lineID=5, koords=(5,4)
+	BEG6: pt=0, lineID=6, koords=(5.2,7)
+	BEG5: pt=0, lineID=5, koords=(5.1,4)
 	BEG1: pt=0, lineID=1, koords=(4,6)
 	BEG3: pt=0, lineID=3, koords=(1,1)
 	BEG2: pt=0, lineID=2, koords=(0,2)
@@ -27,8 +27,8 @@ Event queue:
 	END1: pt=1, lineID=1, koords=(9,1)
 	END3: pt=1, lineID=3, koords=(6,6)
 	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.1,7)
-	BEG5: pt=0, lineID=5, koords=(5,4)
+	BEG6: pt=0, lineID=6, koords=(5.2,7)
+	BEG5: pt=0, lineID=5, koords=(5.1,4)
 	BEG1: pt=0, lineID=1, koords=(4,6)
 	BEG3: pt=0, lineID=3, koords=(1,1)
 
@@ -37,11 +37,6 @@ Segment queue:
 
 BEG
 BEG: above
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(2,2)
-	line1: pt=0, lineID=3, koords=(1,1) <-> pt=1, lineID=3, koords=(6,6)
-	line2: pt=0, lineID=2, koords=(0,2) <-> pt=1, lineID=2, koords=(10,2)
 
 ======  Durchlauf 3  ======
 Event queue:
@@ -52,30 +47,18 @@ Event queue:
 	END1: pt=1, lineID=1, koords=(9,1)
 	END3: pt=1, lineID=3, koords=(6,6)
 	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.1,7)
-	BEG5: pt=0, lineID=5, koords=(5,4)
+	BEG6: pt=0, lineID=6, koords=(5.2,7)
+	BEG5: pt=0, lineID=5, koords=(5.1,4)
 	BEG1: pt=0, lineID=1, koords=(4,6)
-	SEC 3,2: pt=2, lineID=0, koords=(2,2)
+	SEC 2,3: pt=2, lineID=0, koords=(2,2)
 
 Segment queue:
 	lineID2
 	lineID3
 
 SEC
-	line1: 3, line2: 2
-	Segments to swap: 1 0
-SEC: above
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(2,2)
-	line1: pt=0, lineID=2, koords=(0,2) <-> pt=1, lineID=2, koords=(10,2)
-	line2: pt=0, lineID=3, koords=(1,1) <-> pt=1, lineID=3, koords=(6,6)
-SEC: below
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(2,2)
-	line1: pt=0, lineID=3, koords=(1,1) <-> pt=1, lineID=3, koords=(6,6)
-	line2: pt=0, lineID=2, koords=(0,2) <-> pt=1, lineID=2, koords=(10,2)
+	line1: ID2, line2: ID3
+	Segments to swap: 0 1
 
 ======  Durchlauf 4  ======
 Event queue:
@@ -86,8 +69,8 @@ Event queue:
 	END1: pt=1, lineID=1, koords=(9,1)
 	END3: pt=1, lineID=3, koords=(6,6)
 	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.1,7)
-	BEG5: pt=0, lineID=5, koords=(5,4)
+	BEG6: pt=0, lineID=6, koords=(5.2,7)
+	BEG5: pt=0, lineID=5, koords=(5.1,4)
 	BEG1: pt=0, lineID=1, koords=(4,6)
 
 Segment queue:
@@ -96,11 +79,6 @@ Segment queue:
 
 BEG
 BEG: below
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(5,5)
-	line1: pt=0, lineID=1, koords=(4,6) <-> pt=1, lineID=1, koords=(9,1)
-	line2: pt=0, lineID=3, koords=(1,1) <-> pt=1, lineID=3, koords=(6,6)
 
 ======  Durchlauf 5  ======
 Event queue:
@@ -111,28 +89,20 @@ Event queue:
 	END1: pt=1, lineID=1, koords=(9,1)
 	END3: pt=1, lineID=3, koords=(6,6)
 	BEG4: pt=0, lineID=4, koords=(6,3)
-	BEG6: pt=0, lineID=6, koords=(5.1,7)
+	BEG6: pt=0, lineID=6, koords=(5.2,7)
+	BEG5: pt=0, lineID=5, koords=(5.1,4)
 	SEC 1,3: pt=2, lineID=0, koords=(5,5)
-	BEG5: pt=0, lineID=5, koords=(5,4)
 
 Segment queue:
 	lineID1
 	lineID3
 	lineID2
 
-BEG
-BEG: above
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(5.5,4.5)
-	line1: pt=0, lineID=5, koords=(5,4) <-> pt=1, lineID=5, koords=(9,8)
-	line2: pt=0, lineID=1, koords=(4,6) <-> pt=1, lineID=1, koords=(9,1)
-BEG: below
-	line intersect log:
-	intersect :false
-	point: pt=0, lineID=0, koords=(0,0)
-	line1: pt=0, lineID=5, koords=(5,4) <-> pt=1, lineID=5, koords=(9,8)
-	line2: pt=0, lineID=3, koords=(1,1) <-> pt=1, lineID=3, koords=(6,6)
+SEC
+	line1: ID1, line2: ID3
+	Segments to swap: 0 1
+SEC: below
+compare lines: 1 & 2
 
 ======  Durchlauf 6  ======
 Event queue:
@@ -141,27 +111,19 @@ Event queue:
 	END5: pt=1, lineID=5, koords=(9,8)
 	END6: pt=1, lineID=6, koords=(9,7)
 	END1: pt=1, lineID=1, koords=(9,1)
+	SEC 1,2: pt=2, lineID=0, koords=(8,2)
 	END3: pt=1, lineID=3, koords=(6,6)
 	BEG4: pt=0, lineID=4, koords=(6,3)
-	SEC 5,1: pt=2, lineID=0, koords=(5.5,4.5)
-	BEG6: pt=0, lineID=6, koords=(5.1,7)
-	SEC 1,3: pt=2, lineID=0, koords=(5,5)
+	BEG6: pt=0, lineID=6, koords=(5.2,7)
+	BEG5: pt=0, lineID=5, koords=(5.1,4)
 
 Segment queue:
-	lineID1
-	lineID5
 	lineID3
+	lineID1
 	lineID2
 
-SEC
-	line1: 1, line2: 3
-	Segments to swap: 0 2
-SEC: below
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(8,2)
-	line1: pt=0, lineID=1, koords=(4,6) <-> pt=1, lineID=1, koords=(9,1)
-	line2: pt=0, lineID=2, koords=(0,2) <-> pt=1, lineID=2, koords=(10,2)
+BEG
+BEG: below
 
 ======  Durchlauf 7  ======
 Event queue:
@@ -173,22 +135,16 @@ Event queue:
 	SEC 1,2: pt=2, lineID=0, koords=(8,2)
 	END3: pt=1, lineID=3, koords=(6,6)
 	BEG4: pt=0, lineID=4, koords=(6,3)
-	SEC 5,1: pt=2, lineID=0, koords=(5.5,4.5)
-	BEG6: pt=0, lineID=6, koords=(5.1,7)
+	BEG6: pt=0, lineID=6, koords=(5.2,7)
 
 Segment queue:
-	lineID3
 	lineID5
+	lineID3
 	lineID1
 	lineID2
 
 BEG
 BEG: below
-	line intersect log:
-	intersect :false
-	point: pt=0, lineID=0, koords=(0,0)
-	line1: pt=0, lineID=6, koords=(5.1,7) <-> pt=1, lineID=6, koords=(9,7)
-	line2: pt=0, lineID=3, koords=(1,1) <-> pt=1, lineID=3, koords=(6,6)
 
 ======  Durchlauf 8  ======
 Event queue:
@@ -197,33 +153,21 @@ Event queue:
 	END5: pt=1, lineID=5, koords=(9,8)
 	END6: pt=1, lineID=6, koords=(9,7)
 	END1: pt=1, lineID=1, koords=(9,1)
+	SEC 6,5: pt=2, lineID=0, koords=(8.025,7)
 	SEC 1,2: pt=2, lineID=0, koords=(8,2)
 	END3: pt=1, lineID=3, koords=(6,6)
 	BEG4: pt=0, lineID=4, koords=(6,3)
-	SEC 5,1: pt=2, lineID=0, koords=(5.5,4.5)
 
 Segment queue:
 	lineID6
-	lineID3
 	lineID5
+	lineID3
 	lineID1
 	lineID2
 
-SEC
-	line1: 5, line2: 1
-	Segments to swap: 2 3
-SEC: above
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(5,5)
-	line1: pt=0, lineID=1, koords=(4,6) <-> pt=1, lineID=1, koords=(9,1)
-	line2: pt=0, lineID=3, koords=(1,1) <-> pt=1, lineID=3, koords=(6,6)
-SEC: below
-	line intersect log:
-	intersect :false
-	point: pt=0, lineID=0, koords=(0,0)
-	line1: pt=0, lineID=5, koords=(5,4) <-> pt=1, lineID=5, koords=(9,8)
-	line2: pt=0, lineID=2, koords=(0,2) <-> pt=1, lineID=2, koords=(10,2)
+BEG
+BEG: above
+BEG: below
 
 ======  Durchlauf 9  ======
 Event queue:
@@ -232,33 +176,20 @@ Event queue:
 	END5: pt=1, lineID=5, koords=(9,8)
 	END6: pt=1, lineID=6, koords=(9,7)
 	END1: pt=1, lineID=1, koords=(9,1)
+	SEC 6,5: pt=2, lineID=0, koords=(8.025,7)
 	SEC 1,2: pt=2, lineID=0, koords=(8,2)
 	END3: pt=1, lineID=3, koords=(6,6)
-	BEG4: pt=0, lineID=4, koords=(6,3)
-	SEC 1,3: pt=2, lineID=0, koords=(5,5)
 
 Segment queue:
 	lineID6
+	lineID5
+	lineID4
 	lineID3
 	lineID1
-	lineID5
 	lineID2
 
-SEC
-	line1: 1, line2: 3
-	Segments to swap: 2 1
-SEC: above
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(5,5)
-	line1: pt=0, lineID=3, koords=(1,1) <-> pt=1, lineID=3, koords=(6,6)
-	line2: pt=0, lineID=1, koords=(4,6) <-> pt=1, lineID=1, koords=(9,1)
-SEC: below
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(5,5)
-	line1: pt=0, lineID=1, koords=(4,6) <-> pt=1, lineID=1, koords=(9,1)
-	line2: pt=0, lineID=3, koords=(1,1) <-> pt=1, lineID=3, koords=(6,6)
+END
+END: above
 
 ======  Durchlauf 10  ======
 Event queue:
@@ -267,30 +198,24 @@ Event queue:
 	END5: pt=1, lineID=5, koords=(9,8)
 	END6: pt=1, lineID=6, koords=(9,7)
 	END1: pt=1, lineID=1, koords=(9,1)
+	SEC 6,5: pt=2, lineID=0, koords=(8.025,7)
 	SEC 1,2: pt=2, lineID=0, koords=(8,2)
-	END3: pt=1, lineID=3, koords=(6,6)
-	BEG4: pt=0, lineID=4, koords=(6,3)
+	SEC 1,4: pt=2, lineID=0, koords=(7,3)
 
 Segment queue:
 	lineID6
-	lineID1
-	lineID3
 	lineID5
+	lineID4
+	lineID1
 	lineID2
 
-BEG
-BEG: above
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(7,3)
-	line1: pt=0, lineID=4, koords=(6,3) <-> pt=1, lineID=4, koords=(11,3)
-	line2: pt=0, lineID=1, koords=(4,6) <-> pt=1, lineID=1, koords=(9,1)
-BEG: below
-	line intersect log:
-	intersect :false
-	point: pt=0, lineID=0, koords=(0,0)
-	line1: pt=0, lineID=4, koords=(6,3) <-> pt=1, lineID=4, koords=(11,3)
-	line2: pt=0, lineID=3, koords=(1,1) <-> pt=1, lineID=3, koords=(6,6)
+SEC
+	line1: ID1, line2: ID4
+	Segments to swap: 3 2
+SEC: above
+compare lines: 4 & 1
+SEC: below
+compare lines: 1 & 4
 
 ======  Durchlauf 11  ======
 Event queue:
@@ -299,25 +224,21 @@ Event queue:
 	END5: pt=1, lineID=5, koords=(9,8)
 	END6: pt=1, lineID=6, koords=(9,7)
 	END1: pt=1, lineID=1, koords=(9,1)
+	SEC 6,5: pt=2, lineID=0, koords=(8.025,7)
 	SEC 1,2: pt=2, lineID=0, koords=(8,2)
-	SEC 4,1: pt=2, lineID=0, koords=(7,3)
-	END3: pt=1, lineID=3, koords=(6,6)
 
 Segment queue:
 	lineID6
+	lineID5
 	lineID1
 	lineID4
-	lineID3
-	lineID5
 	lineID2
 
-END
-END: above
-	line intersect log:
-	intersect :false
-	point: pt=0, lineID=0, koords=(0,0)
-	line1: pt=0, lineID=4, koords=(6,3) <-> pt=1, lineID=4, koords=(11,3)
-	line2: pt=0, lineID=5, koords=(5,4) <-> pt=1, lineID=5, koords=(9,8)
+SEC
+	line1: ID1, line2: ID2
+	Segments to swap: 2 4
+SEC: above
+compare lines: 2 & 5
 
 ======  Durchlauf 12  ======
 Event queue:
@@ -326,31 +247,20 @@ Event queue:
 	END5: pt=1, lineID=5, koords=(9,8)
 	END6: pt=1, lineID=6, koords=(9,7)
 	END1: pt=1, lineID=1, koords=(9,1)
-	SEC 1,2: pt=2, lineID=0, koords=(8,2)
-	SEC 4,1: pt=2, lineID=0, koords=(7,3)
+	SEC 6,5: pt=2, lineID=0, koords=(8.025,7)
 
 Segment queue:
 	lineID6
-	lineID1
-	lineID4
 	lineID5
 	lineID2
+	lineID4
+	lineID1
 
 SEC
-	line1: 4, line2: 1
-	Segments to swap: 2 1
-SEC: above
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(7,3)
-	line1: pt=0, lineID=1, koords=(4,6) <-> pt=1, lineID=1, koords=(9,1)
-	line2: pt=0, lineID=4, koords=(6,3) <-> pt=1, lineID=4, koords=(11,3)
+	line1: ID6, line2: ID5
+	Segments to swap: 0 1
 SEC: below
-	line intersect log:
-	intersect :true
-	point: pt=2, lineID=0, koords=(7,3)
-	line1: pt=0, lineID=4, koords=(6,3) <-> pt=1, lineID=4, koords=(11,3)
-	line2: pt=0, lineID=1, koords=(4,6) <-> pt=1, lineID=1, koords=(9,1)
+compare lines: 6 & 2
 
 ======  Durchlauf 13  ======
 Event queue:
@@ -359,24 +269,15 @@ Event queue:
 	END5: pt=1, lineID=5, koords=(9,8)
 	END6: pt=1, lineID=6, koords=(9,7)
 	END1: pt=1, lineID=1, koords=(9,1)
-	SEC 1,2: pt=2, lineID=0, koords=(8,2)
 
 Segment queue:
+	lineID5
 	lineID6
+	lineID2
 	lineID4
 	lineID1
-	lineID5
-	lineID2
 
-SEC
-	line1: 1, line2: 2
-	Segments to swap: 2 4
-SEC: above
-	line intersect log:
-	intersect :false
-	point: pt=0, lineID=0, koords=(0,0)
-	line1: pt=0, lineID=2, koords=(0,2) <-> pt=1, lineID=2, koords=(10,2)
-	line2: pt=0, lineID=4, koords=(6,3) <-> pt=1, lineID=4, koords=(11,3)
+END
 
 ======  Durchlauf 14  ======
 Event queue:
@@ -384,29 +285,26 @@ Event queue:
 	END2: pt=1, lineID=2, koords=(10,2)
 	END5: pt=1, lineID=5, koords=(9,8)
 	END6: pt=1, lineID=6, koords=(9,7)
-	END1: pt=1, lineID=1, koords=(9,1)
 
 Segment queue:
-	lineID6
-	lineID4
-	lineID2
 	lineID5
-	lineID1
+	lineID6
+	lineID2
+	lineID4
 
 END
+END: above
 
 ======  Durchlauf 15  ======
 Event queue:
 	END4: pt=1, lineID=4, koords=(11,3)
 	END2: pt=1, lineID=2, koords=(10,2)
 	END5: pt=1, lineID=5, koords=(9,8)
-	END6: pt=1, lineID=6, koords=(9,7)
 
 Segment queue:
-	lineID6
-	lineID4
-	lineID2
 	lineID5
+	lineID2
+	lineID4
 
 END
 
@@ -414,39 +312,25 @@ END
 Event queue:
 	END4: pt=1, lineID=4, koords=(11,3)
 	END2: pt=1, lineID=2, koords=(10,2)
-	END5: pt=1, lineID=5, koords=(9,8)
 
 Segment queue:
-	lineID4
 	lineID2
-	lineID5
+	lineID4
 
 END
 
 ======  Durchlauf 17  ======
 Event queue:
 	END4: pt=1, lineID=4, koords=(11,3)
-	END2: pt=1, lineID=2, koords=(10,2)
-
-Segment queue:
-	lineID4
-	lineID2
-
-END
-
-======  Durchlauf 18  ======
-Event queue:
-	END4: pt=1, lineID=4, koords=(11,3)
 
 Segment queue:
 	lineID4
 
 END
-
 INTERSECTIONS
 Number of intersects: 5
-pt=2, lineID=0, koords=(2,2)
-pt=2, lineID=0, koords=(5,5)
-pt=2, lineID=0, koords=(5.5,4.5)
-pt=2, lineID=0, koords=(7,3)
-pt=2, lineID=0, koords=(8,2)
+2 2
+5 5
+7 3
+8 2
+8.025 7

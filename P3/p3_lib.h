@@ -137,31 +137,23 @@ std::pair<bool, point> line_intersect_check(line l1, line l2){
         }
     }
     if(retval){
-        p_intersect = calc_intersect_point(l1, l2);
-    }
-    
-    std::cout << "\tline intersect log:\n\tintersect :" << std::boolalpha << retval
-              << "\n\tpoint: " << p_intersect 
-              //<< std::setprecision(9)
-              //<< "\n\tccws: " << ccw_res1 << " " 
-              //<< std::setprecision(9)
-              //<< ccw_res2
-              //<< std::setprecision(9)
-              //<< "\n\tlambdas: " << lambda1 << " " 
-              //<< std::setprecision(9)
-              //<< lambda2 << std::endl
-              << "\n\tline1: " << l1
-              << "\n\tline2: " << l2 << std::endl;
-    
+        if(l1.p1.y > l2.p1.y){
+            p_intersect = calc_intersect_point(l1, l2);
+            //std::cout << "line1: " << l1 << "\nline2: " << l2 << std::endl << std::endl ;
+        }
+        else{
+            p_intersect = calc_intersect_point(l2, l1);
+            //std::cout << "line1: " << l2 << "\nline2: " << l1 << std::endl << std::endl ;
+        }
+    } 
     return std::pair<bool, point>(retval, p_intersect);
 }
 
 
 bool point_in_point_list(point& p, std::vector<point>& point_list){
-    bool check = false;
     for(auto& point : point_list){
         if(point == p)
-            check = true;
+            return true;
     }
-    return check;
+    return false;
 }
