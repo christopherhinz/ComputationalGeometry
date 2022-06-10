@@ -6,6 +6,9 @@
 
 enum point_type { BEG = 0, END = 1, SEC = 2};
 
+////////////////////////////////////////////
+// POINT
+////////////////////////////////////////////
 
 struct point{
     double x;
@@ -25,13 +28,15 @@ inline std::ostream& operator<<(std::ostream& os, point& p){
     os << "pt=" << p.pt << ", lineID=" << p.lineID << ", koords=(" << p.x << "," << p.y << ")";
     return os;
 }
-
 inline void swap_points(point& p1, point& p2){
     point p_tmp = {.x = p1.x, .y = p1.y, .pt = p1.pt, .lineID = p1.lineID, .line1 = p1.line1, .line2 = p1.line2};
     p1 = {.x = p2.x, .y = p2.y, .pt = p2.pt, .lineID = p2.lineID, .line1 = p2.line1, .line2 = p2.line2};
     p2 = {.x = p_tmp.x, .y = p_tmp.y, .pt = p_tmp.pt, .lineID = p_tmp.lineID, .line1 = p_tmp.line1, .line2 = p_tmp.line2};
 }
 
+////////////////////////////////////////////
+// LINE
+////////////////////////////////////////////
 
 struct line{
     point p_beg;
@@ -41,11 +46,19 @@ inline std::ostream& operator<<(std::ostream& os, line& l){
     os << l.p_beg << " <-> " << l.p_end;
     return os;
 }
-
 inline void swap_lines(line& l1, line& l2){
     swap_points(l1.p_beg, l2.p_beg);
     swap_points(l1.p_end, l2.p_end);
 }
+inline double calc_y_value(double x_current, line& l){
+    double y_current = l.p_beg.y + (x_current - l.p_beg.x) / (l.p_end.x - l.p_beg.x) * (l.p_end.y - l.p_beg.y);
+    return y_current;
+}
+
+
+////////////////////////////////////////////
+// SWEEP LINE
+////////////////////////////////////////////
 
 struct sweep_line{
     point current_event;
@@ -79,6 +92,11 @@ struct sweep_line{
         }
     }
 };
+
+
+////////////////////////////////////////////
+// HELPER FUNCS
+////////////////////////////////////////////
 
 void read_dat(std::string filename, std::vector<point>& target, std::vector<line>& all_lines){
     point p_beg, p_end;
