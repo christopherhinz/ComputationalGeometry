@@ -19,9 +19,9 @@ void print_content(std::vector<line>& vec, int limit){
 }
 
 int main(){
-    std::vector<std::string> filenames {"strecken/s_1000_1.dat"};
-                                        //"s_10000_1.dat",
-                                        //"s_100000_1.dat"};
+    std::vector<std::string> filenames {"strecken/s_1000_1.dat",
+                                        "strecken/s_10000_1.dat",
+                                        "strecken/s_100000_1.dat"};
 
     std::cout << std::left << std::setw(16) << "Datei" << std::setw(1) << "|"
               << std::setw(10) << " Strecken" << std::setw(1) << "|"

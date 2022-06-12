@@ -57,9 +57,8 @@ bool line_intersect_check(line l1, line l2){
                 retval = false;
         }
     }
-    if(retval){
-        std::cout << "lines: l1=" << l1 << " & l2=" << l2 << std::endl;
-
-    }
+    //if(retval){
+    //    std::cout << "lines: l1=" << l1 << " & l2=" << l2 << std::endl;
+    //}
     return retval;
 }

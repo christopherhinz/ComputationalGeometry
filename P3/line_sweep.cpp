@@ -27,9 +27,9 @@ int main(){
                                         //{"strecken/problemkinder.dat"};
                                         //{"strecken/s_1000_10_reduced.dat"};
                                         //{"strecken/VL_example.dat"};
-                                        {"strecken/s_1000_1_mod.dat"};
+                                        //{"strecken/s_1000_1.dat"};
                                         //{"strecken/s_10000_1.dat"};
-                                        //{"strecken/s_100000_1.dat"};
+                                        {"strecken/s_100000_1.dat"};
 
 
     for(auto filename : filenames){
@@ -42,8 +42,6 @@ int main(){
         std::vector<point> intersec_list;
 
         read_dat(filename, sl.event_queue, lines_by_index);
-
-
 
         sl.sort_event_queue();
 
@@ -221,9 +219,8 @@ int main(){
         std::cout << runtime << " ms\n\n";
 
         std::cout << "INTERSECTIONS\nNumber of intersects: " << intersec_list.size() << std::endl;    
-        for(auto intersect : intersec_list)
-            std::cout << intersect.x << " " << intersect.y << std::endl;
-            //std::cout << intersect << std::endl;
+        //for(auto intersect : intersec_list)
+        //    std::cout << intersect.x << " " << intersect.y << std::endl;
     } 
     return 0;
 }

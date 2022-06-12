@@ -34,6 +34,7 @@ inline void swap_points(point& p1, point& p2){
     p2 = {.x = p_tmp.x, .y = p_tmp.y, .pt = p_tmp.pt, .lineID = p_tmp.lineID, .line1 = p_tmp.line1, .line2 = p_tmp.line2};
 }
 
+
 ////////////////////////////////////////////
 // LINE
 ////////////////////////////////////////////
@@ -42,6 +43,9 @@ struct line{
     point p_beg;
     point p_end;
 };
+inline bool operator==(line& l1, line& l2){
+    return l1.p_beg == l2.p_beg && l1.p_end == l2.p_end;
+}
 inline std::ostream& operator<<(std::ostream& os, line& l){
     os << l.p_beg << " <-> " << l.p_end;
     return os;
@@ -53,6 +57,9 @@ inline void swap_lines(line& l1, line& l2){
 inline double calc_y_value(double x_current, line& l){
     double y_current = l.p_beg.y + (x_current - l.p_beg.x) / (l.p_end.x - l.p_beg.x) * (l.p_end.y - l.p_beg.y);
     return y_current;
+}
+inline bool same_line(line& l1, line& l2){
+    return l1.p_beg.x == l2.p_beg.x && l1.p_beg.y == l2.p_beg.y && l1.p_end.x == l2.p_end.x && l1.p_end.y == l2.p_end.y;
 }
 
 
@@ -98,7 +105,26 @@ struct sweep_line{
 // HELPER FUNCS
 ////////////////////////////////////////////
 
+bool point_in_point_list(point& p, std::vector<point>& point_list){
+    for(auto& point : point_list){
+        if(point == p)
+            return true;
+    }
+    return false;
+}
+
 void read_dat(std::string filename, std::vector<point>& target, std::vector<line>& all_lines){
+    /*
+    Sonderfälle abfangen: 
+        1. Sonderfall:
+            Zwei Punkte einer Strecke haben dieselben Koordinaten
+        2. Sonderfall:
+            Linie parallel zur y-Achse
+        3. Sonderfall: 
+            Abgefragt in: line_intersect_check() -> effizienter
+            Linie doppelt in dat-File
+    */
+
     point p_beg, p_end;
     long long countID = 0;
     std::ifstream file;
@@ -108,21 +134,30 @@ void read_dat(std::string filename, std::vector<point>& target, std::vector<line
         std::cout << "Could not open file\n";
     }
 
+
     while(file >> k1 >> k2 >> k3 >> k4){
-        if(k1 < k3){
-            p_beg = { .x = k1, .y = k2, .pt = BEG, .lineID = countID};
-            p_end = { .x = k3, .y = k4, .pt = END, .lineID = countID};
+        if(k1 == k3 && k2 == k4){
+            std::cout << "1. Sonderfall (Länge null): \n\t(" <<  k1 << "," << k2 << ") = (" << k3 << "," << k4 << ")\n";
+        }
+        else if(k1 == k3){
+            std::cout << "2. Sonderfall (parallel y-Achse): \n\t(" <<  k1 << "," << k2 << ") = (" << k3 << "," << k4 << ")\n";
         }
         else{
-            p_beg = { .x = k1, .y = k2, .pt = END, .lineID = countID};
-            p_end = { .x = k3, .y = k4, .pt = BEG, .lineID = countID};
+            if(k1 < k3){
+                p_beg = { .x = k1, .y = k2, .pt = BEG, .lineID = countID};
+                p_end = { .x = k3, .y = k4, .pt = END, .lineID = countID};
+            }
+            else{
+                p_beg = { .x = k1, .y = k2, .pt = END, .lineID = countID};
+                p_end = { .x = k3, .y = k4, .pt = BEG, .lineID = countID};
+            }
+            ++countID;
+
+            all_lines.push_back( line{ .p_beg = p_beg, .p_end = p_end} );
+
+            target.push_back(p_beg);
+            target.push_back(p_end);
         }
-        ++countID;
-
-        all_lines.push_back( line{ .p_beg = p_beg, .p_end = p_end} );
-
-        target.push_back(p_beg);
-        target.push_back(p_end);
     }
     file.close();
 }
@@ -146,6 +181,10 @@ point calc_intersect_point(line _l1, line _l2){
 std::pair<bool, point> line_intersect_check(line l1, line l2){
     bool retval = false;
     point p_intersect = {.x = 0.0, .y = 0.0};
+    if(same_line(l1, l2)){
+        std::cout << "3. Sonderfall (gleiche Strecke): \n\t" << l1 << " & "<< l2 << std::endl;
+        return std::pair<bool, point>(retval, p_intersect);
+    }
     double ccw_res1 = ccw(l1.p_beg, l1.p_end, l2.p_beg) * ccw(l1.p_beg, l1.p_end, l2.p_end);
     double ccw_res2 = ccw(l2.p_beg, l2.p_end, l1.p_beg) * ccw(l2.p_beg, l2.p_end, l1.p_end);
     double lambda1, lambda2;
@@ -167,17 +206,8 @@ std::pair<bool, point> line_intersect_check(line l1, line l2){
             p_intersect = calc_intersect_point(l2, l1);
         }
     } 
-    if(retval){
-        std::cout << "Calculated intersect: " << p_intersect << "\nlines: l1=" << l1 << " & l2=" << l2 << std::endl;
-    }
+    //if(retval){
+    //    std::cout << "Calculated intersect: " << p_intersect << "\nlines: l1=" << l1 << " & l2=" << l2 << std::endl;
+    //}
     return std::pair<bool, point>(retval, p_intersect);
-}
-
-
-bool point_in_point_list(point& p, std::vector<point>& point_list){
-    for(auto& point : point_list){
-        if(point == p)
-            return true;
-    }
-    return false;
 }
