@@ -23,13 +23,13 @@ inline bool indizes_in_range(long long lower_lim, long long upper_lim, long long
 
 int main(){
 
-    std::vector<std::string> filenames //{"strecken/problemkinder.dat"};
+    std::vector<std::string> filenames //{"strecken/s_1000_10.dat"};
+                                        //{"strecken/problemkinder.dat"};
                                         //{"strecken/s_1000_10_reduced.dat"};
-                                        {"strecken/s_1000_10.dat"};
                                         //{"strecken/VL_example.dat"};
-                                        //{"strecken/s_1000_1.dat"};
-                                        /*"strecken/s_10000_1.dat",
-                                        "strecken/s_100000_1.dat"};*/
+                                        {"strecken/s_1000_1_mod.dat"};
+                                        //{"strecken/s_10000_1.dat"};
+                                        //{"strecken/s_100000_1.dat"};
 
 
     for(auto filename : filenames){
@@ -214,6 +214,11 @@ int main(){
             if(while_count == 12)
                 break;
         } 
+
+        auto end = std::chrono::steady_clock::now();
+        double runtime = (double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()/
+            1000 + std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+        std::cout << runtime << " ms\n\n";
 
         std::cout << "INTERSECTIONS\nNumber of intersects: " << intersec_list.size() << std::endl;    
         for(auto intersect : intersec_list)

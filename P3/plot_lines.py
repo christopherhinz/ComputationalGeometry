@@ -2,12 +2,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-mode = 2
+mode = 3
 
-text_flag = str(input("Text zu jeder Strecke plotten?"))
+if mode != 3:
+    text_flag = str(input("Text zu jeder Strecke plotten?"))
 
 if mode == 0:
-    with open("strecken/s_1000_10_reduced.dat", "r") as dat_file:
+    with open("strecken/problemkinder.dat", "r") as dat_file:
             lines = dat_file.readlines()
             lines = [line.strip() for line in lines]
             clean_lines = list()
@@ -87,9 +88,25 @@ elif mode == 2:
 
         for line in clean_lines: 
             x, y = float(line.split(" ")[0]), float(line.split(" ")[1])
-            plt.plot(x, y, marker='o')
+            plt.plot(x, y, marker='x')
 
 
     plt.show()
 
 
+if mode == 3:
+    with open("strecken/problemkinder.dat", "r") as dat_file:
+        lines = dat_file.readlines()
+        lines = [line.strip() for line in lines]
+        clean_lines = list()
+        for line in lines:
+            if line == "x":
+                break
+            clean_lines.append(line)
+
+        counter = 1
+        for line in clean_lines: 
+            x, y = [float(line.split(" ")[0]), float(line.split(" ")[2])], [float(line.split(" ")[1]), float(line.split(" ")[3])]
+            plt.plot(x, y, linestyle="solid")
+            counter = counter + 1
+    plt.show()

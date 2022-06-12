@@ -1,0 +1,13 @@
+Datei           | Strecken | Schnitte | Laufzeit 
+lines: l1=koords=(10,10) <-> koords=(10.1,10.1) & l2=koords=(10,10) <-> koords=(10,10)
+lines: l1=koords=(10,10) <-> koords=(10.1,10.1) & l2=koords=(10,10) <-> koords=(10,10.1)
+lines: l1=koords=(10,10) <-> koords=(10.1,10.1) & l2=koords=(10,10) <-> koords=(10.1,10)
+lines: l1=koords=(10,10) <-> koords=(10,10) & l2=koords=(10,10) <-> koords=(10,10.1)
+lines: l1=koords=(10,10) <-> koords=(10,10) & l2=koords=(10,10) <-> koords=(10.1,10)
+lines: l1=koords=(10,10) <-> koords=(10,10.1) & l2=koords=(10,10) <-> koords=(10.1,10)
+lines: l1=koords=(72.675,25.331) <-> koords=(72.2035,25.216) & l2=koords=(72.651,25.149) <-> koords=(72.2693,25.329)
+lines: l1=koords=(2.921,26.429) <-> koords=(2.9101,26.2454) & l2=koords=(2.295,25.856) <-> koords=(3.06992,26.4487)
+lines: l1=koords=(11.592,89.627) <-> koords=(12.2213,88.9493) & l2=koords=(11.774,89.646) <-> koords=(11.662,89.2365)
+lines: l1=koords=(43.499,49.031) <-> koords=(43.5973,49.499) & l2=koords=(43.794,49.185) <-> koords=(43.3651,48.9798)
+lines: l1=koords=(55.103,11.578) <-> koords=(55.3611,11.6755) & l2=koords=(55.103,11.578) <-> koords=(55.3611,11.6755)
+strecken/s_1000_1.dat| 1001     | 11       |      42.97 ms

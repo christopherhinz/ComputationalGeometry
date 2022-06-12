@@ -7,11 +7,19 @@ struct point{
     double x;
     double y;
 };
+inline std::ostream& operator<<(std::ostream& os, point& p){
+    os << "koords=(" << p.x << "," << p.y << ")";
+    return os;
+}
 
 struct line{
     point p1;
     point p2;
 };
+inline std::ostream& operator<<(std::ostream& os, line& l){
+    os << l.p1 << " <-> " << l.p2;
+    return os;
+}
 
 void read_dat(std::string filename, std::vector<line>& target){
     line temp;
@@ -48,6 +56,10 @@ bool line_intersect_check(line l1, line l2){
             if ((lambda1 < 0.0 || lambda1 > 1.0) && (lambda2 < 0.0 || lambda2 > 1.0))
                 retval = false;
         }
+    }
+    if(retval){
+        std::cout << "lines: l1=" << l1 << " & l2=" << l2 << std::endl;
+
     }
     return retval;
 }

@@ -167,6 +167,9 @@ std::pair<bool, point> line_intersect_check(line l1, line l2){
             p_intersect = calc_intersect_point(l2, l1);
         }
     } 
+    if(retval){
+        std::cout << "Calculated intersect: " << p_intersect << "\nlines: l1=" << l1 << " & l2=" << l2 << std::endl;
+    }
     return std::pair<bool, point>(retval, p_intersect);
 }
 
