@@ -4,7 +4,7 @@
 #include <iostream>
 #include <iomanip>
 
-// clang++ -std=c++14 line_sweep.cpp && ./a.out > output.txt && open output.txt
+// clang++ -std=c++14 line_sweep.cpp && ./a.out > output.txt && code output.txt
 
 #define printf_debug 0
 
@@ -23,13 +23,13 @@ inline bool indizes_in_range(long long lower_lim, long long upper_lim, long long
 
 int main(){
 
-    std::vector<std::string> filenames //{"strecken/s_1000_10.dat"};
+    std::vector<std::string> filenames {"strecken/s_1000_10.dat"};
                                         //{"strecken/problemkinder.dat"};
-                                        //{"strecken/s_1000_10_reduced.dat"};
+                                        //{"strecken/s_1000_1_reduced.dat"};
                                         //{"strecken/VL_example.dat"};
                                         //{"strecken/s_1000_1.dat"};
                                         //{"strecken/s_10000_1.dat"};
-                                        {"strecken/s_100000_1.dat"};
+                                        //{"strecken/s_100000_1.dat"};
 
 
     for(auto filename : filenames){

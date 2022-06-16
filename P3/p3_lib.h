@@ -34,6 +34,10 @@ inline void swap_points(point& p1, point& p2){
     p2 = {.x = p_tmp.x, .y = p_tmp.y, .pt = p_tmp.pt, .lineID = p_tmp.lineID, .line1 = p_tmp.line1, .line2 = p_tmp.line2};
 }
 
+inline bool same_koords(point& p1, point& p2){
+    return p1.x == p2.x && p1.y == p2.y;
+}
+
 
 ////////////////////////////////////////////
 // LINE
@@ -123,6 +127,12 @@ void read_dat(std::string filename, std::vector<point>& target, std::vector<line
         3. Sonderfall: 
             Abgefragt in: line_intersect_check() -> effizienter
             Linie doppelt in dat-File
+        4. Sonderfall:
+            Abgefragt in: line_intersect_check() -> effizienter
+            Strecken überlappen sich
+        5. Sonderfall: 
+            Abgefragt in: line_intersect_check() -> effizienter
+            Kein echter Schnittpunkt
     */
 
     point p_beg, p_end;
@@ -136,13 +146,13 @@ void read_dat(std::string filename, std::vector<point>& target, std::vector<line
 
 
     while(file >> k1 >> k2 >> k3 >> k4){
-        if(k1 == k3 && k2 == k4){
+        /*if(k1 == k3 && k2 == k4){
             std::cout << "1. Sonderfall (Länge null): \n\t(" <<  k1 << "," << k2 << ") = (" << k3 << "," << k4 << ")\n";
         }
         else if(k1 == k3){
             std::cout << "2. Sonderfall (parallel y-Achse): \n\t(" <<  k1 << "," << k2 << ") = (" << k3 << "," << k4 << ")\n";
         }
-        else{
+        else{*/
             if(k1 < k3){
                 p_beg = { .x = k1, .y = k2, .pt = BEG, .lineID = countID};
                 p_end = { .x = k3, .y = k4, .pt = END, .lineID = countID};
@@ -157,7 +167,7 @@ void read_dat(std::string filename, std::vector<point>& target, std::vector<line
 
             target.push_back(p_beg);
             target.push_back(p_end);
-        }
+        //}
     }
     file.close();
 }
@@ -181,10 +191,10 @@ point calc_intersect_point(line _l1, line _l2){
 std::pair<bool, point> line_intersect_check(line l1, line l2){
     bool retval = false;
     point p_intersect = {.x = 0.0, .y = 0.0};
-    if(same_line(l1, l2)){
-        std::cout << "3. Sonderfall (gleiche Strecke): \n\t" << l1 << " & "<< l2 << std::endl;
-        return std::pair<bool, point>(retval, p_intersect);
-    }
+    //if(same_line(l1, l2)){
+    //    std::cout << "3. Sonderfall (gleiche Strecke): \n\t" << l1 << " & "<< l2 << std::endl;
+    //    return std::pair<bool, point>(retval, p_intersect);
+    //}
     double ccw_res1 = ccw(l1.p_beg, l1.p_end, l2.p_beg) * ccw(l1.p_beg, l1.p_end, l2.p_end);
     double ccw_res2 = ccw(l2.p_beg, l2.p_end, l1.p_beg) * ccw(l2.p_beg, l2.p_end, l1.p_end);
     double lambda1, lambda2;
@@ -194,8 +204,15 @@ std::pair<bool, point> line_intersect_check(line l1, line l2){
         if(ccw_res1 == 0.0 && ccw_res2 == 0.0){
             lambda1 = (l2.p_beg.x-l1.p_beg.x)/(l1.p_end.x-l1.p_beg.x);
             lambda2 = (l2.p_end.x-l1.p_beg.x)/(l1.p_end.x-l1.p_beg.x);
+            retval = false;
             if ((lambda1 < 0.0 || lambda1 > 1.0) && (lambda2 < 0.0 || lambda2 > 1.0))
                 retval = false;
+            else{
+                retval = false;
+                p_intersect = point{.x = -1.0, .y = -1.0, .lineID = -1, .line1 = -1, .line2 = -1};
+            }
+            //else 
+            //    std::cout << "4. Sonderfall (Überlappung): \n\t" << l1 << " & " << l2 << "\n";
         }
     }
     if(retval){
@@ -205,6 +222,11 @@ std::pair<bool, point> line_intersect_check(line l1, line l2){
         else{
             p_intersect = calc_intersect_point(l2, l1);
         }
+        //if(same_koords(p_intersect, l1.p_beg) || same_koords(p_intersect, l1.p_end) || same_koords(p_intersect, l2.p_beg) || same_koords(p_intersect, l2.p_end) ){
+        //    p_intersect = point{.x = 0.0, .y = 0.0, .lineID = -1, .line1 = -1, .line2 = -1};
+        //    retval = false;
+        //    std::cout << "5. Sonderfall (unechter Schnitt): \n\t" << l1 << " & " << l2 << "\n";
+        //}
     } 
     //if(retval){
     //    std::cout << "Calculated intersect: " << p_intersect << "\nlines: l1=" << l1 << " & l2=" << l2 << std::endl;
