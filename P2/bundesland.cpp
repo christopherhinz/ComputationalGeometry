@@ -50,9 +50,21 @@ int main() {
     }
 
     // Ausgabe Bundeslaender
-    for(int i = 0; i < bundeslaender.size(); i++) std::cout << bundeslaender[i] << "\n";
+    // REIN
+    //for(int i = 0; i < bundeslaender.size(); i++) std::cout << bundeslaender[i] << "\n";
     // Ausgabe Staedte
-    for(auto st: staedte) std::cout << st.name << ": " << st.ko.x << " " << st.ko.y << "\n";
+    // REIN
+    //for(auto st: staedte) std::cout << st.name << ": " << st.ko.x << " " << st.ko.y << "\n";
+
+    // RAUS
+    for(auto& bund: bundeslaender){
+        if(bund.name == "Berlin"){
+            for(int i = 0; i < bund.polygon_vec[0].size(); ++i){
+                std::cout << bund.polygon_vec[0][i].x << ";" << bund.polygon_vec[0][i].y << std::endl;
+            }
+        }
+    }
+
     return 0;
 }
 
