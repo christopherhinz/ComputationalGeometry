@@ -1,4 +1,0 @@
-82.164 ms
-
-INTERSECTIONS
-Number of intersects: 789
