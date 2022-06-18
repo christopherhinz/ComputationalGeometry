@@ -131,34 +131,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problemstellung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Problemstellung}
-
 \section{Einführung}
+Im Rahmen des 3. Praktikums sollen die Koordinaten von Linien aus verschiedenen dat-Dateien eingelesen und auf Schnittpunkte überprüft werden.
+Hierzu soll neben der Anzahl an gefundenen Schnittpunkten auch die Laufzeit des Programms ausgegeben werden.
 
 
 \section{Methoden}
+Zur Lösung der Problemstellung soll ein Line Sweep Algorithmus implementiert werden. 
+Dieser und alle benötigten Hilfsfunktionen wurden hierbei in C++ implementiert.\\
+Hierbei sei folgendes vorweggenommen. Die Dateien des ersten Praktikums enthalten Linien die nach den getroffenen Einschränkungen des Line Sweep Algorithmus
+aussortiert oder ignoriert werden müssen. Hierfür wurde eine Routine implementiert die jede dat-Datei auf einliest und überprüft. 
+Es mussten hierbei nur bei den Dateien des ersten Praktikums Linien aussortiert werden, was deren leicht veränderte Größe (z.B 997 statt 1001) 
+im nächsten Abschnitt erklärt.
 
 
 \section{Ergebnisse}
-
+Nun sollen die Laufzeiten verglichen werden. Um diese
 Neue Datei für P3: 
 \begin{itemize}
     \item s\_1000\_10.dat: \\Schnittpunkte: 789, Laufzeit: 82.164 ms
 \end{itemize}
-
-Zur Überprüfung wurden einzelne Punkte getestet und insbesondere das Ergebnis mit matplotlib geplottet. Dies ist bei 1000 Strecken noch recht praktikabel.\\
-Zu sehen sind alle 1000 Strecken und jeder gefundene Schnittpunkt ist als Punkt dargestellt.\\
-\begin{figure}[ht]
-    \advance\leftskip-4cm
-    \includegraphics[scale=0.48]{Plot_all.png}
-\end{figure}
-
-Durch Vergrößern bestimmter Bereiche können die Resultate einfach und sicher überprüft werden.\\
-\begin{figure}[ht]
-    \advance\leftskip-4cm
-    \includegraphics[scale=0.48]{Plot_zoom.png}
-\end{figure}
-
 
 Dateien aus P1:\\
 \begin{itemize}
@@ -168,8 +160,31 @@ Dateien aus P1:\\
 \end{itemize}
 
 
-\begin{lstlisting}[style=Terminal, caption={testing.cpp: Ausgabe Konsole},captionpos=b, label={lst:ausgabe_test}]
-\end{lstlisting}
+
+\section{Verifikation und Validierung}
+
+Zur Verifikation wurden verschiedene Testfälle definiert, getestet und überprüft.
+Außerdem wurden insbesondere die Ergebnisse mit matplotlib geplottet.
+Hierzu wurden neben den gegebenen Strecken aus den dat-Dateien die gefundenen Schnittpunkte geplottet.
+Damit wurde im Laufe der Implementierung der Algorithmus nachgebessert.
+Hierbei wurden noch nicht gefundenen Schnittpunkte und die beteiligten Strecken isoliert und als Testfälle verwendet.\\
+Untenstehendes Bild zeigt den erwähnten Plot. Zu sehen sind alle 1000 Strecken (s\_1000\_10.dat) und jeder gefundene Schnittpunkt als Punkt.
+Durch Vergrößern bestimmter Bereiche können die Resultate einfach und sicher überprüft werden. 
+So kann in kurzer Zeit grafisch überprüft werden ob alle gefundenen Schnittpunkte tatsächlich Schnittpunkte sind und 
+ob es Schnittpunkte gibt die noch nicht als solche erkannt werden.\\
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.25]{Plot_zoom_and_all.jpeg}
+\end{figure}
+
+
+
+
+
+%\begin{lstlisting}[style=Terminal, caption={testing.cpp: Ausgabe Konsole},captionpos=b, label={lst:ausgabe_test}]
+%\end{lstlisting}
 
 
 

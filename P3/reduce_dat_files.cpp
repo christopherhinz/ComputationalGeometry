@@ -43,7 +43,7 @@ int main(){
                     break;
                 }
                 if(point_in_point_list(result.second, intersects)){
-                    //std::cout << "4. Sonderfall (Mehrfachschnitt): \n\t" << lines[i] << " & " << lines[j] << "\n";
+                    //std::cout << "5. Sonderfall (Mehrfachschnitt): \n\t" << lines[i] << " & " << lines[j] << "\n";
                     is_valid = false;
                     break;
                 }
