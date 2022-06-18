@@ -16,10 +16,10 @@ inline bool indizes_in_range(long long lower_lim, long long upper_lim, long long
 int main(){
 
     std::string filename =  //"strecken/test.dat";
-                            "strecken/s_1000_10.dat";
+                            //"strecken/s_1000_10.dat";
                             //"strecken/s_1000_1_reduced.dat";
                             //"strecken/s_10000_1_reduced.dat";
-                            //"strecken/s_100000_1_reduced.dat";
+                            "strecken/s_100000_1_reduced.dat";
 
 
     auto start = std::chrono::steady_clock::now();

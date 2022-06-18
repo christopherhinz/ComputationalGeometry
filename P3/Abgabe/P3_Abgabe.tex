@@ -123,11 +123,6 @@
 
 \newpage
 
-% table of contents
-\thispagestyle{empty}
-\tableofcontents
-\newpage
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problemstellung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -140,25 +135,29 @@ Hierzu soll neben der Anzahl an gefundenen Schnittpunkten auch die Laufzeit des 
 Zur Lösung der Problemstellung soll ein Line Sweep Algorithmus implementiert werden. 
 Dieser und alle benötigten Hilfsfunktionen wurden hierbei in C++ implementiert.\\
 Hierbei sei folgendes vorweggenommen. Die Dateien des ersten Praktikums enthalten Linien die nach den getroffenen Einschränkungen des Line Sweep Algorithmus
-aussortiert oder ignoriert werden müssen. Hierfür wurde eine Routine implementiert die jede dat-Datei auf einliest und überprüft. 
+aussortiert oder ignoriert werden müssen. Hierfür wurde eine Routine implementiert die jede dat-Datei einliest und überprüft. 
 Es mussten hierbei nur bei den Dateien des ersten Praktikums Linien aussortiert werden, was deren leicht veränderte Größe (z.B 997 statt 1001) 
 im nächsten Abschnitt erklärt.
 
 
 \section{Ergebnisse}
-Nun sollen die Laufzeiten verglichen werden. Um diese
+Nun sollen die Laufzeiten verglichen werden.\\
 Neue Datei für P3: 
 \begin{itemize}
-    \item s\_1000\_10.dat: \\Schnittpunkte: 789, Laufzeit: 82.164 ms
+    \item s\_1000\_10.dat: \\Schnittpunkte: 796, Laufzeit: 98.032 ms
 \end{itemize}
 
-Dateien aus P1:\\
+Dateien aus P1 (reduziert nach Kriterien aus Vorlesung):
 \begin{itemize}
     \item s\_1000\_1.dat:   \\reduziert auf 997, Schnittpunkte: 4, Laufzeit: 38.592 ms
     \item s\_10000\_1.dat:  \\reduziert auf 9997, Schnittpunkte: 725, Laufzeit: 1956.78 ms
-    \item s\_100000\_1.dat: \\reduziert auf 99985, Schnittpunkte: 76087, Laufzeit: 556070 ms
+    \item s\_100000\_1.dat: \\reduziert auf 99985, Schnittpunkte: 77111, Laufzeit: 556070 ms
 \end{itemize}
 
+Es konnte bei allen Dateien eine längere Laufzeit festgestellt werden. Dies ist darauf zurückzuführen, dass die verwendete Datenstruktur (std::vector) sortieren, einfügen, finden und entfernen von Elementen mit linearer Komplexität ausführt.
+Diese Operationen werden mehrfach pro Durchlauf ausgeführt und sind damit sehr zeitaufwändig.\\
+Im Weiteren wurde jedoch festgestellt, dass die Laufzeit des Programmes abhängig von der Anzahl der gefundenen Schnittpunkte ist.
+Dies zeigt sich durch den Vergleich der Laufzeiten der Dateien s\_1000\_10.dat und s\_1000\_1.dat. Diese haben dieselbe Anzahl an Linien aber einen signifikanten Unterschied in der Anzahl der Schnittpunkte und damit der Laufzeit.
 
 
 \section{Verifikation und Validierung}
@@ -179,9 +178,8 @@ ob es Schnittpunkte gibt die noch nicht als solche erkannt werden.\\
     \includegraphics[scale=0.25]{Plot_zoom_and_all.jpeg}
 \end{figure}
 
-
-
-
+Nachdem das Programm aus dem ersten Praktikum bereits validiert wurde, wird dieses als Referenz für den Sweep Line Algorithmus verwendet. Hieraus hat sich ergeben, dass die Anzahl der Schnittpunkte für beide Programme den selben Wert hat (sowohl für die s\_1000\_10.dat als auch für die reduzierten, ursprünglichen Dateien).\\
+Im Weiteren wurden die Ergebnisse mit denen anderer Gruppen verglichen. Diese sind zu gleichen Ergebnisse gekommen.
 
 %\begin{lstlisting}[style=Terminal, caption={testing.cpp: Ausgabe Konsole},captionpos=b, label={lst:ausgabe_test}]
 %\end{lstlisting}

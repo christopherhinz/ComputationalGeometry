@@ -52,7 +52,7 @@ point calc_intersect_point(line _l1, line _l2){
     l2.p2 = {.x = _l2.p2.x - _l2.p1.x, .y = _l2.p2.y - _l2.p1.y};
     double lambda2 = (l1.p1.y + l2.p1.x*l1.p2.y/l1.p2.x - l2.p1.y - l1.p1.x*l1.p2.y/l1.p2.x)/(l2.p2.y - l2.p2.x*l1.p2.y/l1.p2.x);
     point intersect_point = {.x = l2.p1.x + lambda2 * l2.p2.x, .y = l2.p1.y + lambda2 * l2.p2.y};
-    std::cout << intersect_point.x << " " << intersect_point.y << " lines: l1=" << _l1 << " & l2=" << _l2 << std::endl;
+    //std::cout << intersect_point.x << " " << intersect_point.y << " lines: l1=" << _l1 << " & l2=" << _l2 << std::endl;
     return intersect_point;
 }
 
@@ -72,8 +72,5 @@ bool line_intersect_check(line l1, line l2){
     if(retval){
         calc_intersect_point(l1, l2);
     }
-    //if(retval){
-    //    std::cout << "lines: l1=" << l1 << " & l2=" << l2 << std::endl;
-    //}
     return retval;
 }

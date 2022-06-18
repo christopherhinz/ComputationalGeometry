@@ -19,7 +19,7 @@ void print_content(std::vector<line>& vec, int limit){
 }
 
 int main(){
-    std::vector<std::string> filenames {"strecken/s_1000_10.dat"};
+    std::vector<std::string> filenames {"strecken/s_100000_1_reduced.dat"};
                                         /*{"strecken/s_1000_1.dat",
                                         "strecken/s_10000_1.dat",
                                         "strecken/s_100000_1.dat"};*/
