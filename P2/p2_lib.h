@@ -67,7 +67,7 @@ struct bundesland{
     double area;
     stadt capital;
 
-    bundesland(char* n, char* path_content) : name{n}, parts{0}, area{-1}{
+    bundesland(char* n, char* path_content) : name{n}, parts{0}, area{0}{
         split_content(path_content);
         calc_area();
     }
@@ -111,8 +111,8 @@ struct bundesland{
             }
 
         }
-        // Geschaetzter Skalierungsfaktor
-        area *= 1.175341649;
+        // Geschaetzter Skalierungsfaktor (Anhand von Bayern)
+        // area *= 1.175341649;
     }
 
     void split_content(char* path_content){
