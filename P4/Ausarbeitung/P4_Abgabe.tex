@@ -19,6 +19,8 @@
 \usepackage{biblatex}
 \usepackage{amsmath}
 \usepackage{float}
+\usepackage{multirow}
+
 
 \newcommand{\code}[1]{\texttt{#1}}
 
@@ -124,12 +126,16 @@
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Problemstellung
+% Einführung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Einführung}
 Installieren Sie das Programm qhull, erzeugen Sie zufällige Punktmengen und berechnen Sie mit qhull konvexe Hüllen, auch in höheren Dimensionen (qhull bringt ein Werkzeug zur Erzeugung von Punktmengen mit). Plotten Sie die Zeiten für zunehmende Punktanzahlen bei unterschiedlichen Dimensionen (2-8). Versuchen Sie, die Ausgaben von qhull bei "geschwätzigster" Einstellung nachzuvollziehen, zu verstehen und ggf. mit Inhalten dieser Lehrveranstaltung in Einklang zu bringen.
 
-\section{Benötigte Funktionen von qhull}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Funktionen von qhull
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Funktionen von qhull}
 
 Qhull bietet 6 verschiedene Programme an:
 \begin{itemize}
@@ -159,25 +165,54 @@ Einige Beispiele zur Erzeugung von Punktmengen sind:
 
 \subsection{Beispiele}
 Bevor auf Details der Berechnungen von qconvex eingegangen wird, sollen zwei kurze Beispiele die Eingabedaten und die Ergebnisse der Berechnung visualisieren.\\
-Zur Demonstration der Funktion von qconvex sollen selbstdefinierte Daten und deren konvexe Hülle visualisiert werden. Hierzu wurde ein Python-Skript implementiert das die Datenpunkte plottet und aus den Ergebnissen von qconvex (den sogenannten normals) die Hyperebenen zeichnet. 
+Zur Demonstration der Funktion von qconvex sollen Zufallsdaten und deren konvexe Hülle visualisiert werden. Hierzu wurde ein Python-Skript implementiert das die Datenpunkte plottet und aus den Ergebnissen von qconvex die Hyperebenen zeichnet. Die Visualisierung kann entweder auf Basis der Normalenvektoren der Hyperebene (Option 'n') oder mit Hilfe der Vertices der Facetten (Option 'o') erfolgen
 
 \ \\
 \underline{Punkte und konvexe Hülle in 2 Dimensionen}\ \\
-Im erste Beispiel werden die Datenpunkte eines Quadrats eingelesen und deren Hyperebenen (Geraden) mit qconvex berechnet. Dabei liefert qconvex als Ergebnis die Parameter der Geradegleichung $a*x + b*y +c = 0$ zurück. Hieraus können über die Geradegleichung die Hyperebenen berechnet und geplottet werden. Visualisiert mit matplotlib sieht das Ergebnis folgendermaßen aus:
+Im erste Beispiel werden die Datenpunkte in 2 Dimensionen erzeugt und eingelesen und deren Hyperebenen (Geraden) mit qconvex berechnet. Hierbei wurde die qconvex Option zur Ausgabe der Vertices genutzt. Mit diesen lassen sich die Hyperebenen (Geraden) zeichnen. Der nachfolgende Plot zeigt dies:
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.2]{squareplot.png}
+    \includegraphics[scale=0.3]{2D_plot.png}
 \end{figure}
 \ \\
 \underline{Punkte und konvexe Hülle in 3 Dimensionen}\ \\
-Im zweiten Beispiel werden die Datenpunkte eines Würfels eingelesen und ebenfalls die Hyperebenen (Ebenen) mit qconvex berechnet. In diesem Fall werden die Parameter der Ebenengleichung $a*x + b*y + c*z + d = 0$ als Ergebnis zurückgeliefert. Aus diesen Parametern lässt sich die Ebenengleichung berechnen und plotten. Auch dies ist untenstehend mit matplotlib visualisiert:
+Im zweiten Beispiel werden die Datenpunkte in 3 Dimensionen erzeugt und eingelesen und ebenfalls die Hyperebenen (Ebenen) mit qconvex berechnet. Hier wurde ebenfalls die berechneten Vertices genutzt. Auch dies ist untenstehend mit matplotlib visualisiert:
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.3]{cubeplot.png}
 \end{figure}
 
+\subsection{Zeitmessung}
+Es soll die Laufzeit des Algorithmus für verschiedene Punktmengen in unterschiedlichen Dimensionen gemessen werden.  Eine Zeitangabe ist bei der Ausgabe der Zusammenfassung des Ergebnisses enthalten. Die Zusammenfassung erhält man durch die qconvex Option 's'. Das Ergebnis der Messungen ist untenstehend grafisch und tabellarisch dargestellt.
+\begin{center}
+\begin{tabular}{||c | c c c c c c c||} 
+    \hline
+    Dimension & 2D &       3D &      4D &       5D &       6D &       7D &       8D      \\
+    \hline \hline
+    \multirow{4}{*}{Laufzeit in s} & 2.3e-05 &  3.4e-05 & 3.5e-05 &  4.2e-05 &  5.8e-05 &  6.2e-05 &  4.8e-05 \\ \cline{2-8}
+                                   & 3e-05 &    6.3e-05 & 0.000186 & 0.000832 & 0.003005 & 0.009608 & 0.03245 \\ \cline{2-8}
+                                   & 3.6e-05 &  7.8e-05 & 0.000298 & 0.001947 & 0.009298 & 0.04809 &  0.2151  \\ \cline{2-8}
+                                   & 0.000116 & 0.00021 & 0.000907 & 0.007799 & 0.06736 &  0.876 &    9.933   \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.32]{runtimes.png}
+\end{figure}
+
+
 \subsection{qconvex (http://www.qhull.org/html/qconvex.htm)}
 
+
+
+
+
+
+
+
+
+\ \\~\\~\\~\\~\\~\\~\\~\\~\\~\\
 
 Konvexe Hülle berechnen:
 
@@ -198,12 +233,7 @@ TODO:
     \item Source code: https://github.com/qhull/qhull
 \end{itemize}
 
-\newpage
 
-\section{Ergebnisse}
-
-
-\section{Verifikation und Validierung}
 
 
 %\begin{figure}[ht]
