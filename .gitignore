@@ -6,6 +6,7 @@ P1/Abgabe/*
 !P1/Abgabe/*.tex
 
 .DS_Store
+P3/.DS_Store
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
