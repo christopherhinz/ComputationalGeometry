@@ -19,6 +19,12 @@ plt.xlabel("Dimensionen")
 plt.ylabel("Laufzeit in Sekunden")
 plt.show()
 
+point_count = [ 10     , 50     , 100    , 500     , 1000    , 5000    , 10000   , 50000   , 100000  , 500000 , 1000000, 5000000]
+runtimes    = [ 5.1e-05, 6.8e-05, 8.3e-05, 0.000187, 0.000349, 0.001099, 0.001593, 0.004432, 0.006326, 0.03035, 0.06068, 0.311]
+plt.plot(point_count, runtimes)
+plt.xlabel("Anzahl an Punkten")
+plt.ylabel("Laufzeit in Sekunden")
+plt.show()
 
 '''
 Command zur Generierung von Daten und Berechnung der konvexen Hülle:
