@@ -129,7 +129,7 @@
 % Einführung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Einführung}
-Installieren Sie das Programm qhull, erzeugen Sie zufällige Punktmengen und berechnen Sie mit qhull konvexe Hüllen, auch in höheren Dimensionen (qhull bringt ein Werkzeug zur Erzeugung von Punktmengen mit). Plotten Sie die Zeiten für zunehmende Punktanzahlen bei unterschiedlichen Dimensionen (2-8). Versuchen Sie, die Ausgaben von qhull bei "geschwätzigster" Einstellung nachzuvollziehen, zu verstehen und ggf. mit Inhalten dieser Lehrveranstaltung in Einklang zu bringen.
+Im Zuge dieses Praktikum wird das Programm qhull zur Erzeugung von Punktmengen und Berechnung konvexer Hüllen verwendet. Hierbei ist das Ziel die Ausgaben des Programms nachzuvollziehen und zu verstehen.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,13 +148,13 @@ Qhull bietet 6 verschiedene Programme an:
     \item rbox: generate point distributions for qhull
 \end{itemize}
 
-Im Zuge dieses Praktikums werden wir sowohl rbox, zur Erzeugung von Punktmengen nutzen, als auch qconvex, zur Berechnung der konvexe Hüllen, nutzen.
+Im Zuge dieses Praktikums werden wir sowohl rbox, zur Erzeugung von Punktmengen nutzen, als auch qconvex, zur Berechnung der konvexe Hüllen.
 Qhull nutzt hierbei den, in der Vorlesung besprochenen, Quick Hull Algorithmus. Dieser teilt für die Berechnung der konvexen Hülle die Punktmengen nach dem "divide and conquer" Prinzip auf. Hierbei dienen jeweils die Extrempunkte (z.B maximaler und minimaler x-Wert für erste Teilung) als Kriterien zur Teilung der Punktmenge. Als Ergebnis des Algorithmus erhält man die Hyperebenen, die die konvexe Hülle bilden.
 
 
 
-\subsection{rboxå}
-Das Programm rbox generiert zufällige oder reguläre Punkte. Standardmäßig innerhalb eines Würfels (es sei denn die Optionen 's', 'x', oder 'y' werden übergeben).
+\subsection{rbox}
+Das Programm rbox generiert zufällige oder reguläre Punkte. Diese dienen als Datensatz über den die konvexe Hülle berechnet werden soll.
 Einige Beispiele zur Erzeugung von Punktmengen sind:
 \begin{itemize}
     \setlength\itemsep{0em}
@@ -163,6 +163,7 @@ Einige Beispiele zur Erzeugung von Punktmengen sind:
     \item rbox 10 D2: erzeugt 10 Punkte auf einem 2D Kreis
     \item rbox 100 W0: erzeugt 100 Punkte  auf der Oberfläche eines Würfels
 \end{itemize}
+\newpage
 
 \subsection{Beispiele}
 Bevor auf Details von qconvex eingegangen wird, sollen zwei kurze Beispiele die Eingabedaten und die Ergebnisse der Berechnung visualisieren.\\
@@ -204,7 +205,7 @@ Es soll die Laufzeit des Algorithmus für verschiedene Punktmengen in unterschie
 
 \ \\ 
 Mit dem Quick Hull Algorithmus wird eine Komplexität von $\Omega(n*log(k))$ erreicht. Dies soll zusätzlich veranschaulicht werden. 
-Hierzu wurden die Zeiten bei zunehmender Punktmenge in 2 Dimensionen aufgetragen. Das foldende Bild zeigt dies. Es ist gut zu erkennen, dass ein annähernd linearer Zusammenhang besteht. Dies lässt sich darauf zurückführen, dass auch für hohe Punktzahlen eine geringe Anzahl an Kanten berechnet werden (z.B. 46 Kanten bei 1.000.000 Punkten). Dadurch ist der Ausdruck $log(k)$ annhäherung konstant und erklärt damit den Verlauf der Kurve.
+Hierzu wurden die Zeiten bei zunehmender Punktmenge in 2 Dimensionen aufgetragen. Das foldende Bild zeigt dies. Es ist gut zu erkennen, dass ein annähernd linearer Zusammenhang besteht. Dies lässt sich darauf zurückführen, dass auch für hohe Punktzahlen eine geringe Anzahl an Kanten berechnet werden (z.B. 46 Kanten bei 1.000.000 Punkten). Dadurch ist der Ausdruck $log(k)$ annhäherung konstant und der Verlauf der Kurve hängt insbesondere von n ab und ist damit linear.
 
 
 \begin{figure}[H]
@@ -212,7 +213,7 @@ Hierzu wurden die Zeiten bei zunehmender Punktmenge in 2 Dimensionen aufgetragen
     \includegraphics[scale=0.32]{runtimes2.png}
 \end{figure}
 
-\newpage
+
 
 \subsection{qconvex}
 Im Folgenden sollen die Ausgaben bzw. die Ergebnisse von qconvex genauer betrachtet werden. Die bereits erwähnt stellt qconvex Informationen über die Hyperebenen der konvexen Hülle über eine Punktmengen bereit. Wie diese Informationen ausgegeben und interpretiert werden müssen soll nachfolgend genauer betrachtet werden.
@@ -223,7 +224,7 @@ Eine mögliche Ausgabe von qconvex sind die Normalenvektoren der Hyperebenen, al
 
 In 2 Dimensionen erhält man 3 Parameter pro Hyperebene (Gerade). Die zwei ersten sind die Koordinaten des Normalenvektors, der dritte entspricht dem Abstand zum Ursprung. Diese repräsentieren die Parameter der Hesseschen Normalenform wie folgt:\\
 
-$ g: n_1*x+n_2*y+d = 0 $ mit Normalenvektor: $\vec{n} = \begin{pmatrix}n_1 \\ n_2\end{pmatrix}, d \widehat{=} Abstand$
+$ g: n_1*x+n_2*y+d = 0 $ mit Normalenvektor: $\vec{n} = \begin{pmatrix}n_1 \\ n_2\end{pmatrix}, d \widehat{=} Abstand$
 
 \ \\
 
@@ -235,7 +236,6 @@ Für oben gezeigte Beispiel in zwei Dimensionen erhält man die folgende Ausgabe
         0.6949453872092842 -0.7190625207842071 -0.3426299574618282 
 \end{lstlisting}
 
-\ \\
  
 Hieraus lassen sich nun die 4 Geradengleichungen aufstellen:
 \begin{itemize}
