@@ -204,8 +204,9 @@ Es soll die Laufzeit des Algorithmus für verschiedene Punktmengen in unterschie
 \end{figure}
 
 \ \\ 
-Mit dem Quick Hull Algorithmus wird eine Komplexität von $\Omega(n*log(k))$ erreicht. Dies soll zusätzlich veranschaulicht werden. 
-Hierzu wurden die Zeiten bei zunehmender Punktmenge in 2 Dimensionen aufgetragen. Das foldende Bild zeigt dies. Es ist gut zu erkennen, dass ein annähernd linearer Zusammenhang besteht. Dies lässt sich darauf zurückführen, dass auch für hohe Punktzahlen eine geringe Anzahl an Kanten berechnet werden (z.B. 46 Kanten bei 1.000.000 Punkten). Dadurch ist der Ausdruck $log(k)$ annhäherung konstant und der Verlauf der Kurve hängt insbesondere von n ab und ist damit linear.
+Zusätzlich soll die Komplexität des Quick Hull Algorithmus in 2 Dimensionen untersucht werden.
+Die Komplexität ist mit $\Omega(n*log(k))$ gegeben. Damit hängt die Komplexität neben der Anzahl der Punkte auch von der Anzahl der berechneten Kanten ab.  
+Das foldende Bild zeigt die Laufzeiten für zunehmende Punktzahlen. Es ist gut zu erkennen, dass ein annähernd linearer Zusammenhang besteht. Dies lässt sich darauf zurückführen, dass die Anzahl der Kanten nicht proportional mit der Anzahl der Punkte wächst und auch für hohe Punktzahlen eine geringe Anzahl an Kanten berechnet werden (z.B. 28 Kanten für 50 Punkte und 46 Kanten bei 1.000.000 Punkten). Dadurch ist der Ausdruck $log(k)$ annhähernd konstant und der Verlauf der Kurve hängt insbesondere von n ab und ist damit linear.
 
 
 \begin{figure}[H]
