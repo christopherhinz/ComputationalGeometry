@@ -1,0 +1,96 @@
+Bundesland: Thüringen
+Anzahl der Polygone: 1
+Gesamtflaeche: 16130
+Hauptstadt: Erfurt
+
+Bundesland: Schleswig-Holstein
+Anzahl der Polygone: 11
+Gesamtflaeche: 15814.7
+Hauptstadt: Kiel
+
+Bundesland: Sachsen-Anhalt
+Anzahl der Polygone: 1
+Gesamtflaeche: 20509.2
+Hauptstadt: Magdeburg
+
+Bundesland: Sachsen
+Anzahl der Polygone: 1
+Gesamtflaeche: 18414
+Hauptstadt: Dresden
+
+Bundesland: Saarland
+Anzahl der Polygone: 1
+Gesamtflaeche: 2560.79
+Hauptstadt: Saarbrücken
+
+Bundesland: Rheinland-Pfalz
+Anzahl der Polygone: 1
+Gesamtflaeche: 19878.1
+Hauptstadt: Mainz
+
+Bundesland: Nordrhein-Westfalen
+Anzahl der Polygone: 1
+Gesamtflaeche: 34044.2
+Hauptstadt: Düsseldorf
+
+Bundesland: Niedersachsen
+Anzahl der Polygone: 10
+Gesamtflaeche: 47492.8
+Hauptstadt: Hannover
+
+Bundesland: Mecklenburg-Vorpommern
+Anzahl der Polygone: 7
+Gesamtflaeche: 23104.6
+Hauptstadt: Schwerin
+
+Bundesland: Hessen
+Anzahl der Polygone: 1
+Gesamtflaeche: 21128.6
+Hauptstadt: Wiesbaden
+
+Bundesland: Hamburg
+Anzahl der Polygone: 1
+Gesamtflaeche: 743.198
+Hauptstadt: Hamburg
+
+Bundesland: Bremen
+Anzahl der Polygone: 2
+Gesamtflaeche: 399.535
+Hauptstadt: Bremen
+
+Bundesland: Brandenburg
+Anzahl der Polygone: 2
+Gesamtflaeche: 29706.7
+Hauptstadt: Potsdam
+
+Bundesland: Berlin
+Anzahl der Polygone: 1
+Gesamtflaeche: 899.41
+Hauptstadt: Berlin
+
+Bundesland: Bayern
+Anzahl der Polygone: 1
+Gesamtflaeche: 70550
+Hauptstadt: München
+
+Bundesland: Baden__x26__Württemberg
+Anzahl der Polygone: 2
+Gesamtflaeche: 35873
+Hauptstadt: Stuttgart
+
+München: 366.968 700
+Berlin: 477 256
+Stuttgart: 215 648
+Saarbrücken: 60 589
+Wiesbaden: 148.823 508.371
+Mainz: 148.399 523.635
+Düsseldorf: 56.8154 397.708
+Bremen: 193.766 200.55
+Erfurt: 335.381 418.908
+Dresden: 499.891 405.764
+Magdeburg: 370.996 294.677
+Hannover: 253.549 273.477
+Hamburg: 265.845 156.03
+Kiel: 275.173 78.4392
+Schwerin: 357.852 150.094
+Potsdam: 458.763 260.757
